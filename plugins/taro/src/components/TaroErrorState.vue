@@ -1,15 +1,34 @@
 <template>
-  <div class="error-state" data-testid="taro-error">
+  <div
+    class="error-state"
+    data-testid="taro-error"
+  >
     <div class="error-icon">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-2h2v2m0-4h-2V7h2v6" stroke-width="1.5" />
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-2h2v2m0-4h-2V7h2v6"
+          stroke-width="1.5"
+        />
       </svg>
     </div>
     <div class="error-message">
-      <p class="error-title">{{ $t('common.error') }}</p>
-      <p class="error-text">{{ error }}</p>
+      <p class="error-title">
+        {{ $t('common.error') }}
+      </p>
+      <p class="error-text">
+        {{ error }}
+      </p>
     </div>
-    <button class="btn btn-primary" @click="$emit('retry')">
+    <button
+      class="btn btn-primary"
+      @click="$emit('retry')"
+    >
       {{ $t('common.retry') }}
     </button>
   </div>

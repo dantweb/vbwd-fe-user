@@ -12,7 +12,10 @@
     </div>
     <div class="info-row">
       <span class="label">{{ $t('taro.timeRemaining') }}</span>
-      <span class="value" :class="{ 'text-warning': timeRemaining <= 3 }">
+      <span
+        class="value"
+        :class="{ 'text-warning': timeRemaining <= 3 }"
+      >
         {{ timeRemaining }} min
       </span>
     </div>

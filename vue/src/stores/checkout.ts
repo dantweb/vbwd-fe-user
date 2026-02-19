@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { api } from '@/api';
-import { useCartStore } from '@vbwd/view-component';
+import { useCartStore } from '@dantweb/view-component';
 
 export interface Plan {
   id: string;

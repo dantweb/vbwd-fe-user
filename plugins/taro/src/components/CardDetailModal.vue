@@ -5,7 +5,10 @@
     data-testid="card-detail-modal"
     @click.self="$emit('close')"
   >
-    <div class="modal-content" :class="{ 'fullscreen-mode': props.fullscreen }">
+    <div
+      class="modal-content"
+      :class="{ 'fullscreen-mode': props.fullscreen }"
+    >
       <button
         class="modal-close"
         :title="$t('common.close')"

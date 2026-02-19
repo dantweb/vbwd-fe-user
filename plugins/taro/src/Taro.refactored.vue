@@ -1,13 +1,21 @@
 <template>
-  <div class="taro-container" data-testid="taro-dashboard">
+  <div
+    class="taro-container"
+    data-testid="taro-dashboard"
+  >
     <!-- Page Header -->
     <div class="taro-header">
       <h1>{{ $t('taro.title') }}</h1>
-      <p class="subtitle">{{ $t('taro.subtitle') }}</p>
+      <p class="subtitle">
+        {{ $t('taro.subtitle') }}
+      </p>
     </div>
 
     <!-- Loading State -->
-    <div v-if="taroStore.loading && !taroStore.currentSession" class="loading-state">
+    <div
+      v-if="taroStore.loading && !taroStore.currentSession"
+      class="loading-state"
+    >
       <div class="spinner" />
       <p>{{ $t('common.loading') }}</p>
     </div>
@@ -20,7 +28,10 @@
     />
 
     <!-- Main Content -->
-    <div v-else class="taro-content">
+    <div
+      v-else
+      class="taro-content"
+    >
       <!-- Daily Limits Card -->
       <DailyLimitsCard
         :limits="taroStore.dailyLimits"
@@ -32,7 +43,10 @@
       <SessionExpiryWarning :minutes-remaining="taroStore.sessionTimeRemaining" />
 
       <!-- Active Session -->
-      <div v-if="taroStore.hasActiveSession" class="session-card card">
+      <div
+        v-if="taroStore.hasActiveSession"
+        class="session-card card"
+      >
         <div class="card-header">
           <h2>{{ $t('taro.currentSession') }}</h2>
           <span class="badge badge-active">{{ $t('taro.active') }}</span>

@@ -1,4 +1,4 @@
-import type { IPlugin, IPlatformSDK } from '@vbwd/view-component';
+import type { IPlugin, IPlatformSDK } from '@dantweb/view-component';
 import en from './locales/en.json';
 import de from './locales/de.json';
 import es from './locales/es.json';

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { PluginRegistry, PlatformSDK, PluginStatus } from '@vbwd/view-component'
-import type { IPlugin, IPlatformSDK } from '@vbwd/view-component'
+import { PluginRegistry, PlatformSDK, PluginStatus } from '@dantweb/view-component'
+import type { IPlugin, IPlatformSDK } from '@dantweb/view-component'
 
 function createTestPlugin(overrides: Partial<IPlugin> = {}): IPlugin {
   return {

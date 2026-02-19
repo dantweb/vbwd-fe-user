@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
-import { PluginRegistry, PlatformSDK } from '@vbwd/view-component'
-import type { IPlugin } from '@vbwd/view-component'
+import { PluginRegistry, PlatformSDK } from '@dantweb/view-component'
+import type { IPlugin } from '@dantweb/view-component'
 import { landing1Plugin } from '../../../../plugins/landing1'
 import Landing1View from '../../../../plugins/landing1/Landing1View.vue'
 

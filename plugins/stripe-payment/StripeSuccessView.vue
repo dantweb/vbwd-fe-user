@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { usePaymentStatus } from '@vbwd/view-component';
+import { usePaymentStatus } from '@dantweb/view-component';
 import { api } from '@/api';
 
 const { polling, confirmed, timedOut, error, readSessionFromQuery, startPolling } =

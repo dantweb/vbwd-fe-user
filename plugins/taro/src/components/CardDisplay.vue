@@ -11,7 +11,10 @@
     @click="handleCardClick"
   >
     <!-- Card Back (Closed State) -->
-    <div v-if="!isOpened" class="card-back">
+    <div
+      v-if="!isOpened"
+      class="card-back"
+    >
       <div class="card-back-visual">
         <div class="mystical-pattern" />
         <span class="reveal-hint">{{ $t('oracle.cardClickHint') }}</span>
@@ -26,17 +29,23 @@
         :class="{ reversed: card.orientation === 'REVERSED' }"
       >
         <!-- Card Image (if available) -->
-        <div v-if="hasCardImage" class="card-image-container">
+        <div
+          v-if="hasCardImage"
+          class="card-image-container"
+        >
           <img
             :src="cardImageUrl"
             :alt="cardImageAlt"
             class="card-image"
             :title="cardImageAlt"
-          />
+          >
         </div>
 
         <!-- Placeholder (fallback if no image) -->
-        <div v-else class="card-placeholder">
+        <div
+          v-else
+          class="card-placeholder"
+        >
           <svg
             width="80"
             height="120"

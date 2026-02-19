@@ -1,11 +1,23 @@
 <template>
-  <div v-if="show" class="warning-card card" data-testid="expiry-warning">
+  <div
+    v-if="show"
+    class="warning-card card"
+    data-testid="expiry-warning"
+  >
     <div class="warning-content">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m1 15h-2v-2h2v2m0-4h-2V7h2v6" />
       </svg>
       <div>
-        <p class="warning-title">{{ $t('taro.sessionExpiring') }}</p>
+        <p class="warning-title">
+          {{ $t('taro.sessionExpiring') }}
+        </p>
         <p class="warning-message">
           {{ $t('taro.sessionExpiresIn', { minutes: minutesRemaining }) }}
         </p>

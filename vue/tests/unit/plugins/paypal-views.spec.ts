@@ -7,7 +7,7 @@ const { mockApi } = vi.hoisted(() => ({
   mockApi: { post: vi.fn(), get: vi.fn() },
 }))
 
-// Mock the shared composables from @vbwd/view-component
+// Mock the shared composables from @dantweb/view-component
 const mockRedirect = {
   loading: ref(false),
   error: ref<string | null>(null),
@@ -16,7 +16,7 @@ const mockRedirect = {
   createAndRedirect: vi.fn(),
 }
 
-vi.mock('@vbwd/view-component', () => ({
+vi.mock('@dantweb/view-component', () => ({
   usePaymentRedirect: () => mockRedirect,
 }))
 

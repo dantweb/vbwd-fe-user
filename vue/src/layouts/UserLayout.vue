@@ -5,12 +5,12 @@
       <button
         class="burger-menu"
         :class="{ active: showMobileMenu }"
-        @click="toggleMobileMenu"
         data-testid="burger-menu"
+        @click="toggleMobileMenu"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </button>
       <div class="logo-mobile">
         <h2>VBWD</h2>
@@ -58,11 +58,21 @@
               @click="toggleGroup('store')"
             >
               {{ $t('nav.store') }}
-              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <polyline points="6 9 12 15 18 9"></polyline>
+              <svg
+                class="chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </button>
-            <div v-if="expandedGroups.store" class="nav-subgroup">
+            <div
+              v-if="expandedGroups.store"
+              class="nav-subgroup"
+            >
               <router-link
                 to="/dashboard/plans"
                 class="nav-subitem"
@@ -95,11 +105,21 @@
               @click="toggleGroup('subscription')"
             >
               {{ $t('nav.subscription') }}
-              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <polyline points="6 9 12 15 18 9"></polyline>
+              <svg
+                class="chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </button>
-            <div v-if="expandedGroups.subscription" class="nav-subgroup">
+            <div
+              v-if="expandedGroups.subscription"
+              class="nav-subgroup"
+            >
               <router-link
                 to="/dashboard/subscription"
                 class="nav-subitem"
@@ -147,8 +167,16 @@
               stroke="currentColor"
               stroke-width="2"
             >
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
+              <circle
+                cx="9"
+                cy="21"
+                r="1"
+              />
+              <circle
+                cx="20"
+                cy="21"
+                r="1"
+              />
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
             </svg>
             <span
@@ -237,7 +265,13 @@
             class="user-menu-btn"
             @click="toggleUserMenu"
           >
-            <svg class="user-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              class="user-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
             <span class="user-email">{{ userEmail }}</span>
@@ -257,8 +291,8 @@
             <button
               v-if="enabledPlugins.has('theme-switcher')"
               class="user-dropdown-item appearance-btn"
-              @click="openAppearance"
               data-testid="appearance-menu-item"
+              @click="openAppearance"
             >
               {{ $t('nav.appearance') }}
             </button>
@@ -291,7 +325,7 @@
 <script setup lang="ts">
 import { ref, computed, inject, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useCartStore } from '@vbwd/view-component';
+import { useCartStore } from '@dantweb/view-component';
 import { storeToRefs } from 'pinia';
 
 const enabledPlugins = inject<Set<string>>('enabledPlugins', new Set());

@@ -110,7 +110,7 @@
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { api } from '@/api';
-import { useCartStore } from '@vbwd/view-component';
+import { useCartStore } from '@dantweb/view-component';
 
 interface TokenBundle {
   id: string;

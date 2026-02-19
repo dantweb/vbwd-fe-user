@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { PluginRegistry, PlatformSDK } from '@vbwd/view-component'
+import { PluginRegistry, PlatformSDK } from '@dantweb/view-component'
 import { chatPlugin } from '../index'
 
 describe('Chat Plugin', () => {

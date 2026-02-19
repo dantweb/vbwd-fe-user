@@ -1,5 +1,8 @@
 <template>
-  <div class="limits-card card" data-testid="daily-limits-card">
+  <div
+    class="limits-card card"
+    data-testid="daily-limits-card"
+  >
     <div class="card-header">
       <h2>{{ $t('taro.dailyLimits') }}</h2>
       <button
@@ -9,7 +12,13 @@
         data-testid="refresh-limits-btn"
         @click="$emit('refresh')"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
           <path d="M1 4v6h6M23 20v-6h-6M20.49 9A9 9 0 0 0 5.64 5.64M3.51 15A9 9 0 0 0 18.36 18.36" />
         </svg>
       </button>
@@ -22,7 +31,10 @@
       </div>
       <div class="limit-item">
         <span class="label">{{ $t('taro.dailyRemaining') }}</span>
-        <span class="value highlight" :class="{ 'text-warning': sessionsRemaining === 0 }">
+        <span
+          class="value highlight"
+          :class="{ 'text-warning': sessionsRemaining === 0 }"
+        >
           {{ sessionsRemaining }}
         </span>
       </div>

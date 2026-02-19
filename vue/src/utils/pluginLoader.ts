@@ -1,4 +1,4 @@
-import type { IPlugin } from '@vbwd/view-component';
+import type { IPlugin } from '@dantweb/view-component';
 import pluginsManifest from '@plugins/plugins.json';
 
 /**

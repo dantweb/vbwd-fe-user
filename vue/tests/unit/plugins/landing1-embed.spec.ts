@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
-import { PluginRegistry, PlatformSDK } from '@vbwd/view-component'
+import { PluginRegistry, PlatformSDK } from '@dantweb/view-component'
 import { landing1Plugin } from '../../../../plugins/landing1'
 
 const { mockLocale, mockRoute, MockLanding1View } = vi.hoisted(() => {

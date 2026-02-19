@@ -16,7 +16,7 @@ vi.mock('../../../src/api', () => ({
 let mockCartItems: Array<{ type: string; id: string; name: string; price: number; quantity: number; metadata?: Record<string, unknown> }> = [];
 const mockClearCart = vi.fn();
 
-vi.mock('@vbwd/view-component', () => ({
+vi.mock('@dantweb/view-component', () => ({
   useCartStore: () => ({
     get items() { return mockCartItems; },
     clearCart: mockClearCart,

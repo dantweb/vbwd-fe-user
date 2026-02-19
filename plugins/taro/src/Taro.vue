@@ -1,5 +1,8 @@
 <template>
-  <div class="taro-container" data-testid="taro-dashboard">
+  <div
+    class="taro-container"
+    data-testid="taro-dashboard"
+  >
     <!-- Page Header -->
     <div class="taro-header">
       <h1>{{ $t('taro.title') }}</h1>
@@ -370,7 +373,6 @@
           </p>
         </div>
       </div>
-
     </div>
 
     <!-- Selected Card Detail Modal -->

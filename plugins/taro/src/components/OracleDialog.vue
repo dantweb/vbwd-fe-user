@@ -1,22 +1,37 @@
 <template>
   <div class="oracle-section">
     <!-- Conversation Messages -->
-    <ConversationBox v-if="messages.length > 0" :messages="messages" />
+    <ConversationBox
+      v-if="messages.length > 0"
+      :messages="messages"
+    />
 
     <!-- Oracle Phase: asking_mode -->
-    <div v-if="phase === 'asking_mode'" class="oracle-dialog">
+    <div
+      v-if="phase === 'asking_mode'"
+      class="oracle-dialog"
+    >
       <div class="dialog-buttons">
-        <button class="btn btn-primary" @click="$emit('explain-cards')">
+        <button
+          class="btn btn-primary"
+          @click="$emit('explain-cards')"
+        >
           {{ $t('oracle.explainButton') }}
         </button>
-        <button class="btn btn-secondary" @click="$emit('discuss-situation')">
+        <button
+          class="btn btn-secondary"
+          @click="$emit('discuss-situation')"
+        >
           {{ $t('oracle.discussButton') }}
         </button>
       </div>
     </div>
 
     <!-- Oracle Phase: asking_situation -->
-    <div v-if="phase === 'asking_situation'" class="oracle-dialog">
+    <div
+      v-if="phase === 'asking_situation'"
+      class="oracle-dialog"
+    >
       <div class="form-group">
         <label class="form-label">{{ $t('oracle.situationLabel') }}</label>
         <textarea
@@ -44,13 +59,19 @@
     </div>
 
     <!-- Oracle Phase: reading -->
-    <div v-if="phase === 'reading'" class="oracle-dialog loading">
+    <div
+      v-if="phase === 'reading'"
+      class="oracle-dialog loading"
+    >
       <div class="spinner-small" />
       <p>{{ $t('oracle.reading') }}</p>
     </div>
 
     <!-- Chat Input - Ask More Questions -->
-    <div v-if="phase === 'done'" class="chat-continue-section">
+    <div
+      v-if="phase === 'done'"
+      class="chat-continue-section"
+    >
       <div class="form-group">
         <textarea
           :value="followUpQuestion"
