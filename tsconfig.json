@@ -15,8 +15,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./vue/src/*"]
+      "@/*": ["./vue/src/*"],
+      "@plugins/*": ["./plugins/*"]
     },
     "types": ["vite/client", "vitest/globals"]
   },
@@ -24,6 +26,8 @@
     "vue/src/**/*.ts",
     "vue/src/**/*.tsx",
     "vue/src/**/*.vue",
+    "plugins/**/*.ts",
+    "plugins/**/*.vue",
     "vue/tests/**/*.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
