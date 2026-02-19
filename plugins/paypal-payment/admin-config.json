@@ -1,0 +1,11 @@
+{
+  "tabs": [
+    {
+      "id": "credentials",
+      "label": "Credentials",
+      "fields": [
+        { "key": "clientId", "label": "Client ID", "component": "input", "inputType": "text" }
+      ]
+    }
+  ]
+}

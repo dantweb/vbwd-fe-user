@@ -1,0 +1,7 @@
+{
+  "defaultTheme": {
+    "type": "string",
+    "default": "default",
+    "description": "Default theme applied to new users (default, dark, forest, ocean, sunset)"
+  }
+}

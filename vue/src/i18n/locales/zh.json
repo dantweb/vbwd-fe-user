@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "retry": "重试",
+    "back": "返回",
+    "close": "关闭",
+    "cancel": "取消",
+    "save": "保存",
+    "remove": "删除",
+    "view": "查看",
+    "pay": "支付",
+    "pdf": "PDF",
+    "previous": "上一页",
+    "next": "下一页",
+    "total": "合计",
+    "logout": "退出登录",
+    "checkout": "结账",
+    "backToPlans": "返回计划",
+    "backToSubscription": "返回订阅",
+    "browsePlans": "浏览计划",
+    "processing": "处理中...",
+    "confirm": "确认",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "第 {currentPage} 页，共 {totalPages} 页",
+    "present": "当前",
+    "item": "项目",
+    "items": "项目",
+    "status": {
+      "active": "活跃",
+      "pending": "待处理",
+      "paid": "已支付",
+      "overdue": "逾期",
+      "cancelled": "已取消",
+      "cancelling": "取消中",
+      "trial": "试用"
+    },
+    "errors": {
+      "failedToLoad": "加载数据失败",
+      "invalidCredentials": "凭据无效",
+      "loginFailed": "登录失败",
+      "registrationFailed": "注册失败",
+      "paymentFailed": "支付失败。请重试。",
+      "loginFailedRetry": "登录失败。请重试。",
+      "registrationFailedRetry": "注册失败。请重试。"
+    },
+    "billingPeriods": {
+      "month": "月",
+      "year": "年",
+      "week": "周",
+      "oneTime": "一次"
+    }
+  },
+  "nav": {
+    "dashboard": "仪表板",
+    "profile": "个人资料",
+    "subscription": "订阅",
+    "invoices": "发票",
+    "plans": "计划",
+    "tokens": "代币",
+    "addons": "附加组件",
+    "appearance": "外观",
+    "chat": "聊天",
+    "store": "商店"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "购物车",
+    "cartEmpty": "购物车为空",
+    "cartTotal": "总计："
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "loading": "加载中...",
+    "profileCard": {
+      "title": "个人资料",
+      "viewProfile": "查看个人资料"
+    },
+    "subscriptionCard": {
+      "title": "当前订阅",
+      "noPlan": "无计划",
+      "billingPeriod": "计费周期",
+      "nextBilling": "下次计费",
+      "tokenBalance": "代币余额",
+      "noActiveSubscription": "无活跃订阅",
+      "manageSubscription": "管理订阅"
+    },
+    "invoicesCard": {
+      "title": "最近的发票",
+      "noInvoices": "无发票",
+      "viewAllInvoices": "查看所有发票"
+    },
+    "historyCard": {
+      "title": "订阅历史",
+      "noHistory": "无订阅历史。"
+    },
+    "addonsCard": {
+      "title": "附加组件",
+      "active": "活跃",
+      "expired": "已过期 / 已取消",
+      "noAddons": "无附加组件。",
+      "browseAddons": "浏览附加组件"
+    },
+    "tokenHistoryCard": {
+      "title": "代币活动",
+      "noActivity": "无代币活动。",
+      "purchaseTokens": "购买代币"
+    },
+    "quickActions": {
+      "title": "快速操作",
+      "editProfile": "编辑个人资料",
+      "manageSubscription": "管理订阅",
+      "browsePlans": "浏览计划",
+      "viewInvoices": "查看发票"
+    },
+    "errors": {
+      "failedToLoad": "加载仪表板失败"
+    }
+  },
+  "profile": {
+    "title": "个人资料",
+    "loading": "加载个人资料中...",
+    "accountInfo": {
+      "title": "账户信息",
+      "email": "电子邮件",
+      "accountStatus": "账户状态",
+      "statusActive": "活跃",
+      "tokenBalance": "代币余额"
+    },
+    "personalInfo": {
+      "title": "个人信息",
+      "firstName": "名字",
+      "firstNamePlaceholder": "张",
+      "lastName": "姓氏",
+      "lastNamePlaceholder": "三",
+      "company": "公司",
+      "companyPlaceholder": "Acme 公司",
+      "taxNumber": "税号 / 增值税号",
+      "taxNumberPlaceholder": "123456789",
+      "phone": "电话",
+      "phonePlaceholder": "+86 10 1234 5678"
+    },
+    "address": {
+      "title": "地址",
+      "addressLine1": "地址行 1",
+      "addressLine1Placeholder": "主街 123 号",
+      "addressLine2": "地址行 2",
+      "addressLine2Placeholder": "4B 室",
+      "city": "城市",
+      "cityPlaceholder": "北京",
+      "postalCode": "邮政编码",
+      "postalCodePlaceholder": "100000",
+      "country": "国家",
+      "countryPlaceholder": "中国"
+    },
+    "actions": {
+      "saving": "保存中...",
+      "saveChanges": "保存更改"
+    },
+    "changePassword": {
+      "title": "更改密码",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认密码",
+      "changing": "更改中...",
+      "changePassword": "更改密码"
+    },
+    "messages": {
+      "profileUpdated": "个人资料已成功更新",
+      "passwordChanged": "密码已成功更改",
+      "passwordsDoNotMatch": "密码不匹配",
+      "passwordMinLength": "密码必须至少 8 个字符"
+    },
+    "errors": {
+      "failedToLoad": "加载个人资料失败",
+      "failedToUpdate": "更新个人资料失败",
+      "failedToChangePassword": "更改密码失败"
+    }
+  },
+  "subscription": {
+    "title": "订阅",
+    "loading": "加载订阅中...",
+    "currentPlan": {
+      "title": "当前计划",
+      "noPlan": "无计划",
+      "noActiveSubscription": "您没有活跃的订阅。",
+      "price": "价格",
+      "currentPeriod": "当前周期",
+      "nextBillingDate": "下次计费日期"
+    },
+    "tokenBalance": {
+      "title": "代币余额",
+      "description": "使用代币进行 API 调用、功能等。",
+      "purchaseTokens": "购买代币"
+    },
+    "manage": {
+      "title": "管理订阅",
+      "changePlan": "更改计划",
+      "cancelSubscription": "取消订阅"
+    },
+    "invoices": {
+      "title": "发票",
+      "searchPlaceholder": "搜索发票...",
+      "tableHeaders": {
+        "invoiceNumber": "发票 #",
+        "date": "日期",
+        "amount": "金额",
+        "status": "状态",
+        "actions": "操作"
+      },
+      "noInvoices": "无发票。",
+      "noInvoicesSearch": "找不到与您的搜索匹配的发票。",
+      "downloadPdf": "下载 PDF"
+    },
+    "cancelModal": {
+      "title": "取消订阅",
+      "confirmMessage": "确定要取消订阅吗？",
+      "accessWarning": "您的访问权限将继续到 {date}。",
+      "keepSubscription": "保持订阅",
+      "cancelling": "取消中...",
+      "confirmCancellation": "确认取消"
+    },
+    "invoiceModal": {
+      "date": "日期",
+      "status": "状态",
+      "amount": "金额"
+    },
+    "messages": {
+      "subscriptionCancelled": "订阅已成功取消",
+      "invoiceDownloadInitiated": "发票下载已启动"
+    },
+    "errors": {
+      "failedToLoad": "加载订阅数据失败",
+      "failedToCancel": "取消订阅失败",
+      "failedToDownload": "下载发票失败"
+    }
+  },
+  "plans": {
+    "title": "选择计划",
+    "loading": "加载计划中...",
+    "noPlans": "目前没有可用的计划。",
+    "mostPopular": "最受欢迎",
+    "currentPlan": "当前计划",
+    "selectPlan": "选择计划",
+    "processing": "处理中...",
+    "taxIncluded": "含 {rate}% 税",
+    "currencyLabel": "显示价格为："
+  },
+  "tokens": {
+    "breadcrumbPlans": "计划",
+    "breadcrumbTokenBundles": "代币套装",
+    "title": "代币套装",
+    "subtitle": "为您的账户购买额外代币",
+    "loading": "加载代币套装中...",
+    "noBundles": "目前没有可用的代币套装。",
+    "tokensLabel": "{amount} 代币",
+    "addToCart": "加入购物车",
+    "backToPlans": "返回计划",
+    "errors": {
+      "failedToLoad": "加载代币套装失败"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "计划",
+    "breadcrumbAddons": "附加组件",
+    "title": "附加组件",
+    "subtitle": "使用额外功能增强您的订阅",
+    "loading": "加载附加组件中...",
+    "subscriptionAddons": {
+      "title": "订阅附加组件",
+      "description": "这些附加组件需要活跃订阅，并将随您的计划一起计费。",
+      "noAddons": "没有可用的订阅附加组件。"
+    },
+    "globalAddons": {
+      "title": "全局附加组件",
+      "description": "这些附加组件对所有用户都可用，适用于您的整个账户。",
+      "noAddons": "没有可用的全局附加组件。"
+    },
+    "addToCart": "加入购物车",
+    "requiresSubscription": "需要订阅",
+    "backToPlans": "返回计划",
+    "errors": {
+      "failedToLoad": "加载附加组件失败"
+    },
+    "detail": {
+      "title": "附加组件详情",
+      "status": "状态",
+      "startDate": "开始日期",
+      "expiryDate": "过期日期",
+      "cancelledDate": "取消日期",
+      "price": "价格",
+      "billingPeriod": "计费周期",
+      "invoice": "发票",
+      "cancelAddon": "取消附加组件",
+      "cancelConfirm": "确定要取消此附加组件吗？",
+      "cancelSuccess": "附加组件已成功取消。",
+      "backToDashboard": "返回仪表板",
+      "alreadyCancelled": "此附加组件已被取消。"
+    }
+  },
+  "invoices": {
+    "title": "发票",
+    "loading": "加载发票中...",
+    "searchPlaceholder": "搜索发票...",
+    "filters": {
+      "allStatuses": "所有状态",
+      "paid": "已支付",
+      "pending": "待处理",
+      "overdue": "逾期",
+      "refunded": "已退款"
+    },
+    "tableHeaders": {
+      "date": "日期",
+      "invoiceNumber": "发票 #",
+      "amount": "金额",
+      "status": "状态",
+      "actions": "操作"
+    },
+    "noInvoices": "无发票。",
+    "noInvoicesFiltered": "找不到与您的筛选条件匹配的发票。",
+    "messages": {
+      "downloadInitiated": "发票下载已启动"
+    },
+    "errors": {
+      "failedToLoad": "加载发票失败",
+      "failedToDownload": "下载发票失败"
+    },
+    "detail": {
+      "title": "发票详情",
+      "loading": "加载发票中...",
+      "invoiceTitle": "发票 {number}",
+      "date": "日期",
+      "dueDate": "到期日期",
+      "currency": "货币",
+      "items": "项目",
+      "itemsTableHeaders": {
+        "description": "描述",
+        "qty": "数量",
+        "unitPrice": "单价",
+        "total": "合计"
+      },
+      "totalAmount": "总金额",
+      "downloadPdf": "下载 PDF",
+      "payNow": "立即支付",
+      "payByInvoice": "按发票支付",
+      "paymentMethod": "支付方式",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "银行转账",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "加载发票失败",
+        "failedToDownload": "下载发票失败"
+      }
+    },
+    "pay": {
+      "title": "支付发票",
+      "loading": "加载发票中...",
+      "invoiceTitle": "发票 {number}",
+      "date": "日期",
+      "status": "状态",
+      "currency": "货币",
+      "items": "项目",
+      "totalAmount": "总金额",
+      "paymentTitle": "支付",
+      "alreadyPaid": "此发票已支付。",
+      "paymentInfo": "点击下方安全完成支付。",
+      "processing": "处理中...",
+      "payAmount": "支付 ${amount}",
+      "successTitle": "支付成功！",
+      "successMessage": "您的支付已成功处理。",
+      "invoiceNowPaid": "发票 {number} 现已支付。",
+      "errors": {
+        "failedToLoad": "加载发票失败",
+        "paymentFailed": "支付失败。请重试。"
+      }
+    }
+  },
+  "login": {
+    "title": "登录",
+    "emailLabel": "电子邮件",
+    "passwordLabel": "密码",
+    "loggingIn": "登录中...",
+    "loginButton": "登录",
+    "errors": {
+      "loginFailed": "登录失败",
+      "invalidCredentials": "凭据无效"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "账单地址",
+      "loading": "加载中...",
+      "firstNameLabel": "名字",
+      "firstNamePlaceholder": "名字",
+      "lastNameLabel": "姓氏",
+      "lastNamePlaceholder": "姓氏",
+      "companyLabel": "公司（可选）",
+      "companyPlaceholder": "公司名称",
+      "streetLabel": "地址 *",
+      "streetPlaceholder": "街道和号码",
+      "cityLabel": "城市 *",
+      "cityPlaceholder": "城市",
+      "zipLabel": "邮政编码 *",
+      "zipPlaceholder": "邮政编码",
+      "countryLabel": "国家 *",
+      "countryPlaceholder": "选择国家",
+      "errors": {
+        "firstNameRequired": "名字必填",
+        "lastNameRequired": "姓氏必填",
+        "streetRequired": "地址必填",
+        "cityRequired": "城市必填",
+        "zipRequired": "邮政编码必填",
+        "countryRequired": "国家必填"
+      }
+    },
+    "emailBlock": {
+      "title": "电子邮件",
+      "emailPlaceholder": "输入您的电子邮件",
+      "checking": "检查中...",
+      "newUser": {
+        "hint": "创建密码以继续",
+        "passwordPlaceholder": "创建密码",
+        "confirmPlaceholder": "确认密码",
+        "passwordMismatch": "密码不匹配",
+        "signingUp": "注册中...",
+        "signUpButton": "注册并继续"
+      },
+      "existingUser": {
+        "hint": "账户存在。输入密码以登录。",
+        "passwordPlaceholder": "输入密码",
+        "forgotPassword": "忘记密码？",
+        "loggingIn": "登录中...",
+        "loginButton": "登录"
+      },
+      "loggedIn": {
+        "loggedInAs": "以 {email} 身份登录",
+        "loggedInAsName": "以 {name} 身份登录，邮箱 {email}",
+        "logoutButton": "退出登录"
+      },
+      "passwordStrength": {
+        "weak": "弱",
+        "medium": "中等",
+        "strong": "强"
+      }
+    },
+    "paymentMethods": {
+      "title": "支付方式",
+      "loading": "加载支付方式中...",
+      "noMethods": "无可用支付方式",
+      "error": "加载支付方式失败"
+    },
+    "termsCheckbox": {
+      "agreeText": "我同意",
+      "termsLink": "使用条款",
+      "popupTitle": "使用条款",
+      "popupLoading": "加载中...",
+      "popupClose": "关闭",
+      "failedToLoad": "加载使用条款失败。请稍后重试。"
+    },
+    "sessionExpiredModal": {
+      "title": "会话已过期",
+      "defaultMessage": "您的会话已过期。请重新登录以继续。",
+      "loginButton": "登录"
+    }
+  },
+  "planDetail": {
+    "title": "计划详情",
+    "loading": "加载计划详情中...",
+    "error": "加载计划详情失败。",
+    "backLink": "返回",
+    "name": "名称",
+    "price": "价格",
+    "billingPeriod": "计费周期",
+    "description": "描述",
+    "features": "功能",
+    "status": "状态",
+    "active": "活跃",
+    "archived": "已归档"
+  },
+  "tokenBundleDetail": {
+    "title": "代币套装详情",
+    "loading": "加载代币套装中...",
+    "error": "加载代币套装失败。",
+    "backLink": "返回",
+    "name": "名称",
+    "tokenAmount": "代币数量",
+    "price": "价格",
+    "description": "描述"
+  },
+  "addonInfo": {
+    "title": "附加组件详情",
+    "loading": "加载附加组件详情中...",
+    "error": "加载附加组件详情失败。",
+    "backLink": "返回",
+    "name": "名称",
+    "price": "价格",
+    "currency": "货币",
+    "billingPeriod": "计费周期",
+    "description": "描述"
+  },
+  "notFound": {
+    "message": "您查找的页面不存在。",
+    "backHome": "返回仪表板"
+  }
+}

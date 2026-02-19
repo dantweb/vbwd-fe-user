@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "retry": "Wiederholen",
+    "back": "Zurück",
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "remove": "Entfernen",
+    "view": "Anzeigen",
+    "pay": "Bezahlen",
+    "pdf": "PDF",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "total": "Gesamt",
+    "logout": "Abmelden",
+    "checkout": "Zur Kasse",
+    "backToPlans": "Zurück zu den Tarifen",
+    "backToSubscription": "Zurück zum Abonnement",
+    "browsePlans": "Tarife durchsuchen",
+    "processing": "Verarbeite...",
+    "confirm": "Bestätigen",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "Seite {currentPage} von {totalPages}",
+    "present": "Aktuell",
+    "item": "Artikel",
+    "items": "Artikel",
+    "status": {
+      "active": "Aktiv",
+      "pending": "Ausstehend",
+      "paid": "Bezahlt",
+      "overdue": "Überfällig",
+      "cancelled": "Gekündigt",
+      "cancelling": "Wird gekündigt",
+      "trial": "Testphase"
+    },
+    "errors": {
+      "failedToLoad": "Daten konnten nicht geladen werden",
+      "invalidCredentials": "Ungültige Anmeldedaten",
+      "loginFailed": "Anmeldung fehlgeschlagen",
+      "registrationFailed": "Registrierung fehlgeschlagen",
+      "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "loginFailedRetry": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "registrationFailedRetry": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "billingPeriods": {
+      "month": "Monat",
+      "year": "Jahr",
+      "week": "Woche",
+      "oneTime": "Einmalig"
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profil",
+    "subscription": "Abonnement",
+    "invoices": "Rechnungen",
+    "plans": "Tarife",
+    "tokens": "Token",
+    "addons": "Add-ons",
+    "appearance": "Darstellung",
+    "chat": "Chat",
+    "store": "Shop"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "Warenkorb",
+    "cartEmpty": "Ihr Warenkorb ist leer",
+    "cartTotal": "Gesamt:"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "loading": "Laden...",
+    "profileCard": {
+      "title": "Profil",
+      "viewProfile": "Profil anzeigen"
+    },
+    "subscriptionCard": {
+      "title": "Aktuelles Abonnement",
+      "noPlan": "Kein Tarif",
+      "billingPeriod": "Abrechnungszeitraum",
+      "nextBilling": "Nächste Abrechnung",
+      "tokenBalance": "Token-Guthaben",
+      "noActiveSubscription": "Kein aktives Abonnement",
+      "manageSubscription": "Abonnement verwalten"
+    },
+    "invoicesCard": {
+      "title": "Letzte Rechnungen",
+      "noInvoices": "Noch keine Rechnungen",
+      "viewAllInvoices": "Alle Rechnungen anzeigen"
+    },
+    "historyCard": {
+      "title": "Abo-Verlauf",
+      "noHistory": "Noch kein Abo-Verlauf."
+    },
+    "addonsCard": {
+      "title": "Zusatzoptionen",
+      "active": "Aktiv",
+      "expired": "Abgelaufen / Gekündigt",
+      "noAddons": "Noch keine Zusatzoptionen.",
+      "browseAddons": "Zusatzoptionen durchsuchen"
+    },
+    "tokenHistoryCard": {
+      "title": "Token-Aktivität",
+      "noActivity": "Noch keine Token-Aktivität.",
+      "purchaseTokens": "Tokens kaufen"
+    },
+    "quickActions": {
+      "title": "Schnellaktionen",
+      "editProfile": "Profil bearbeiten",
+      "manageSubscription": "Abonnement verwalten",
+      "browsePlans": "Tarife durchsuchen",
+      "viewInvoices": "Rechnungen anzeigen"
+    },
+    "errors": {
+      "failedToLoad": "Dashboard-Daten konnten nicht geladen werden"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "loading": "Profil wird geladen...",
+    "accountInfo": {
+      "title": "Kontoinformationen",
+      "email": "E-Mail",
+      "accountStatus": "Kontostatus",
+      "statusActive": "Aktiv",
+      "tokenBalance": "Token-Guthaben"
+    },
+    "personalInfo": {
+      "title": "Persönliche Informationen",
+      "firstName": "Vorname",
+      "firstNamePlaceholder": "Max",
+      "lastName": "Nachname",
+      "lastNamePlaceholder": "Mustermann",
+      "company": "Unternehmen",
+      "companyPlaceholder": "Muster GmbH",
+      "taxNumber": "Steuernummer / USt-IdNr.",
+      "taxNumberPlaceholder": "DE123456789",
+      "phone": "Telefon",
+      "phonePlaceholder": "+49 123 456 7890"
+    },
+    "address": {
+      "title": "Adresse",
+      "addressLine1": "Adresszeile 1",
+      "addressLine1Placeholder": "Musterstraße 123",
+      "addressLine2": "Adresszeile 2",
+      "addressLine2Placeholder": "Wohnung 4B",
+      "city": "Stadt",
+      "cityPlaceholder": "Berlin",
+      "postalCode": "Postleitzahl",
+      "postalCodePlaceholder": "10115",
+      "country": "Land",
+      "countryPlaceholder": "Deutschland"
+    },
+    "actions": {
+      "saving": "Speichern...",
+      "saveChanges": "Änderungen speichern"
+    },
+    "changePassword": {
+      "title": "Passwort ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "changing": "Wird geändert...",
+      "changePassword": "Passwort ändern"
+    },
+    "messages": {
+      "profileUpdated": "Profil erfolgreich aktualisiert",
+      "passwordChanged": "Passwort erfolgreich geändert",
+      "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+      "passwordMinLength": "Das Passwort muss mindestens 8 Zeichen lang sein"
+    },
+    "errors": {
+      "failedToLoad": "Profil konnte nicht geladen werden",
+      "failedToUpdate": "Profil konnte nicht aktualisiert werden",
+      "failedToChangePassword": "Passwort konnte nicht geändert werden"
+    }
+  },
+  "subscription": {
+    "title": "Abonnement",
+    "loading": "Abonnement wird geladen...",
+    "currentPlan": {
+      "title": "Aktueller Tarif",
+      "noPlan": "Kein Tarif",
+      "noActiveSubscription": "Sie haben kein aktives Abonnement.",
+      "price": "Preis",
+      "currentPeriod": "Aktueller Zeitraum",
+      "nextBillingDate": "Nächstes Abrechnungsdatum"
+    },
+    "tokenBalance": {
+      "title": "Token-Guthaben",
+      "description": "Verwenden Sie Token für API-Aufrufe, Funktionen und mehr.",
+      "purchaseTokens": "Token kaufen"
+    },
+    "manage": {
+      "title": "Abonnement verwalten",
+      "changePlan": "Tarif wechseln",
+      "cancelSubscription": "Abonnement kündigen"
+    },
+    "invoices": {
+      "title": "Rechnungen",
+      "searchPlaceholder": "Rechnungen suchen...",
+      "tableHeaders": {
+        "invoiceNumber": "Rechnungsnr.",
+        "date": "Datum",
+        "amount": "Betrag",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "noInvoices": "Noch keine Rechnungen.",
+      "noInvoicesSearch": "Keine Rechnungen zu Ihrer Suche gefunden.",
+      "downloadPdf": "PDF herunterladen"
+    },
+    "cancelModal": {
+      "title": "Abonnement kündigen",
+      "confirmMessage": "Sind Sie sicher, dass Sie Ihr Abonnement kündigen möchten?",
+      "accessWarning": "Ihr Zugang bleibt bis zum {date} bestehen.",
+      "keepSubscription": "Abonnement behalten",
+      "cancelling": "Wird gekündigt...",
+      "confirmCancellation": "Kündigung bestätigen"
+    },
+    "invoiceModal": {
+      "date": "Datum",
+      "status": "Status",
+      "amount": "Betrag"
+    },
+    "messages": {
+      "subscriptionCancelled": "Abonnement erfolgreich gekündigt",
+      "invoiceDownloadInitiated": "Rechnungsdownload wurde gestartet"
+    },
+    "errors": {
+      "failedToLoad": "Abonnementdaten konnten nicht geladen werden",
+      "failedToCancel": "Abonnement konnte nicht gekündigt werden",
+      "failedToDownload": "Rechnung konnte nicht heruntergeladen werden"
+    }
+  },
+  "plans": {
+    "title": "Tarif auswählen",
+    "loading": "Tarife werden geladen...",
+    "noPlans": "Derzeit sind keine Tarife verfügbar.",
+    "mostPopular": "Beliebtester Tarif",
+    "currentPlan": "Aktueller Tarif",
+    "selectPlan": "Tarif auswählen",
+    "processing": "Verarbeite...",
+    "taxIncluded": "inkl. {rate}% MwSt.",
+    "currencyLabel": "Preise anzeigen in:"
+  },
+  "tokens": {
+    "breadcrumbPlans": "Tarife",
+    "breadcrumbTokenBundles": "Token-Pakete",
+    "title": "Token-Pakete",
+    "subtitle": "Erwerben Sie zusätzliche Token für Ihr Konto",
+    "loading": "Token-Pakete werden geladen...",
+    "noBundles": "Derzeit sind keine Token-Pakete verfügbar.",
+    "tokensLabel": "{amount} Token",
+    "addToCart": "In den Warenkorb",
+    "backToPlans": "Zurück zu den Tarifen",
+    "errors": {
+      "failedToLoad": "Token-Pakete konnten nicht geladen werden"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "Tarife",
+    "breadcrumbAddons": "Add-ons",
+    "title": "Add-ons",
+    "subtitle": "Erweitern Sie Ihr Abonnement mit zusätzlichen Funktionen",
+    "loading": "Add-ons werden geladen...",
+    "subscriptionAddons": {
+      "title": "Abonnement-Add-ons",
+      "description": "Diese Add-ons erfordern ein aktives Abonnement und werden zusammen mit Ihrem Tarif abgerechnet.",
+      "noAddons": "Keine Abonnement-Add-ons verfügbar."
+    },
+    "globalAddons": {
+      "title": "Globale Add-ons",
+      "description": "Diese Add-ons stehen allen Benutzern zur Verfügung und gelten für Ihr gesamtes Konto.",
+      "noAddons": "Keine globalen Add-ons verfügbar."
+    },
+    "addToCart": "In den Warenkorb",
+    "requiresSubscription": "Abonnement erforderlich",
+    "backToPlans": "Zurück zu den Tarifen",
+    "errors": {
+      "failedToLoad": "Add-ons konnten nicht geladen werden"
+    },
+    "detail": {
+      "title": "Add-on-Details",
+      "status": "Status",
+      "startDate": "Startdatum",
+      "expiryDate": "Ablaufdatum",
+      "cancelledDate": "Kündigungsdatum",
+      "price": "Preis",
+      "billingPeriod": "Abrechnungszeitraum",
+      "invoice": "Rechnung",
+      "cancelAddon": "Add-on kündigen",
+      "cancelConfirm": "Möchten Sie dieses Add-on wirklich kündigen?",
+      "cancelSuccess": "Add-on erfolgreich gekündigt.",
+      "backToDashboard": "Zurück zum Dashboard",
+      "alreadyCancelled": "Dieses Add-on wurde gekündigt."
+    }
+  },
+  "invoices": {
+    "title": "Rechnungen",
+    "loading": "Rechnungen werden geladen...",
+    "searchPlaceholder": "Rechnungen suchen...",
+    "filters": {
+      "allStatuses": "Alle Status",
+      "paid": "Bezahlt",
+      "pending": "Ausstehend",
+      "overdue": "Überfällig",
+      "refunded": "Erstattet"
+    },
+    "tableHeaders": {
+      "date": "Datum",
+      "invoiceNumber": "Rechnungsnr.",
+      "amount": "Betrag",
+      "status": "Status",
+      "actions": "Aktionen"
+    },
+    "noInvoices": "Noch keine Rechnungen.",
+    "noInvoicesFiltered": "Keine Rechnungen entsprechen Ihren Filtern.",
+    "messages": {
+      "downloadInitiated": "Rechnungsdownload wurde gestartet"
+    },
+    "errors": {
+      "failedToLoad": "Rechnungen konnten nicht geladen werden",
+      "failedToDownload": "Rechnung konnte nicht heruntergeladen werden"
+    },
+    "detail": {
+      "title": "Rechnungsdetails",
+      "loading": "Rechnung wird geladen...",
+      "invoiceTitle": "Rechnung {number}",
+      "date": "Datum",
+      "dueDate": "Fälligkeitsdatum",
+      "currency": "Währung",
+      "items": "Positionen",
+      "itemsTableHeaders": {
+        "description": "Beschreibung",
+        "qty": "Menge",
+        "unitPrice": "Einzelpreis",
+        "total": "Gesamt"
+      },
+      "totalAmount": "Gesamtbetrag",
+      "downloadPdf": "PDF herunterladen",
+      "payNow": "Jetzt bezahlen",
+      "payByInvoice": "Per Rechnung bezahlen",
+      "paymentMethod": "Zahlungsmethode",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "Rechnung (Banküberweisung)",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "Rechnung konnte nicht geladen werden",
+        "failedToDownload": "Rechnung konnte nicht heruntergeladen werden"
+      }
+    },
+    "pay": {
+      "title": "Rechnung bezahlen",
+      "loading": "Rechnung wird geladen...",
+      "invoiceTitle": "Rechnung {number}",
+      "date": "Datum",
+      "status": "Status",
+      "currency": "Währung",
+      "items": "Positionen",
+      "totalAmount": "Gesamtbetrag",
+      "paymentTitle": "Zahlung",
+      "alreadyPaid": "Diese Rechnung wurde bereits bezahlt.",
+      "paymentInfo": "Klicken Sie unten, um Ihre Zahlung sicher abzuschließen.",
+      "processing": "Verarbeite...",
+      "payAmount": "{amount} bezahlen",
+      "successTitle": "Zahlung erfolgreich!",
+      "successMessage": "Ihre Zahlung wurde erfolgreich verarbeitet.",
+      "invoiceNowPaid": "Rechnung {number} ist jetzt bezahlt.",
+      "errors": {
+        "failedToLoad": "Rechnung konnte nicht geladen werden",
+        "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
+      }
+    }
+  },
+  "login": {
+    "title": "Anmelden",
+    "emailLabel": "E-Mail",
+    "passwordLabel": "Passwort",
+    "loggingIn": "Anmeldung läuft...",
+    "loginButton": "Anmelden",
+    "errors": {
+      "loginFailed": "Anmeldung fehlgeschlagen",
+      "invalidCredentials": "Ungültige Anmeldedaten"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "Rechnungsadresse",
+      "loading": "Laden...",
+      "firstNameLabel": "Vorname",
+      "firstNamePlaceholder": "Vorname",
+      "lastNameLabel": "Nachname",
+      "lastNamePlaceholder": "Nachname",
+      "companyLabel": "Unternehmen (optional)",
+      "companyPlaceholder": "Firmenname",
+      "streetLabel": "Straße *",
+      "streetPlaceholder": "Straße und Hausnummer",
+      "cityLabel": "Stadt *",
+      "cityPlaceholder": "Stadt",
+      "zipLabel": "Postleitzahl *",
+      "zipPlaceholder": "PLZ",
+      "countryLabel": "Land *",
+      "countryPlaceholder": "Land auswählen",
+      "errors": {
+        "firstNameRequired": "Vorname ist erforderlich",
+        "lastNameRequired": "Nachname ist erforderlich",
+        "streetRequired": "Straße ist erforderlich",
+        "cityRequired": "Stadt ist erforderlich",
+        "zipRequired": "Postleitzahl ist erforderlich",
+        "countryRequired": "Land ist erforderlich"
+      }
+    },
+    "emailBlock": {
+      "title": "Kunden-E-Mail",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "checking": "Wird geprüft...",
+      "newUser": {
+        "hint": "Erstellen Sie ein Passwort, um fortzufahren",
+        "passwordPlaceholder": "Passwort erstellen",
+        "confirmPlaceholder": "Passwort bestätigen",
+        "passwordMismatch": "Passwörter stimmen nicht überein",
+        "signingUp": "Registrierung läuft...",
+        "signUpButton": "Registrieren & Fortfahren"
+      },
+      "existingUser": {
+        "hint": "Konto vorhanden. Geben Sie Ihr Passwort ein, um sich anzumelden.",
+        "passwordPlaceholder": "Passwort eingeben",
+        "forgotPassword": "Passwort vergessen?",
+        "loggingIn": "Anmeldung läuft...",
+        "loginButton": "Anmelden"
+      },
+      "loggedIn": {
+        "loggedInAs": "Angemeldet als {email}",
+        "loggedInAsName": "Angemeldet als {name}, E-Mail {email}",
+        "logoutButton": "Abmelden"
+      },
+      "passwordStrength": {
+        "weak": "Schwach",
+        "medium": "Mittel",
+        "strong": "Stark"
+      }
+    },
+    "paymentMethods": {
+      "title": "Zahlungsmethode",
+      "loading": "Zahlungsmethoden werden geladen...",
+      "noMethods": "Keine Zahlungsmethoden verfügbar",
+      "error": "Zahlungsmethoden konnten nicht geladen werden"
+    },
+    "termsCheckbox": {
+      "agreeText": "Ich stimme den",
+      "termsLink": "Geschäftsbedingungen",
+      "popupTitle": "Geschäftsbedingungen",
+      "popupLoading": "Laden...",
+      "popupClose": "Schließen",
+      "failedToLoad": "Geschäftsbedingungen konnten nicht geladen werden. Bitte versuchen Sie es später erneut."
+    },
+    "sessionExpiredModal": {
+      "title": "Sitzung abgelaufen",
+      "defaultMessage": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an, um fortzufahren.",
+      "loginButton": "Anmelden"
+    }
+  },
+  "planDetail": {
+    "title": "Tarifdetails",
+    "loading": "Tarifdetails werden geladen...",
+    "error": "Tarifdetails konnten nicht geladen werden.",
+    "backLink": "Zurück",
+    "name": "Name",
+    "price": "Preis",
+    "billingPeriod": "Abrechnungszeitraum",
+    "description": "Beschreibung",
+    "features": "Funktionen",
+    "status": "Status",
+    "active": "Aktiv",
+    "archived": "Archiviert"
+  },
+  "tokenBundleDetail": {
+    "title": "Token-Paket-Details",
+    "loading": "Token-Paket wird geladen...",
+    "error": "Token-Paket konnte nicht geladen werden.",
+    "backLink": "Zurück",
+    "name": "Name",
+    "tokenAmount": "Token-Anzahl",
+    "price": "Preis",
+    "description": "Beschreibung"
+  },
+  "addonInfo": {
+    "title": "Add-on-Details",
+    "loading": "Add-on-Details werden geladen...",
+    "error": "Add-on-Details konnten nicht geladen werden.",
+    "backLink": "Zurück",
+    "name": "Name",
+    "price": "Preis",
+    "currency": "Währung",
+    "billingPeriod": "Abrechnungszeitraum",
+    "description": "Beschreibung"
+  },
+  "notFound": {
+    "message": "Die angeforderte Seite existiert nicht.",
+    "backHome": "Zurück zum Dashboard"
+  }
+}

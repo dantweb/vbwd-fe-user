@@ -1,0 +1,52 @@
+{
+  "plugins": {
+    "landing1": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-09T09:27:36.268Z",
+      "source": "local"
+    },
+    "checkout": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-09T09:28:16.651Z",
+      "source": "local"
+    },
+    "stripe-payment": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-11T12:00:00.000Z",
+      "source": "local"
+    },
+    "paypal-payment": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-12T12:00:00.000Z",
+      "source": "local"
+    },
+    "yookassa-payment": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-12T12:00:00.000Z",
+      "source": "local"
+    },
+    "theme-switcher": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-13T12:00:00.000Z",
+      "source": "local"
+    },
+    "chat": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-13T14:00:00.000Z",
+      "source": "local"
+    },
+    "taro": {
+      "enabled": true,
+      "version": "1.0.0",
+      "installedAt": "2026-02-15T18:00:00.000Z",
+      "source": "local"
+    }
+  }
+}

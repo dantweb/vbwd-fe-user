@@ -1,0 +1,7 @@
+{
+  "shopId": {
+    "type": "string",
+    "default": "",
+    "description": "YooKassa shop ID"
+  }
+}

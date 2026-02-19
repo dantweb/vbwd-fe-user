@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "retry": "再試行",
+    "back": "戻る",
+    "close": "閉じる",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "remove": "削除",
+    "view": "表示",
+    "pay": "支払う",
+    "pdf": "PDF",
+    "previous": "前へ",
+    "next": "次へ",
+    "total": "合計",
+    "logout": "ログアウト",
+    "checkout": "チェックアウト",
+    "backToPlans": "プランに戻る",
+    "backToSubscription": "サブスクリプションに戻る",
+    "browsePlans": "プランを参照",
+    "processing": "処理中...",
+    "confirm": "確認",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "ページ {currentPage}/{totalPages}",
+    "present": "現在",
+    "item": "アイテム",
+    "items": "アイテム",
+    "status": {
+      "active": "アクティブ",
+      "pending": "保留中",
+      "paid": "支払い済み",
+      "overdue": "期限超過",
+      "cancelled": "キャンセル済み",
+      "cancelling": "キャンセル中",
+      "trial": "トライアル"
+    },
+    "errors": {
+      "failedToLoad": "データの読み込みに失敗しました",
+      "invalidCredentials": "無効な認証情報",
+      "loginFailed": "ログインに失敗しました",
+      "registrationFailed": "登録に失敗しました",
+      "paymentFailed": "支払いに失敗しました。もう一度試してください。",
+      "loginFailedRetry": "ログインに失敗しました。もう一度試してください。",
+      "registrationFailedRetry": "登録に失敗しました。もう一度試してください。"
+    },
+    "billingPeriods": {
+      "month": "月",
+      "year": "年",
+      "week": "週",
+      "oneTime": "一度"
+    }
+  },
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "profile": "プロフィール",
+    "subscription": "サブスクリプション",
+    "invoices": "請求書",
+    "plans": "プラン",
+    "tokens": "トークン",
+    "addons": "アドオン",
+    "appearance": "外観",
+    "chat": "チャット",
+    "store": "ストア"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "ショッピングカート",
+    "cartEmpty": "カートは空です",
+    "cartTotal": "合計："
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "loading": "読み込み中...",
+    "profileCard": {
+      "title": "プロフィール",
+      "viewProfile": "プロフィールを表示"
+    },
+    "subscriptionCard": {
+      "title": "現在のサブスクリプション",
+      "noPlan": "プランなし",
+      "billingPeriod": "請求期間",
+      "nextBilling": "次の請求日",
+      "tokenBalance": "トークン残高",
+      "noActiveSubscription": "アクティブなサブスクリプションなし",
+      "manageSubscription": "サブスクリプションを管理"
+    },
+    "invoicesCard": {
+      "title": "最近の請求書",
+      "noInvoices": "請求書なし",
+      "viewAllInvoices": "すべての請求書を表示"
+    },
+    "historyCard": {
+      "title": "サブスクリプション履歴",
+      "noHistory": "サブスクリプション履歴なし。"
+    },
+    "addonsCard": {
+      "title": "アドオン",
+      "active": "アクティブ",
+      "expired": "期限切れ / キャンセル済み",
+      "noAddons": "アドオンなし。",
+      "browseAddons": "アドオンを参照"
+    },
+    "tokenHistoryCard": {
+      "title": "トークン活動",
+      "noActivity": "トークン活動なし。",
+      "purchaseTokens": "トークンを購入"
+    },
+    "quickActions": {
+      "title": "クイックアクション",
+      "editProfile": "プロフィールを編集",
+      "manageSubscription": "サブスクリプションを管理",
+      "browsePlans": "プランを参照",
+      "viewInvoices": "請求書を表示"
+    },
+    "errors": {
+      "failedToLoad": "ダッシュボードの読み込みに失敗しました"
+    }
+  },
+  "profile": {
+    "title": "プロフィール",
+    "loading": "プロフィールを読み込み中...",
+    "accountInfo": {
+      "title": "アカウント情報",
+      "email": "メールアドレス",
+      "accountStatus": "アカウントステータス",
+      "statusActive": "アクティブ",
+      "tokenBalance": "トークン残高"
+    },
+    "personalInfo": {
+      "title": "個人情報",
+      "firstName": "名",
+      "firstNamePlaceholder": "太郎",
+      "lastName": "姓",
+      "lastNamePlaceholder": "山田",
+      "company": "会社",
+      "companyPlaceholder": "Acme 株式会社",
+      "taxNumber": "税務番号 / 法人番号",
+      "taxNumberPlaceholder": "1234567890123",
+      "phone": "電話番号",
+      "phonePlaceholder": "+81 90 1234 5678"
+    },
+    "address": {
+      "title": "住所",
+      "addressLine1": "住所行1",
+      "addressLine1Placeholder": "123 メインストリート",
+      "addressLine2": "住所行2",
+      "addressLine2Placeholder": "4B号室",
+      "city": "市区町村",
+      "cityPlaceholder": "東京都港区",
+      "postalCode": "郵便番号",
+      "postalCodePlaceholder": "100-0001",
+      "country": "国",
+      "countryPlaceholder": "日本"
+    },
+    "actions": {
+      "saving": "保存中...",
+      "saveChanges": "変更を保存"
+    },
+    "changePassword": {
+      "title": "パスワード変更",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "パスワード確認",
+      "changing": "変更中...",
+      "changePassword": "パスワード変更"
+    },
+    "messages": {
+      "profileUpdated": "プロフィールが正常に更新されました",
+      "passwordChanged": "パスワードが正常に変更されました",
+      "passwordsDoNotMatch": "パスワードが一致しません",
+      "passwordMinLength": "パスワードは8文字以上である必要があります"
+    },
+    "errors": {
+      "failedToLoad": "プロフィールの読み込みに失敗しました",
+      "failedToUpdate": "プロフィールの更新に失敗しました",
+      "failedToChangePassword": "パスワード変更に失敗しました"
+    }
+  },
+  "subscription": {
+    "title": "サブスクリプション",
+    "loading": "サブスクリプションを読み込み中...",
+    "currentPlan": {
+      "title": "現在のプラン",
+      "noPlan": "プランなし",
+      "noActiveSubscription": "アクティブなサブスクリプションがありません。",
+      "price": "価格",
+      "currentPeriod": "現在の期間",
+      "nextBillingDate": "次の請求日"
+    },
+    "tokenBalance": {
+      "title": "トークン残高",
+      "description": "トークンをAPI呼び出し、機能などに使用します。",
+      "purchaseTokens": "トークンを購入"
+    },
+    "manage": {
+      "title": "サブスクリプションを管理",
+      "changePlan": "プランを変更",
+      "cancelSubscription": "サブスクリプションをキャンセル"
+    },
+    "invoices": {
+      "title": "請求書",
+      "searchPlaceholder": "請求書を検索...",
+      "tableHeaders": {
+        "invoiceNumber": "請求書 #",
+        "date": "日付",
+        "amount": "金額",
+        "status": "ステータス",
+        "actions": "アクション"
+      },
+      "noInvoices": "請求書なし。",
+      "noInvoicesSearch": "検索に一致する請求書が見つかりません。",
+      "downloadPdf": "PDFをダウンロード"
+    },
+    "cancelModal": {
+      "title": "サブスクリプションをキャンセル",
+      "confirmMessage": "本当にサブスクリプションをキャンセルしますか？",
+      "accessWarning": "アクセスは{date}まで継続します。",
+      "keepSubscription": "サブスクリプションを保持",
+      "cancelling": "キャンセル中...",
+      "confirmCancellation": "キャンセルを確認"
+    },
+    "invoiceModal": {
+      "date": "日付",
+      "status": "ステータス",
+      "amount": "金額"
+    },
+    "messages": {
+      "subscriptionCancelled": "サブスクリプションが正常にキャンセルされました",
+      "invoiceDownloadInitiated": "請求書のダウンロードが開始されました"
+    },
+    "errors": {
+      "failedToLoad": "サブスクリプションデータの読み込みに失敗しました",
+      "failedToCancel": "サブスクリプションのキャンセルに失敗しました",
+      "failedToDownload": "請求書のダウンロードに失敗しました"
+    }
+  },
+  "plans": {
+    "title": "プランを選択",
+    "loading": "プランを読み込み中...",
+    "noPlans": "現在、利用可能なプランはありません。",
+    "mostPopular": "最も人気",
+    "currentPlan": "現在のプラン",
+    "selectPlan": "プランを選択",
+    "processing": "処理中...",
+    "taxIncluded": "{rate}%税金を含む",
+    "currencyLabel": "価格を表示："
+  },
+  "tokens": {
+    "breadcrumbPlans": "プラン",
+    "breadcrumbTokenBundles": "トークンバンドル",
+    "title": "トークンバンドル",
+    "subtitle": "アカウント用の追加トークンを購入",
+    "loading": "トークンバンドルを読み込み中...",
+    "noBundles": "現在、利用可能なトークンバンドルはありません。",
+    "tokensLabel": "{amount}トークン",
+    "addToCart": "カートに追加",
+    "backToPlans": "プランに戻る",
+    "errors": {
+      "failedToLoad": "トークンバンドルの読み込みに失敗しました"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "プラン",
+    "breadcrumbAddons": "アドオン",
+    "title": "アドオン",
+    "subtitle": "追加機能でサブスクリプションを強化",
+    "loading": "アドオンを読み込み中...",
+    "subscriptionAddons": {
+      "title": "サブスクリプションアドオン",
+      "description": "これらのアドオンはアクティブなサブスクリプションが必要で、プランと一緒に請求されます。",
+      "noAddons": "利用可能なサブスクリプションアドオンなし。"
+    },
+    "globalAddons": {
+      "title": "グローバルアドオン",
+      "description": "これらのアドオンはすべてのユーザーが利用でき、アカウント全体に適用されます。",
+      "noAddons": "利用可能なグローバルアドオンなし。"
+    },
+    "addToCart": "カートに追加",
+    "requiresSubscription": "サブスクリプションが必要",
+    "backToPlans": "プランに戻る",
+    "errors": {
+      "failedToLoad": "アドオンの読み込みに失敗しました"
+    },
+    "detail": {
+      "title": "アドオン詳細",
+      "status": "ステータス",
+      "startDate": "開始日",
+      "expiryDate": "有効期限",
+      "cancelledDate": "キャンセル日",
+      "price": "価格",
+      "billingPeriod": "請求期間",
+      "invoice": "請求書",
+      "cancelAddon": "アドオンをキャンセル",
+      "cancelConfirm": "このアドオンをキャンセルしてもよろしいですか？",
+      "cancelSuccess": "アドオンが正常にキャンセルされました。",
+      "backToDashboard": "ダッシュボードに戻る",
+      "alreadyCancelled": "このアドオンはキャンセルされました。"
+    }
+  },
+  "invoices": {
+    "title": "請求書",
+    "loading": "請求書を読み込み中...",
+    "searchPlaceholder": "請求書を検索...",
+    "filters": {
+      "allStatuses": "すべてのステータス",
+      "paid": "支払い済み",
+      "pending": "保留中",
+      "overdue": "期限超過",
+      "refunded": "返金済み"
+    },
+    "tableHeaders": {
+      "date": "日付",
+      "invoiceNumber": "請求書 #",
+      "amount": "金額",
+      "status": "ステータス",
+      "actions": "アクション"
+    },
+    "noInvoices": "請求書なし。",
+    "noInvoicesFiltered": "フィルタに一致する請求書はありません。",
+    "messages": {
+      "downloadInitiated": "請求書のダウンロードが開始されました"
+    },
+    "errors": {
+      "failedToLoad": "請求書の読み込みに失敗しました",
+      "failedToDownload": "請求書のダウンロードに失敗しました"
+    },
+    "detail": {
+      "title": "請求書詳細",
+      "loading": "請求書を読み込み中...",
+      "invoiceTitle": "請求書 {number}",
+      "date": "日付",
+      "dueDate": "支払期限",
+      "currency": "通貨",
+      "items": "アイテム",
+      "itemsTableHeaders": {
+        "description": "説明",
+        "qty": "数量",
+        "unitPrice": "単価",
+        "total": "合計"
+      },
+      "totalAmount": "合計金額",
+      "downloadPdf": "PDFをダウンロード",
+      "payNow": "今すぐ支払う",
+      "payByInvoice": "銀行振込で支払う",
+      "paymentMethod": "支払い方法",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "銀行振込",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "請求書の読み込みに失敗しました",
+        "failedToDownload": "請求書のダウンロードに失敗しました"
+      }
+    },
+    "pay": {
+      "title": "請求書を支払う",
+      "loading": "請求書を読み込み中...",
+      "invoiceTitle": "請求書 {number}",
+      "date": "日付",
+      "status": "ステータス",
+      "currency": "通貨",
+      "items": "アイテム",
+      "totalAmount": "合計金額",
+      "paymentTitle": "支払い",
+      "alreadyPaid": "この請求書はすでに支払われています。",
+      "paymentInfo": "以下をクリックして、安全に支払いを完了してください。",
+      "processing": "処理中...",
+      "payAmount": "${amount}を支払う",
+      "successTitle": "支払い成功！",
+      "successMessage": "支払いが正常に処理されました。",
+      "invoiceNowPaid": "請求書{number}は支払い済みです。",
+      "errors": {
+        "failedToLoad": "請求書の読み込みに失敗しました",
+        "paymentFailed": "支払いに失敗しました。もう一度試してください。"
+      }
+    }
+  },
+  "login": {
+    "title": "ログイン",
+    "emailLabel": "メールアドレス",
+    "passwordLabel": "パスワード",
+    "loggingIn": "ログイン中...",
+    "loginButton": "ログイン",
+    "errors": {
+      "loginFailed": "ログインに失敗しました",
+      "invalidCredentials": "無効な認証情報"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "請求先住所",
+      "loading": "読み込み中...",
+      "firstNameLabel": "名",
+      "firstNamePlaceholder": "名前",
+      "lastNameLabel": "姓",
+      "lastNamePlaceholder": "姓",
+      "companyLabel": "会社（オプション）",
+      "companyPlaceholder": "会社名",
+      "streetLabel": "住所 *",
+      "streetPlaceholder": "番地と番号",
+      "cityLabel": "市区町村 *",
+      "cityPlaceholder": "市区町村",
+      "zipLabel": "郵便番号 *",
+      "zipPlaceholder": "郵便番号",
+      "countryLabel": "国 *",
+      "countryPlaceholder": "国を選択",
+      "errors": {
+        "firstNameRequired": "名は必須です",
+        "lastNameRequired": "姓は必須です",
+        "streetRequired": "住所は必須です",
+        "cityRequired": "市区町村は必須です",
+        "zipRequired": "郵便番号は必須です",
+        "countryRequired": "国は必須です"
+      }
+    },
+    "emailBlock": {
+      "title": "メールアドレス",
+      "emailPlaceholder": "メールアドレスを入力",
+      "checking": "確認中...",
+      "newUser": {
+        "hint": "続行するにはパスワードを作成してください",
+        "passwordPlaceholder": "パスワードを作成",
+        "confirmPlaceholder": "パスワードを確認",
+        "passwordMismatch": "パスワードが一致しません",
+        "signingUp": "サインアップ中...",
+        "signUpButton": "サインアップして続行"
+      },
+      "existingUser": {
+        "hint": "アカウントが存在します。ログインするにはパスワードを入力してください。",
+        "passwordPlaceholder": "パスワードを入力",
+        "forgotPassword": "パスワードを忘れた",
+        "loggingIn": "ログイン中...",
+        "loginButton": "ログイン"
+      },
+      "loggedIn": {
+        "loggedInAs": "{email}としてログイン中",
+        "loggedInAsName": "{name}としてログイン中、メール{email}",
+        "logoutButton": "ログアウト"
+      },
+      "passwordStrength": {
+        "weak": "弱い",
+        "medium": "中程度",
+        "strong": "強い"
+      }
+    },
+    "paymentMethods": {
+      "title": "支払い方法",
+      "loading": "支払い方法を読み込み中...",
+      "noMethods": "利用可能な支払い方法なし",
+      "error": "支払い方法の読み込みに失敗しました"
+    },
+    "termsCheckbox": {
+      "agreeText": "利用規約に同意します",
+      "termsLink": "利用規約",
+      "popupTitle": "利用規約",
+      "popupLoading": "読み込み中...",
+      "popupClose": "閉じる",
+      "failedToLoad": "利用規約の読み込みに失敗しました。後でもう一度試してください。"
+    },
+    "sessionExpiredModal": {
+      "title": "セッション期限切れ",
+      "defaultMessage": "セッションが期限切れになりました。続行するにはもう一度ログインしてください。",
+      "loginButton": "ログイン"
+    }
+  },
+  "planDetail": {
+    "title": "プラン詳細",
+    "loading": "プラン詳細を読み込み中...",
+    "error": "プラン詳細の読み込みに失敗しました。",
+    "backLink": "戻る",
+    "name": "名前",
+    "price": "価格",
+    "billingPeriod": "請求期間",
+    "description": "説明",
+    "features": "機能",
+    "status": "ステータス",
+    "active": "アクティブ",
+    "archived": "アーカイブ済み"
+  },
+  "tokenBundleDetail": {
+    "title": "トークンバンドル詳細",
+    "loading": "トークンバンドルを読み込み中...",
+    "error": "トークンバンドルの読み込みに失敗しました。",
+    "backLink": "戻る",
+    "name": "名前",
+    "tokenAmount": "トークン数",
+    "price": "価格",
+    "description": "説明"
+  },
+  "addonInfo": {
+    "title": "アドオン詳細",
+    "loading": "アドオン詳細を読み込み中...",
+    "error": "アドオン詳細の読み込みに失敗しました。",
+    "backLink": "戻る",
+    "name": "名前",
+    "price": "価格",
+    "currency": "通貨",
+    "billingPeriod": "請求期間",
+    "description": "説明"
+  },
+  "notFound": {
+    "message": "探しているページは存在しません。",
+    "backHome": "ダッシュボードに戻る"
+  }
+}

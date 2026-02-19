@@ -1,0 +1,7 @@
+{
+  "clientId": {
+    "type": "string",
+    "default": "",
+    "description": "PayPal client ID"
+  }
+}

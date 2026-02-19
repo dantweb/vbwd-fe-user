@@ -1,0 +1,11 @@
+{
+  "tabs": [
+    {
+      "id": "credentials",
+      "label": "Credentials",
+      "fields": [
+        { "key": "publishableKey", "label": "Publishable Key", "component": "input", "inputType": "text" }
+      ]
+    }
+  ]
+}

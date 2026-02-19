@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "retry": "Reintentar",
+    "back": "Volver",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "remove": "Eliminar",
+    "view": "Ver",
+    "pay": "Pagar",
+    "pdf": "PDF",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "total": "Total",
+    "logout": "Cerrar sesión",
+    "checkout": "Carrito",
+    "backToPlans": "Volver a Planes",
+    "backToSubscription": "Volver a Suscripción",
+    "browsePlans": "Ver Planes",
+    "processing": "Procesando...",
+    "confirm": "Confirmar",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "Página {currentPage} de {totalPages}",
+    "present": "Presente",
+    "item": "artículo",
+    "items": "artículos",
+    "status": {
+      "active": "Activo",
+      "pending": "Pendiente",
+      "paid": "Pagado",
+      "overdue": "Vencido",
+      "cancelled": "Cancelado",
+      "cancelling": "Cancelando",
+      "trial": "Prueba"
+    },
+    "errors": {
+      "failedToLoad": "Error al cargar datos",
+      "invalidCredentials": "Credenciales inválidas",
+      "loginFailed": "Error al iniciar sesión",
+      "registrationFailed": "Error en el registro",
+      "paymentFailed": "Pago fallido. Por favor, inténtelo de nuevo.",
+      "loginFailedRetry": "Error al iniciar sesión. Por favor, inténtelo de nuevo.",
+      "registrationFailedRetry": "Error en el registro. Por favor, inténtelo de nuevo."
+    },
+    "billingPeriods": {
+      "month": "mes",
+      "year": "año",
+      "week": "semana",
+      "oneTime": "una vez"
+    }
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "subscription": "Suscripción",
+    "invoices": "Facturas",
+    "plans": "Planes",
+    "tokens": "Tokens",
+    "addons": "Complementos",
+    "appearance": "Apariencia",
+    "chat": "Chat",
+    "store": "Tienda"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "Carrito de Compras",
+    "cartEmpty": "Su carrito está vacío",
+    "cartTotal": "Total:"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "loading": "Cargando...",
+    "profileCard": {
+      "title": "Perfil",
+      "viewProfile": "Ver Perfil"
+    },
+    "subscriptionCard": {
+      "title": "Suscripción Actual",
+      "noPlan": "Sin Plan",
+      "billingPeriod": "Período de Facturación",
+      "nextBilling": "Próxima Facturación",
+      "tokenBalance": "Saldo de Tokens",
+      "noActiveSubscription": "Sin suscripción activa",
+      "manageSubscription": "Gestionar Suscripción"
+    },
+    "invoicesCard": {
+      "title": "Facturas Recientes",
+      "noInvoices": "Sin facturas",
+      "viewAllInvoices": "Ver Todas las Facturas"
+    },
+    "historyCard": {
+      "title": "Historial de Suscripción",
+      "noHistory": "Sin historial de suscripción."
+    },
+    "addonsCard": {
+      "title": "Complementos",
+      "active": "Activos",
+      "expired": "Vencidos / Cancelados",
+      "noAddons": "Sin complementos.",
+      "browseAddons": "Ver Complementos"
+    },
+    "tokenHistoryCard": {
+      "title": "Actividad de Tokens",
+      "noActivity": "Sin actividad de tokens.",
+      "purchaseTokens": "Comprar Tokens"
+    },
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "editProfile": "Editar Perfil",
+      "manageSubscription": "Gestionar Suscripción",
+      "browsePlans": "Ver Planes",
+      "viewInvoices": "Ver Facturas"
+    },
+    "errors": {
+      "failedToLoad": "Error al cargar el panel"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "loading": "Cargando perfil...",
+    "accountInfo": {
+      "title": "Información de la Cuenta",
+      "email": "Correo Electrónico",
+      "accountStatus": "Estado de la Cuenta",
+      "statusActive": "Activo",
+      "tokenBalance": "Saldo de Tokens"
+    },
+    "personalInfo": {
+      "title": "Información Personal",
+      "firstName": "Nombre",
+      "firstNamePlaceholder": "Juan",
+      "lastName": "Apellido",
+      "lastNamePlaceholder": "Pérez",
+      "company": "Empresa",
+      "companyPlaceholder": "Acme S.L.",
+      "taxNumber": "Número de Impuesto / NIF",
+      "taxNumberPlaceholder": "ES12345678A",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+34 912 345 678"
+    },
+    "address": {
+      "title": "Dirección",
+      "addressLine1": "Dirección Línea 1",
+      "addressLine1Placeholder": "Calle Principal 123",
+      "addressLine2": "Dirección Línea 2",
+      "addressLine2Placeholder": "Apartamento 4B",
+      "city": "Ciudad",
+      "cityPlaceholder": "Madrid",
+      "postalCode": "Código Postal",
+      "postalCodePlaceholder": "28001",
+      "country": "País",
+      "countryPlaceholder": "España"
+    },
+    "actions": {
+      "saving": "Guardando...",
+      "saveChanges": "Guardar Cambios"
+    },
+    "changePassword": {
+      "title": "Cambiar Contraseña",
+      "currentPassword": "Contraseña Actual",
+      "newPassword": "Nueva Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "changing": "Cambiando...",
+      "changePassword": "Cambiar Contraseña"
+    },
+    "messages": {
+      "profileUpdated": "Perfil actualizado correctamente",
+      "passwordChanged": "Contraseña cambiada correctamente",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres"
+    },
+    "errors": {
+      "failedToLoad": "Error al cargar perfil",
+      "failedToUpdate": "Error al actualizar perfil",
+      "failedToChangePassword": "Error al cambiar contraseña"
+    }
+  },
+  "subscription": {
+    "title": "Suscripción",
+    "loading": "Cargando suscripción...",
+    "currentPlan": {
+      "title": "Plan Actual",
+      "noPlan": "Sin Plan",
+      "noActiveSubscription": "No tiene una suscripción activa.",
+      "price": "Precio",
+      "currentPeriod": "Período Actual",
+      "nextBillingDate": "Próxima Fecha de Facturación"
+    },
+    "tokenBalance": {
+      "title": "Saldo de Tokens",
+      "description": "Utilice tokens para llamadas API, características y más.",
+      "purchaseTokens": "Comprar Tokens"
+    },
+    "manage": {
+      "title": "Gestionar Suscripción",
+      "changePlan": "Cambiar Plan",
+      "cancelSubscription": "Cancelar Suscripción"
+    },
+    "invoices": {
+      "title": "Facturas",
+      "searchPlaceholder": "Buscar facturas...",
+      "tableHeaders": {
+        "invoiceNumber": "Factura #",
+        "date": "Fecha",
+        "amount": "Monto",
+        "status": "Estado",
+        "actions": "Acciones"
+      },
+      "noInvoices": "Sin facturas.",
+      "noInvoicesSearch": "No se encontraron facturas que coincidan con su búsqueda.",
+      "downloadPdf": "Descargar PDF"
+    },
+    "cancelModal": {
+      "title": "Cancelar Suscripción",
+      "confirmMessage": "¿Está seguro de que desea cancelar su suscripción?",
+      "accessWarning": "Su acceso continuará hasta {date}.",
+      "keepSubscription": "Mantener Suscripción",
+      "cancelling": "Cancelando...",
+      "confirmCancellation": "Confirmar Cancelación"
+    },
+    "invoiceModal": {
+      "date": "Fecha",
+      "status": "Estado",
+      "amount": "Monto"
+    },
+    "messages": {
+      "subscriptionCancelled": "Suscripción cancelada correctamente",
+      "invoiceDownloadInitiated": "Descarga de factura iniciada"
+    },
+    "errors": {
+      "failedToLoad": "Error al cargar datos de suscripción",
+      "failedToCancel": "Error al cancelar suscripción",
+      "failedToDownload": "Error al descargar factura"
+    }
+  },
+  "plans": {
+    "title": "Seleccionar un Plan",
+    "loading": "Cargando planes...",
+    "noPlans": "No hay planes disponibles en este momento.",
+    "mostPopular": "Más Popular",
+    "currentPlan": "Plan Actual",
+    "selectPlan": "Seleccionar Plan",
+    "processing": "Procesando...",
+    "taxIncluded": "incl. {rate}% impuesto",
+    "currencyLabel": "Mostrar precios en:"
+  },
+  "tokens": {
+    "breadcrumbPlans": "Planes",
+    "breadcrumbTokenBundles": "Paquetes de Tokens",
+    "title": "Paquetes de Tokens",
+    "subtitle": "Compre tokens adicionales para su cuenta",
+    "loading": "Cargando paquetes de tokens...",
+    "noBundles": "No hay paquetes de tokens disponibles en este momento.",
+    "tokensLabel": "{amount} Tokens",
+    "addToCart": "Añadir al Carrito",
+    "backToPlans": "Volver a Planes",
+    "errors": {
+      "failedToLoad": "Error al cargar paquetes de tokens"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "Planes",
+    "breadcrumbAddons": "Complementos",
+    "title": "Complementos",
+    "subtitle": "Mejore su suscripción con características adicionales",
+    "loading": "Cargando complementos...",
+    "subscriptionAddons": {
+      "title": "Complementos de Suscripción",
+      "description": "Estos complementos requieren una suscripción activa y se facturarán junto con su plan.",
+      "noAddons": "Sin complementos de suscripción disponibles."
+    },
+    "globalAddons": {
+      "title": "Complementos Globales",
+      "description": "Estos complementos están disponibles para todos los usuarios y se aplican a toda su cuenta.",
+      "noAddons": "Sin complementos globales disponibles."
+    },
+    "addToCart": "Añadir al Carrito",
+    "requiresSubscription": "Requiere Suscripción",
+    "backToPlans": "Volver a Planes",
+    "errors": {
+      "failedToLoad": "Error al cargar complementos"
+    },
+    "detail": {
+      "title": "Detalles del Complemento",
+      "status": "Estado",
+      "startDate": "Fecha de Inicio",
+      "expiryDate": "Fecha de Vencimiento",
+      "cancelledDate": "Fecha de Cancelación",
+      "price": "Precio",
+      "billingPeriod": "Período de Facturación",
+      "invoice": "Factura",
+      "cancelAddon": "Cancelar Complemento",
+      "cancelConfirm": "¿Está seguro de que desea cancelar este complemento?",
+      "cancelSuccess": "Complemento cancelado correctamente.",
+      "backToDashboard": "Volver al Panel",
+      "alreadyCancelled": "Este complemento ha sido cancelado."
+    }
+  },
+  "invoices": {
+    "title": "Facturas",
+    "loading": "Cargando facturas...",
+    "searchPlaceholder": "Buscar facturas...",
+    "filters": {
+      "allStatuses": "Todos los Estados",
+      "paid": "Pagada",
+      "pending": "Pendiente",
+      "overdue": "Vencida",
+      "refunded": "Reembolsada"
+    },
+    "tableHeaders": {
+      "date": "Fecha",
+      "invoiceNumber": "Factura #",
+      "amount": "Monto",
+      "status": "Estado",
+      "actions": "Acciones"
+    },
+    "noInvoices": "Sin facturas.",
+    "noInvoicesFiltered": "No hay facturas que coincidan con sus filtros.",
+    "messages": {
+      "downloadInitiated": "Descarga de factura iniciada"
+    },
+    "errors": {
+      "failedToLoad": "Error al cargar facturas",
+      "failedToDownload": "Error al descargar factura"
+    },
+    "detail": {
+      "title": "Detalles de la Factura",
+      "loading": "Cargando factura...",
+      "invoiceTitle": "Factura {number}",
+      "date": "Fecha",
+      "dueDate": "Fecha de Vencimiento",
+      "currency": "Moneda",
+      "items": "Artículos",
+      "itemsTableHeaders": {
+        "description": "Descripción",
+        "qty": "Cantidad",
+        "unitPrice": "Precio Unitario",
+        "total": "Total"
+      },
+      "totalAmount": "Monto Total",
+      "downloadPdf": "Descargar PDF",
+      "payNow": "Pagar Ahora",
+      "payByInvoice": "Pagar por Transferencia",
+      "paymentMethod": "Método de Pago",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "Transferencia Bancaria",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "Error al cargar factura",
+        "failedToDownload": "Error al descargar factura"
+      }
+    },
+    "pay": {
+      "title": "Pagar Factura",
+      "loading": "Cargando factura...",
+      "invoiceTitle": "Factura {number}",
+      "date": "Fecha",
+      "status": "Estado",
+      "currency": "Moneda",
+      "items": "Artículos",
+      "totalAmount": "Monto Total",
+      "paymentTitle": "Pago",
+      "alreadyPaid": "Esta factura ya ha sido pagada.",
+      "paymentInfo": "Haga clic a continuación para completar su pago de forma segura.",
+      "processing": "Procesando...",
+      "payAmount": "Pagar ${amount}",
+      "successTitle": "¡Pago Exitoso!",
+      "successMessage": "Su pago ha sido procesado correctamente.",
+      "invoiceNowPaid": "La factura {number} ya está pagada.",
+      "errors": {
+        "failedToLoad": "Error al cargar factura",
+        "paymentFailed": "Pago fallido. Por favor, inténtelo de nuevo."
+      }
+    }
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "emailLabel": "Correo Electrónico",
+    "passwordLabel": "Contraseña",
+    "loggingIn": "Iniciando sesión...",
+    "loginButton": "Iniciar Sesión",
+    "errors": {
+      "loginFailed": "Error al iniciar sesión",
+      "invalidCredentials": "Credenciales inválidas"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "Dirección de Facturación",
+      "loading": "Cargando...",
+      "firstNameLabel": "Nombre",
+      "firstNamePlaceholder": "Nombre",
+      "lastNameLabel": "Apellido",
+      "lastNamePlaceholder": "Apellido",
+      "companyLabel": "Empresa (opcional)",
+      "companyPlaceholder": "Nombre de la empresa",
+      "streetLabel": "Dirección *",
+      "streetPlaceholder": "Calle y número",
+      "cityLabel": "Ciudad *",
+      "cityPlaceholder": "Ciudad",
+      "zipLabel": "Código Postal *",
+      "zipPlaceholder": "Código Postal",
+      "countryLabel": "País *",
+      "countryPlaceholder": "Seleccionar país",
+      "errors": {
+        "firstNameRequired": "El nombre es obligatorio",
+        "lastNameRequired": "El apellido es obligatorio",
+        "streetRequired": "La dirección es obligatoria",
+        "cityRequired": "La ciudad es obligatoria",
+        "zipRequired": "El código postal es obligatorio",
+        "countryRequired": "El país es obligatorio"
+      }
+    },
+    "emailBlock": {
+      "title": "Correo Electrónico",
+      "emailPlaceholder": "Ingrese su correo",
+      "checking": "Verificando...",
+      "newUser": {
+        "hint": "Cree una contraseña para continuar",
+        "passwordPlaceholder": "Crear contraseña",
+        "confirmPlaceholder": "Confirmar contraseña",
+        "passwordMismatch": "Las contraseñas no coinciden",
+        "signingUp": "Registrando...",
+        "signUpButton": "Registrarse y Continuar"
+      },
+      "existingUser": {
+        "hint": "La cuenta existe. Ingrese la contraseña para iniciar sesión.",
+        "passwordPlaceholder": "Ingrese contraseña",
+        "forgotPassword": "¿Olvidó la contraseña?",
+        "loggingIn": "Iniciando sesión...",
+        "loginButton": "Iniciar Sesión"
+      },
+      "loggedIn": {
+        "loggedInAs": "Sesión iniciada como {email}",
+        "loggedInAsName": "Sesión iniciada como {name}, correo {email}",
+        "logoutButton": "Cerrar Sesión"
+      },
+      "passwordStrength": {
+        "weak": "Débil",
+        "medium": "Media",
+        "strong": "Fuerte"
+      }
+    },
+    "paymentMethods": {
+      "title": "Método de Pago",
+      "loading": "Cargando métodos de pago...",
+      "noMethods": "Sin métodos de pago disponibles",
+      "error": "Error al cargar métodos de pago"
+    },
+    "termsCheckbox": {
+      "agreeText": "Acepto los",
+      "termsLink": "Términos y Condiciones",
+      "popupTitle": "Términos y Condiciones",
+      "popupLoading": "Cargando...",
+      "popupClose": "Cerrar",
+      "failedToLoad": "Error al cargar términos. Por favor, inténtelo más tarde."
+    },
+    "sessionExpiredModal": {
+      "title": "Sesión Expirada",
+      "defaultMessage": "Su sesión ha expirado. Por favor, inicie sesión de nuevo para continuar.",
+      "loginButton": "Iniciar Sesión"
+    }
+  },
+  "planDetail": {
+    "title": "Detalles del Plan",
+    "loading": "Cargando detalles del plan...",
+    "error": "Error al cargar detalles del plan.",
+    "backLink": "Volver",
+    "name": "Nombre",
+    "price": "Precio",
+    "billingPeriod": "Período de Facturación",
+    "description": "Descripción",
+    "features": "Características",
+    "status": "Estado",
+    "active": "Activo",
+    "archived": "Archivado"
+  },
+  "tokenBundleDetail": {
+    "title": "Detalles del Paquete de Tokens",
+    "loading": "Cargando paquete de tokens...",
+    "error": "Error al cargar paquete de tokens.",
+    "backLink": "Volver",
+    "name": "Nombre",
+    "tokenAmount": "Cantidad de Tokens",
+    "price": "Precio",
+    "description": "Descripción"
+  },
+  "addonInfo": {
+    "title": "Detalles del Complemento",
+    "loading": "Cargando detalles del complemento...",
+    "error": "Error al cargar detalles del complemento.",
+    "backLink": "Volver",
+    "name": "Nombre",
+    "price": "Precio",
+    "currency": "Moneda",
+    "billingPeriod": "Período de Facturación",
+    "description": "Descripción"
+  },
+  "notFound": {
+    "message": "La página que busca no existe.",
+    "backHome": "Volver al Panel"
+  }
+}

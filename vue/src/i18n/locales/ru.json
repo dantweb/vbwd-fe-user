@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "retry": "Повторить",
+    "back": "Назад",
+    "close": "Закрыть",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "remove": "Удалить",
+    "view": "Просмотр",
+    "pay": "Оплатить",
+    "pdf": "PDF",
+    "previous": "Назад",
+    "next": "Далее",
+    "total": "Итого",
+    "logout": "Выход",
+    "checkout": "Оформление",
+    "backToPlans": "Вернуться к Тарифам",
+    "backToSubscription": "Вернуться к Подписке",
+    "browsePlans": "Просмотреть Тарифы",
+    "processing": "Обработка...",
+    "confirm": "Подтвердить",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "Страница {currentPage} из {totalPages}",
+    "present": "Текущий",
+    "item": "товар",
+    "items": "товары",
+    "status": {
+      "active": "Активна",
+      "pending": "Ожидание",
+      "paid": "Оплачена",
+      "overdue": "Просрочена",
+      "cancelled": "Отменена",
+      "cancelling": "Отмена",
+      "trial": "Пробный период"
+    },
+    "errors": {
+      "failedToLoad": "Ошибка загрузки данных",
+      "invalidCredentials": "Неверные учетные данные",
+      "loginFailed": "Ошибка входа",
+      "registrationFailed": "Ошибка регистрации",
+      "paymentFailed": "Ошибка платежа. Пожалуйста, попробуйте снова.",
+      "loginFailedRetry": "Ошибка входа. Пожалуйста, попробуйте снова.",
+      "registrationFailedRetry": "Ошибка регистрации. Пожалуйста, попробуйте снова."
+    },
+    "billingPeriods": {
+      "month": "месяц",
+      "year": "год",
+      "week": "неделя",
+      "oneTime": "один раз"
+    }
+  },
+  "nav": {
+    "dashboard": "Главная",
+    "profile": "Профиль",
+    "subscription": "Подписка",
+    "invoices": "Счета",
+    "plans": "Тарифы",
+    "tokens": "Токены",
+    "addons": "Дополнения",
+    "appearance": "Оформление",
+    "chat": "Чат",
+    "store": "Магазин"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "Корзина",
+    "cartEmpty": "Ваша корзина пуста",
+    "cartTotal": "Итого:"
+  },
+  "dashboard": {
+    "title": "Главная",
+    "loading": "Загрузка...",
+    "profileCard": {
+      "title": "Профиль",
+      "viewProfile": "Просмотреть Профиль"
+    },
+    "subscriptionCard": {
+      "title": "Текущая Подписка",
+      "noPlan": "Нет Тарифа",
+      "billingPeriod": "Период Оплаты",
+      "nextBilling": "Следующая Оплата",
+      "tokenBalance": "Баланс Токенов",
+      "noActiveSubscription": "Нет активной подписки",
+      "manageSubscription": "Управлять Подпиской"
+    },
+    "invoicesCard": {
+      "title": "Недавние Счета",
+      "noInvoices": "Счетов нет",
+      "viewAllInvoices": "Просмотреть Все Счета"
+    },
+    "historyCard": {
+      "title": "История Подписок",
+      "noHistory": "История подписок отсутствует."
+    },
+    "addonsCard": {
+      "title": "Дополнения",
+      "active": "Активные",
+      "expired": "Истекшие / Отменены",
+      "noAddons": "Дополнений нет.",
+      "browseAddons": "Просмотреть Дополнения"
+    },
+    "tokenHistoryCard": {
+      "title": "Активность Токенов",
+      "noActivity": "Активности токенов нет.",
+      "purchaseTokens": "Купить Токены"
+    },
+    "quickActions": {
+      "title": "Быстрые Действия",
+      "editProfile": "Редактировать Профиль",
+      "manageSubscription": "Управлять Подпиской",
+      "browsePlans": "Просмотреть Тарифы",
+      "viewInvoices": "Просмотреть Счета"
+    },
+    "errors": {
+      "failedToLoad": "Ошибка загрузки главной"
+    }
+  },
+  "profile": {
+    "title": "Профиль",
+    "loading": "Загрузка профиля...",
+    "accountInfo": {
+      "title": "Информация Аккаунта",
+      "email": "Email",
+      "accountStatus": "Статус Аккаунта",
+      "statusActive": "Активен",
+      "tokenBalance": "Баланс Токенов"
+    },
+    "personalInfo": {
+      "title": "Личная Информация",
+      "firstName": "Имя",
+      "firstNamePlaceholder": "Иван",
+      "lastName": "Фамилия",
+      "lastNamePlaceholder": "Петров",
+      "company": "Компания",
+      "companyPlaceholder": "Acme ООО",
+      "taxNumber": "ИНН / НДС",
+      "taxNumberPlaceholder": "7712345678",
+      "phone": "Телефон",
+      "phonePlaceholder": "+7 495 123-45-67"
+    },
+    "address": {
+      "title": "Адрес",
+      "addressLine1": "Адрес строка 1",
+      "addressLine1Placeholder": "ул. Главная, 123",
+      "addressLine2": "Адрес строка 2",
+      "addressLine2Placeholder": "Квартира 4B",
+      "city": "Город",
+      "cityPlaceholder": "Москва",
+      "postalCode": "Почтовый Индекс",
+      "postalCodePlaceholder": "119991",
+      "country": "Страна",
+      "countryPlaceholder": "Россия"
+    },
+    "actions": {
+      "saving": "Сохранение...",
+      "saveChanges": "Сохранить Изменения"
+    },
+    "changePassword": {
+      "title": "Изменить Пароль",
+      "currentPassword": "Текущий Пароль",
+      "newPassword": "Новый Пароль",
+      "confirmPassword": "Подтвердить Пароль",
+      "changing": "Изменение...",
+      "changePassword": "Изменить Пароль"
+    },
+    "messages": {
+      "profileUpdated": "Профиль успешно обновлен",
+      "passwordChanged": "Пароль успешно изменен",
+      "passwordsDoNotMatch": "Пароли не совпадают",
+      "passwordMinLength": "Пароль должен содержать не менее 8 символов"
+    },
+    "errors": {
+      "failedToLoad": "Ошибка загрузки профиля",
+      "failedToUpdate": "Ошибка обновления профиля",
+      "failedToChangePassword": "Ошибка изменения пароля"
+    }
+  },
+  "subscription": {
+    "title": "Подписка",
+    "loading": "Загрузка подписки...",
+    "currentPlan": {
+      "title": "Текущий Тариф",
+      "noPlan": "Нет Тарифа",
+      "noActiveSubscription": "У вас нет активной подписки.",
+      "price": "Цена",
+      "currentPeriod": "Текущий Период",
+      "nextBillingDate": "Дата Следующей Оплаты"
+    },
+    "tokenBalance": {
+      "title": "Баланс Токенов",
+      "description": "Используйте токены для API вызовов, функций и многого другого.",
+      "purchaseTokens": "Купить Токены"
+    },
+    "manage": {
+      "title": "Управлять Подпиской",
+      "changePlan": "Изменить Тариф",
+      "cancelSubscription": "Отменить Подписку"
+    },
+    "invoices": {
+      "title": "Счета",
+      "searchPlaceholder": "Поиск счетов...",
+      "tableHeaders": {
+        "invoiceNumber": "Счет #",
+        "date": "Дата",
+        "amount": "Сумма",
+        "status": "Статус",
+        "actions": "Действия"
+      },
+      "noInvoices": "Счетов нет.",
+      "noInvoicesSearch": "Счетов, соответствующих вашему поиску, не найдено.",
+      "downloadPdf": "Скачать PDF"
+    },
+    "cancelModal": {
+      "title": "Отменить Подписку",
+      "confirmMessage": "Вы уверены, что хотите отменить вашу подписку?",
+      "accessWarning": "Ваш доступ продолжится до {date}.",
+      "keepSubscription": "Оставить Подписку",
+      "cancelling": "Отмена...",
+      "confirmCancellation": "Подтвердить Отмену"
+    },
+    "invoiceModal": {
+      "date": "Дата",
+      "status": "Статус",
+      "amount": "Сумма"
+    },
+    "messages": {
+      "subscriptionCancelled": "Подписка успешно отменена",
+      "invoiceDownloadInitiated": "Загрузка счета начата"
+    },
+    "errors": {
+      "failedToLoad": "Ошибка загрузки данных подписки",
+      "failedToCancel": "Ошибка отмены подписки",
+      "failedToDownload": "Ошибка загрузки счета"
+    }
+  },
+  "plans": {
+    "title": "Выберите Тариф",
+    "loading": "Загрузка тарифов...",
+    "noPlans": "На данный момент тарифы недоступны.",
+    "mostPopular": "Самый Популярный",
+    "currentPlan": "Текущий Тариф",
+    "selectPlan": "Выбрать Тариф",
+    "processing": "Обработка...",
+    "taxIncluded": "с налогом {rate}%",
+    "currencyLabel": "Показывать цены в:"
+  },
+  "tokens": {
+    "breadcrumbPlans": "Тарифы",
+    "breadcrumbTokenBundles": "Пакеты Токенов",
+    "title": "Пакеты Токенов",
+    "subtitle": "Купите дополнительные токены для вашего аккаунта",
+    "loading": "Загрузка пакетов токенов...",
+    "noBundles": "На данный момент пакеты токенов недоступны.",
+    "tokensLabel": "{amount} Токенов",
+    "addToCart": "Добавить в Корзину",
+    "backToPlans": "Вернуться к Тарифам",
+    "errors": {
+      "failedToLoad": "Ошибка загрузки пакетов токенов"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "Тарифы",
+    "breadcrumbAddons": "Дополнения",
+    "title": "Дополнения",
+    "subtitle": "Улучшите вашу подписку дополнительными функциями",
+    "loading": "Загрузка дополнений...",
+    "subscriptionAddons": {
+      "title": "Дополнения к Подписке",
+      "description": "Эти дополнения требуют активной подписки и будут выставлены счетом вместе с вашим тарифом.",
+      "noAddons": "Дополнения к подписке недоступны."
+    },
+    "globalAddons": {
+      "title": "Глобальные Дополнения",
+      "description": "Эти дополнения доступны всем пользователям и применяются ко всему вашему аккаунту.",
+      "noAddons": "Глобальные дополнения недоступны."
+    },
+    "addToCart": "Добавить в Корзину",
+    "requiresSubscription": "Требует Подписки",
+    "backToPlans": "Вернуться к Тарифам",
+    "errors": {
+      "failedToLoad": "Ошибка загрузки дополнений"
+    },
+    "detail": {
+      "title": "Детали Дополнения",
+      "status": "Статус",
+      "startDate": "Дата Начала",
+      "expiryDate": "Дата Истечения",
+      "cancelledDate": "Дата Отмены",
+      "price": "Цена",
+      "billingPeriod": "Период Оплаты",
+      "invoice": "Счет",
+      "cancelAddon": "Отменить Дополнение",
+      "cancelConfirm": "Вы уверены, что хотите отменить это дополнение?",
+      "cancelSuccess": "Дополнение успешно отменено.",
+      "backToDashboard": "Вернуться на Главную",
+      "alreadyCancelled": "Это дополнение было отменено."
+    }
+  },
+  "invoices": {
+    "title": "Счета",
+    "loading": "Загрузка счетов...",
+    "searchPlaceholder": "Поиск счетов...",
+    "filters": {
+      "allStatuses": "Все Статусы",
+      "paid": "Оплачены",
+      "pending": "Ожидание",
+      "overdue": "Просрочены",
+      "refunded": "Возвращены"
+    },
+    "tableHeaders": {
+      "date": "Дата",
+      "invoiceNumber": "Счет #",
+      "amount": "Сумма",
+      "status": "Статус",
+      "actions": "Действия"
+    },
+    "noInvoices": "Счетов нет.",
+    "noInvoicesFiltered": "Счетов, соответствующих вашим фильтрам, не найдено.",
+    "messages": {
+      "downloadInitiated": "Загрузка счета начата"
+    },
+    "errors": {
+      "failedToLoad": "Ошибка загрузки счетов",
+      "failedToDownload": "Ошибка загрузки счета"
+    },
+    "detail": {
+      "title": "Детали Счета",
+      "loading": "Загрузка счета...",
+      "invoiceTitle": "Счет {number}",
+      "date": "Дата",
+      "dueDate": "Срок Оплаты",
+      "currency": "Валюта",
+      "items": "Товары",
+      "itemsTableHeaders": {
+        "description": "Описание",
+        "qty": "Кол-во",
+        "unitPrice": "Цена за ед.",
+        "total": "Итого"
+      },
+      "totalAmount": "Общая Сумма",
+      "downloadPdf": "Скачать PDF",
+      "payNow": "Оплатить Сейчас",
+      "payByInvoice": "Оплатить по Счету",
+      "paymentMethod": "Способ Оплаты",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "Банковский Перевод",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "Ошибка загрузки счета",
+        "failedToDownload": "Ошибка загрузки счета"
+      }
+    },
+    "pay": {
+      "title": "Оплатить Счет",
+      "loading": "Загрузка счета...",
+      "invoiceTitle": "Счет {number}",
+      "date": "Дата",
+      "status": "Статус",
+      "currency": "Валюта",
+      "items": "Товары",
+      "totalAmount": "Общая Сумма",
+      "paymentTitle": "Платеж",
+      "alreadyPaid": "Этот счет уже оплачен.",
+      "paymentInfo": "Нажмите ниже, чтобы безопасно завершить оплату.",
+      "processing": "Обработка...",
+      "payAmount": "Оплатить ${amount}",
+      "successTitle": "Оплата Успешна!",
+      "successMessage": "Ваша оплата была успешно обработана.",
+      "invoiceNowPaid": "Счет {number} теперь оплачен.",
+      "errors": {
+        "failedToLoad": "Ошибка загрузки счета",
+        "paymentFailed": "Ошибка платежа. Пожалуйста, попробуйте снова."
+      }
+    }
+  },
+  "login": {
+    "title": "Вход",
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "loggingIn": "Вход...",
+    "loginButton": "Войти",
+    "errors": {
+      "loginFailed": "Ошибка входа",
+      "invalidCredentials": "Неверные учетные данные"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "Адрес Выставления Счета",
+      "loading": "Загрузка...",
+      "firstNameLabel": "Имя",
+      "firstNamePlaceholder": "Имя",
+      "lastNameLabel": "Фамилия",
+      "lastNamePlaceholder": "Фамилия",
+      "companyLabel": "Компания (опционально)",
+      "companyPlaceholder": "Название компании",
+      "streetLabel": "Адрес *",
+      "streetPlaceholder": "Улица и номер",
+      "cityLabel": "Город *",
+      "cityPlaceholder": "Город",
+      "zipLabel": "Почтовый Индекс *",
+      "zipPlaceholder": "Почтовый индекс",
+      "countryLabel": "Страна *",
+      "countryPlaceholder": "Выберите страну",
+      "errors": {
+        "firstNameRequired": "Имя обязательно",
+        "lastNameRequired": "Фамилия обязательна",
+        "streetRequired": "Адрес обязателен",
+        "cityRequired": "Город обязателен",
+        "zipRequired": "Почтовый индекс обязателен",
+        "countryRequired": "Страна обязательна"
+      }
+    },
+    "emailBlock": {
+      "title": "Email",
+      "emailPlaceholder": "Введите ваш email",
+      "checking": "Проверка...",
+      "newUser": {
+        "hint": "Создайте пароль для продолжения",
+        "passwordPlaceholder": "Создать пароль",
+        "confirmPlaceholder": "Подтвердить пароль",
+        "passwordMismatch": "Пароли не совпадают",
+        "signingUp": "Регистрация...",
+        "signUpButton": "Зарегистрироваться и Продолжить"
+      },
+      "existingUser": {
+        "hint": "Аккаунт существует. Введите пароль для входа.",
+        "passwordPlaceholder": "Введите пароль",
+        "forgotPassword": "Забыли пароль?",
+        "loggingIn": "Вход...",
+        "loginButton": "Войти"
+      },
+      "loggedIn": {
+        "loggedInAs": "Вы вошли как {email}",
+        "loggedInAsName": "Вы вошли как {name}, email {email}",
+        "logoutButton": "Выход"
+      },
+      "passwordStrength": {
+        "weak": "Слабый",
+        "medium": "Средний",
+        "strong": "Сильный"
+      }
+    },
+    "paymentMethods": {
+      "title": "Способ Оплаты",
+      "loading": "Загрузка способов оплаты...",
+      "noMethods": "Способы оплаты недоступны",
+      "error": "Ошибка загрузки способов оплаты"
+    },
+    "termsCheckbox": {
+      "agreeText": "Я согласен с",
+      "termsLink": "Условиями Использования",
+      "popupTitle": "Условия Использования",
+      "popupLoading": "Загрузка...",
+      "popupClose": "Закрыть",
+      "failedToLoad": "Ошибка загрузки условий. Пожалуйста, попробуйте позже."
+    },
+    "sessionExpiredModal": {
+      "title": "Сессия Истекла",
+      "defaultMessage": "Ваша сессия истекла. Пожалуйста, войдите снова для продолжения.",
+      "loginButton": "Войти"
+    }
+  },
+  "planDetail": {
+    "title": "Детали Тарифа",
+    "loading": "Загрузка деталей тарифа...",
+    "error": "Ошибка загрузки деталей тарифа.",
+    "backLink": "Назад",
+    "name": "Название",
+    "price": "Цена",
+    "billingPeriod": "Период Оплаты",
+    "description": "Описание",
+    "features": "Особенности",
+    "status": "Статус",
+    "active": "Активен",
+    "archived": "Архивирован"
+  },
+  "tokenBundleDetail": {
+    "title": "Детали Пакета Токенов",
+    "loading": "Загрузка пакета токенов...",
+    "error": "Ошибка загрузки пакета токенов.",
+    "backLink": "Назад",
+    "name": "Название",
+    "tokenAmount": "Количество Токенов",
+    "price": "Цена",
+    "description": "Описание"
+  },
+  "addonInfo": {
+    "title": "Детали Дополнения",
+    "loading": "Загрузка деталей дополнения...",
+    "error": "Ошибка загрузки деталей дополнения.",
+    "backLink": "Назад",
+    "name": "Название",
+    "price": "Цена",
+    "currency": "Валюта",
+    "billingPeriod": "Период Оплаты",
+    "description": "Описание"
+  },
+  "notFound": {
+    "message": "Страница, которую вы ищете, не существует.",
+    "backHome": "Вернуться на Главную"
+  }
+}

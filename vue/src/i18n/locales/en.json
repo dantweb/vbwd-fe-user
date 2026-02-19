@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "retry": "Retry",
+    "back": "Back",
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "remove": "Remove",
+    "view": "View",
+    "pay": "Pay",
+    "pdf": "PDF",
+    "previous": "Previous",
+    "next": "Next",
+    "total": "Total",
+    "logout": "Logout",
+    "checkout": "Checkout",
+    "backToPlans": "Back to Plans",
+    "backToSubscription": "Back to Subscription",
+    "browsePlans": "Browse Plans",
+    "processing": "Processing...",
+    "confirm": "Confirm",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "Page {currentPage} of {totalPages}",
+    "present": "Present",
+    "item": "item",
+    "items": "items",
+    "status": {
+      "active": "Active",
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue",
+      "cancelled": "Cancelled",
+      "cancelling": "Cancelling",
+      "trial": "Trial"
+    },
+    "errors": {
+      "failedToLoad": "Failed to load data",
+      "invalidCredentials": "Invalid credentials",
+      "loginFailed": "Login failed",
+      "registrationFailed": "Registration failed",
+      "paymentFailed": "Payment failed. Please try again.",
+      "loginFailedRetry": "Login failed. Please try again.",
+      "registrationFailedRetry": "Registration failed. Please try again."
+    },
+    "billingPeriods": {
+      "month": "month",
+      "year": "year",
+      "week": "week",
+      "oneTime": "one-time"
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "subscription": "Subscription",
+    "invoices": "Invoices",
+    "plans": "Plans",
+    "tokens": "Tokens",
+    "addons": "Add-ons",
+    "appearance": "Appearance",
+    "chat": "Chat",
+    "store": "Store"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "Shopping Cart",
+    "cartEmpty": "Your cart is empty",
+    "cartTotal": "Total:"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "loading": "Loading...",
+    "profileCard": {
+      "title": "Profile",
+      "viewProfile": "View Profile"
+    },
+    "subscriptionCard": {
+      "title": "Current Subscription",
+      "noPlan": "No Plan",
+      "billingPeriod": "Billing Period",
+      "nextBilling": "Next Billing",
+      "tokenBalance": "Token Balance",
+      "noActiveSubscription": "No active subscription",
+      "manageSubscription": "Manage Subscription"
+    },
+    "invoicesCard": {
+      "title": "Recent Invoices",
+      "noInvoices": "No invoices yet",
+      "viewAllInvoices": "View All Invoices"
+    },
+    "historyCard": {
+      "title": "Subscription History",
+      "noHistory": "No subscription history yet."
+    },
+    "addonsCard": {
+      "title": "Add-ons",
+      "active": "Active",
+      "expired": "Expired / Cancelled",
+      "noAddons": "No add-ons yet.",
+      "browseAddons": "Browse Add-ons"
+    },
+    "tokenHistoryCard": {
+      "title": "Token Activity",
+      "noActivity": "No token activity yet.",
+      "purchaseTokens": "Purchase Tokens"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "editProfile": "Edit Profile",
+      "manageSubscription": "Manage Subscription",
+      "browsePlans": "Browse Plans",
+      "viewInvoices": "View Invoices"
+    },
+    "errors": {
+      "failedToLoad": "Failed to load dashboard data"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "loading": "Loading profile...",
+    "accountInfo": {
+      "title": "Account Information",
+      "email": "Email",
+      "accountStatus": "Account Status",
+      "statusActive": "Active",
+      "tokenBalance": "Token Balance"
+    },
+    "personalInfo": {
+      "title": "Personal Information",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "company": "Company",
+      "companyPlaceholder": "Acme Inc.",
+      "taxNumber": "Tax Number / VAT ID",
+      "taxNumberPlaceholder": "DE123456789",
+      "phone": "Phone",
+      "phonePlaceholder": "+49 123 456 7890"
+    },
+    "address": {
+      "title": "Address",
+      "addressLine1": "Address Line 1",
+      "addressLine1Placeholder": "123 Main Street",
+      "addressLine2": "Address Line 2",
+      "addressLine2Placeholder": "Apt 4B",
+      "city": "City",
+      "cityPlaceholder": "Berlin",
+      "postalCode": "Postal Code",
+      "postalCodePlaceholder": "10115",
+      "country": "Country",
+      "countryPlaceholder": "Germany"
+    },
+    "actions": {
+      "saving": "Saving...",
+      "saveChanges": "Save Changes"
+    },
+    "changePassword": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "changing": "Changing...",
+      "changePassword": "Change Password"
+    },
+    "messages": {
+      "profileUpdated": "Profile updated successfully",
+      "passwordChanged": "Password changed successfully",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "passwordMinLength": "Password must be at least 8 characters"
+    },
+    "errors": {
+      "failedToLoad": "Failed to load profile",
+      "failedToUpdate": "Failed to update profile",
+      "failedToChangePassword": "Failed to change password"
+    }
+  },
+  "subscription": {
+    "title": "Subscription",
+    "loading": "Loading subscription...",
+    "currentPlan": {
+      "title": "Current Plan",
+      "noPlan": "No Plan",
+      "noActiveSubscription": "You don't have an active subscription.",
+      "price": "Price",
+      "currentPeriod": "Current Period",
+      "nextBillingDate": "Next Billing Date"
+    },
+    "tokenBalance": {
+      "title": "Token Balance",
+      "description": "Use tokens for API calls, features, and more.",
+      "purchaseTokens": "Purchase Tokens"
+    },
+    "manage": {
+      "title": "Manage Subscription",
+      "changePlan": "Change Plan",
+      "cancelSubscription": "Cancel Subscription"
+    },
+    "invoices": {
+      "title": "Invoices",
+      "searchPlaceholder": "Search invoices...",
+      "tableHeaders": {
+        "invoiceNumber": "Invoice #",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "noInvoices": "No invoices yet.",
+      "noInvoicesSearch": "No invoices found matching your search.",
+      "downloadPdf": "Download PDF"
+    },
+    "cancelModal": {
+      "title": "Cancel Subscription",
+      "confirmMessage": "Are you sure you want to cancel your subscription?",
+      "accessWarning": "Your access will continue until {date}.",
+      "keepSubscription": "Keep Subscription",
+      "cancelling": "Cancelling...",
+      "confirmCancellation": "Confirm Cancellation"
+    },
+    "invoiceModal": {
+      "date": "Date",
+      "status": "Status",
+      "amount": "Amount"
+    },
+    "messages": {
+      "subscriptionCancelled": "Subscription cancelled successfully",
+      "invoiceDownloadInitiated": "Invoice download initiated"
+    },
+    "errors": {
+      "failedToLoad": "Failed to load subscription data",
+      "failedToCancel": "Failed to cancel subscription",
+      "failedToDownload": "Failed to download invoice"
+    }
+  },
+  "plans": {
+    "title": "Select a Plan",
+    "loading": "Loading plans...",
+    "noPlans": "No plans available at this time.",
+    "mostPopular": "Most Popular",
+    "currentPlan": "Current Plan",
+    "selectPlan": "Select Plan",
+    "processing": "Processing...",
+    "taxIncluded": "incl. {rate}% tax",
+    "currencyLabel": "Display prices in:"
+  },
+  "tokens": {
+    "breadcrumbPlans": "Plans",
+    "breadcrumbTokenBundles": "Token Bundles",
+    "title": "Token Bundles",
+    "subtitle": "Purchase additional tokens for your account",
+    "loading": "Loading token bundles...",
+    "noBundles": "No token bundles available at this time.",
+    "tokensLabel": "{amount} Tokens",
+    "addToCart": "Add to Cart",
+    "backToPlans": "Back to Plans",
+    "errors": {
+      "failedToLoad": "Failed to load token bundles"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "Plans",
+    "breadcrumbAddons": "Add-ons",
+    "title": "Add-ons",
+    "subtitle": "Enhance your subscription with additional features",
+    "loading": "Loading add-ons...",
+    "subscriptionAddons": {
+      "title": "Subscription Add-ons",
+      "description": "These add-ons require an active subscription and will be billed along with your plan.",
+      "noAddons": "No subscription add-ons available."
+    },
+    "globalAddons": {
+      "title": "Global Add-ons",
+      "description": "These add-ons are available to all users and apply to your entire account.",
+      "noAddons": "No global add-ons available."
+    },
+    "addToCart": "Add to Cart",
+    "requiresSubscription": "Requires Subscription",
+    "backToPlans": "Back to Plans",
+    "errors": {
+      "failedToLoad": "Failed to load add-ons"
+    },
+    "detail": {
+      "title": "Add-on Details",
+      "status": "Status",
+      "startDate": "Start Date",
+      "expiryDate": "Expiry Date",
+      "cancelledDate": "Cancelled Date",
+      "price": "Price",
+      "billingPeriod": "Billing Period",
+      "invoice": "Invoice",
+      "cancelAddon": "Cancel Add-on",
+      "cancelConfirm": "Are you sure you want to cancel this add-on?",
+      "cancelSuccess": "Add-on cancelled successfully.",
+      "backToDashboard": "Back to Dashboard",
+      "alreadyCancelled": "This add-on has been cancelled."
+    }
+  },
+  "invoices": {
+    "title": "Invoices",
+    "loading": "Loading invoices...",
+    "searchPlaceholder": "Search invoices...",
+    "filters": {
+      "allStatuses": "All Statuses",
+      "paid": "Paid",
+      "pending": "Pending",
+      "overdue": "Overdue",
+      "refunded": "Refunded"
+    },
+    "tableHeaders": {
+      "date": "Date",
+      "invoiceNumber": "Invoice #",
+      "amount": "Amount",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "noInvoices": "No invoices yet.",
+    "noInvoicesFiltered": "No invoices match your filters.",
+    "messages": {
+      "downloadInitiated": "Invoice download initiated"
+    },
+    "errors": {
+      "failedToLoad": "Failed to load invoices",
+      "failedToDownload": "Failed to download invoice"
+    },
+    "detail": {
+      "title": "Invoice Details",
+      "loading": "Loading invoice...",
+      "invoiceTitle": "Invoice {number}",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "currency": "Currency",
+      "items": "Items",
+      "itemsTableHeaders": {
+        "description": "Description",
+        "qty": "Qty",
+        "unitPrice": "Unit Price",
+        "total": "Total"
+      },
+      "totalAmount": "Total Amount",
+      "downloadPdf": "Download PDF",
+      "payNow": "Pay Now",
+      "payByInvoice": "Pay by Invoice",
+      "paymentMethod": "Payment Method",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "Invoice (Bank Transfer)",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "Failed to load invoice",
+        "failedToDownload": "Failed to download invoice"
+      }
+    },
+    "pay": {
+      "title": "Pay Invoice",
+      "loading": "Loading invoice...",
+      "invoiceTitle": "Invoice {number}",
+      "date": "Date",
+      "status": "Status",
+      "currency": "Currency",
+      "items": "Items",
+      "totalAmount": "Total Amount",
+      "paymentTitle": "Payment",
+      "alreadyPaid": "This invoice has already been paid.",
+      "paymentInfo": "Click below to complete your payment securely.",
+      "processing": "Processing...",
+      "payAmount": "Pay ${amount}",
+      "successTitle": "Payment Successful!",
+      "successMessage": "Your payment has been processed successfully.",
+      "invoiceNowPaid": "Invoice {number} is now paid.",
+      "errors": {
+        "failedToLoad": "Failed to load invoice",
+        "paymentFailed": "Payment failed. Please try again."
+      }
+    }
+  },
+  "login": {
+    "title": "Login",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "loggingIn": "Logging in...",
+    "loginButton": "Login",
+    "errors": {
+      "loginFailed": "Login failed",
+      "invalidCredentials": "Invalid credentials"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "Billing Address",
+      "loading": "Loading...",
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "First name",
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Last name",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Company name",
+      "streetLabel": "Street Address *",
+      "streetPlaceholder": "Street and number",
+      "cityLabel": "City *",
+      "cityPlaceholder": "City",
+      "zipLabel": "ZIP Code *",
+      "zipPlaceholder": "ZIP",
+      "countryLabel": "Country *",
+      "countryPlaceholder": "Select country",
+      "errors": {
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "streetRequired": "Street is required",
+        "cityRequired": "City is required",
+        "zipRequired": "ZIP code is required",
+        "countryRequired": "Country is required"
+      }
+    },
+    "emailBlock": {
+      "title": "Customer Email",
+      "emailPlaceholder": "Enter your email",
+      "checking": "Checking...",
+      "newUser": {
+        "hint": "Create a password to continue",
+        "passwordPlaceholder": "Create password",
+        "confirmPlaceholder": "Confirm password",
+        "passwordMismatch": "Passwords do not match",
+        "signingUp": "Signing up...",
+        "signUpButton": "Sign Up & Continue"
+      },
+      "existingUser": {
+        "hint": "Account exists. Enter password to login.",
+        "passwordPlaceholder": "Enter password",
+        "forgotPassword": "Forgot password?",
+        "loggingIn": "Logging in...",
+        "loginButton": "Login"
+      },
+      "loggedIn": {
+        "loggedInAs": "Logged in as {email}",
+        "loggedInAsName": "Logged in as {name}, email {email}",
+        "logoutButton": "Logout"
+      },
+      "passwordStrength": {
+        "weak": "Weak",
+        "medium": "Medium",
+        "strong": "Strong"
+      }
+    },
+    "paymentMethods": {
+      "title": "Payment Method",
+      "loading": "Loading payment methods...",
+      "noMethods": "No payment methods available",
+      "error": "Failed to load payment methods"
+    },
+    "termsCheckbox": {
+      "agreeText": "I agree to the",
+      "termsLink": "Terms and Conditions",
+      "popupTitle": "Terms and Conditions",
+      "popupLoading": "Loading...",
+      "popupClose": "Close",
+      "failedToLoad": "Failed to load terms. Please try again later."
+    },
+    "sessionExpiredModal": {
+      "title": "Session Expired",
+      "defaultMessage": "Your session has expired. Please log in again to continue.",
+      "loginButton": "Log In"
+    }
+  },
+  "planDetail": {
+    "title": "Plan Details",
+    "loading": "Loading plan details...",
+    "error": "Failed to load plan details.",
+    "backLink": "Back",
+    "name": "Name",
+    "price": "Price",
+    "billingPeriod": "Billing Period",
+    "description": "Description",
+    "features": "Features",
+    "status": "Status",
+    "active": "Active",
+    "archived": "Archived"
+  },
+  "tokenBundleDetail": {
+    "title": "Token Bundle Details",
+    "loading": "Loading token bundle...",
+    "error": "Failed to load token bundle.",
+    "backLink": "Back",
+    "name": "Name",
+    "tokenAmount": "Token Amount",
+    "price": "Price",
+    "description": "Description"
+  },
+  "addonInfo": {
+    "title": "Add-On Details",
+    "loading": "Loading add-on details...",
+    "error": "Failed to load add-on details.",
+    "backLink": "Back",
+    "name": "Name",
+    "price": "Price",
+    "currency": "Currency",
+    "billingPeriod": "Billing Period",
+    "description": "Description"
+  },
+  "notFound": {
+    "message": "The page you are looking for does not exist.",
+    "backHome": "Back to Dashboard"
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "กำลังโหลด...",
+    "retry": "ลองใหม่",
+    "back": "กลับ",
+    "close": "ปิด",
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "remove": "ลบ",
+    "view": "ดู",
+    "pay": "ชำระเงิน",
+    "pdf": "PDF",
+    "previous": "ก่อนหน้า",
+    "next": "ถัดไป",
+    "total": "รวม",
+    "logout": "ออกจากระบบ",
+    "checkout": "ชำระเงิน",
+    "backToPlans": "กลับไปยังแผน",
+    "backToSubscription": "กลับไปยังการสมัครสมาชิก",
+    "browsePlans": "ดูแผน",
+    "processing": "กำลังประมวลผล...",
+    "confirm": "ยืนยัน",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "หน้า {currentPage} จาก {totalPages}",
+    "present": "ปัจจุบัน",
+    "item": "รายการ",
+    "items": "รายการ",
+    "status": {
+      "active": "ใช้งาน",
+      "pending": "รอดำเนินการ",
+      "paid": "ชำระแล้ว",
+      "overdue": "เกินกำหนด",
+      "cancelled": "ยกเลิกแล้ว",
+      "cancelling": "กำลังยกเลิก",
+      "trial": "ทดลองใช้"
+    },
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดข้อมูล",
+      "invalidCredentials": "ข้อมูลประจำตัวไม่ถูกต้อง",
+      "loginFailed": "ล็อกอินล้มเหลว",
+      "registrationFailed": "การลงทะเบียนล้มเหลว",
+      "paymentFailed": "ชำระเงินล้มเหลว กรุณาลองใหม่",
+      "loginFailedRetry": "ล็อกอินล้มเหลว กรุณาลองใหม่",
+      "registrationFailedRetry": "การลงทะเบียนล้มเหลว กรุณาลองใหม่"
+    },
+    "billingPeriods": {
+      "month": "เดือน",
+      "year": "ปี",
+      "week": "สัปดาห์",
+      "oneTime": "ครั้งเดียว"
+    }
+  },
+  "nav": {
+    "dashboard": "แดชบอร์ด",
+    "profile": "โปรไฟล์",
+    "subscription": "การสมัครสมาชิก",
+    "invoices": "ใบแจ้งหนี้",
+    "plans": "แผน",
+    "tokens": "โทเค็น",
+    "addons": "ส่วนเสริม",
+    "appearance": "ลักษณะการทำงาน",
+    "chat": "แชท",
+    "store": "ร้านค้า"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "ตะกร้าสินค้า",
+    "cartEmpty": "ตะกร้าของคุณว่างเปล่า",
+    "cartTotal": "รวม:"
+  },
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "loading": "กำลังโหลด...",
+    "profileCard": {
+      "title": "โปรไฟล์",
+      "viewProfile": "ดูโปรไฟล์"
+    },
+    "subscriptionCard": {
+      "title": "การสมัครสมาชิกปัจจุบัน",
+      "noPlan": "ไม่มีแผน",
+      "billingPeriod": "รอบการเรียกเก็บเงิน",
+      "nextBilling": "การเรียกเก็บเงินครั้งต่อไป",
+      "tokenBalance": "ยอดโทเค็น",
+      "noActiveSubscription": "ไม่มีการสมัครสมาชิกที่ใช้งาน",
+      "manageSubscription": "จัดการการสมัครสมาชิก"
+    },
+    "invoicesCard": {
+      "title": "ใบแจ้งหนี้ล่าสุด",
+      "noInvoices": "ไม่มีใบแจ้งหนี้",
+      "viewAllInvoices": "ดูใบแจ้งหนี้ทั้งหมด"
+    },
+    "historyCard": {
+      "title": "ประวัติการสมัครสมาชิก",
+      "noHistory": "ไม่มีประวัติการสมัครสมาชิก"
+    },
+    "addonsCard": {
+      "title": "ส่วนเสริม",
+      "active": "ใช้งาน",
+      "expired": "หมดอายุ / ยกเลิก",
+      "noAddons": "ไม่มีส่วนเสริม",
+      "browseAddons": "ดูส่วนเสริม"
+    },
+    "tokenHistoryCard": {
+      "title": "กิจกรรมโทเค็น",
+      "noActivity": "ไม่มีกิจกรรมโทเค็น",
+      "purchaseTokens": "ซื้อโทเค็น"
+    },
+    "quickActions": {
+      "title": "การดำเนินการด่วน",
+      "editProfile": "แก้ไขโปรไฟล์",
+      "manageSubscription": "จัดการการสมัครสมาชิก",
+      "browsePlans": "ดูแผน",
+      "viewInvoices": "ดูใบแจ้งหนี้"
+    },
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดแดชบอร์ด"
+    }
+  },
+  "profile": {
+    "title": "โปรไฟล์",
+    "loading": "กำลังโหลดโปรไฟล์...",
+    "accountInfo": {
+      "title": "ข้อมูลบัญชี",
+      "email": "อีเมล",
+      "accountStatus": "สถานะบัญชี",
+      "statusActive": "ใช้งาน",
+      "tokenBalance": "ยอดโทเค็น"
+    },
+    "personalInfo": {
+      "title": "ข้อมูลส่วนตัว",
+      "firstName": "ชื่อจริง",
+      "firstNamePlaceholder": "สมชาย",
+      "lastName": "นามสกุล",
+      "lastNamePlaceholder": "ประเสริฐ",
+      "company": "บริษัท",
+      "companyPlaceholder": "บริษัท Acme",
+      "taxNumber": "หมายเลขประเมิน / หมายเลขภาษี",
+      "taxNumberPlaceholder": "1234567890",
+      "phone": "โทรศัพท์",
+      "phonePlaceholder": "+66 8 1234 5678"
+    },
+    "address": {
+      "title": "ที่อยู่",
+      "addressLine1": "ที่อยู่บรรทัด 1",
+      "addressLine1Placeholder": "123 ถนนหลัก",
+      "addressLine2": "ที่อยู่บรรทัด 2",
+      "addressLine2Placeholder": "ห้อง 4B",
+      "city": "เมือง",
+      "cityPlaceholder": "กรุงเทพฯ",
+      "postalCode": "รหัสไปรษณีย์",
+      "postalCodePlaceholder": "10110",
+      "country": "ประเทศ",
+      "countryPlaceholder": "ประเทศไทย"
+    },
+    "actions": {
+      "saving": "กำลังบันทึก...",
+      "saveChanges": "บันทึกการเปลี่ยนแปลง"
+    },
+    "changePassword": {
+      "title": "เปลี่ยนรหัสผ่าน",
+      "currentPassword": "รหัสผ่านปัจจุบัน",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmPassword": "ยืนยันรหัสผ่าน",
+      "changing": "กำลังเปลี่ยน...",
+      "changePassword": "เปลี่ยนรหัสผ่าน"
+    },
+    "messages": {
+      "profileUpdated": "โปรไฟล์ได้รับการอัปเดตเรียบร้อยแล้ว",
+      "passwordChanged": "รหัสผ่านได้รับการเปลี่ยนแปลงเรียบร้อยแล้ว",
+      "passwordsDoNotMatch": "รหัสผ่านไม่ตรงกัน",
+      "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร"
+    },
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดโปรไฟล์",
+      "failedToUpdate": "ไม่สามารถอัปเดตโปรไฟล์",
+      "failedToChangePassword": "ไม่สามารถเปลี่ยนรหัสผ่าน"
+    }
+  },
+  "subscription": {
+    "title": "การสมัครสมาชิก",
+    "loading": "กำลังโหลดการสมัครสมาชิก...",
+    "currentPlan": {
+      "title": "แผนปัจจุบัน",
+      "noPlan": "ไม่มีแผน",
+      "noActiveSubscription": "คุณไม่มีการสมัครสมาชิกที่ใช้งาน",
+      "price": "ราคา",
+      "currentPeriod": "รอบเวลาปัจจุบัน",
+      "nextBillingDate": "วันเรียกเก็บเงินครั้งต่อไป"
+    },
+    "tokenBalance": {
+      "title": "ยอดโทเค็น",
+      "description": "ใช้โทเค็นสำหรับการเรียกใช้ API คุณสมบัติ และอื่นๆ",
+      "purchaseTokens": "ซื้อโทเค็น"
+    },
+    "manage": {
+      "title": "จัดการการสมัครสมาชิก",
+      "changePlan": "เปลี่ยนแผน",
+      "cancelSubscription": "ยกเลิกการสมัครสมาชิก"
+    },
+    "invoices": {
+      "title": "ใบแจ้งหนี้",
+      "searchPlaceholder": "ค้นหาใบแจ้งหนี้...",
+      "tableHeaders": {
+        "invoiceNumber": "ใบแจ้งหนี้ #",
+        "date": "วันที่",
+        "amount": "จำนวนเงิน",
+        "status": "สถานะ",
+        "actions": "การดำเนินการ"
+      },
+      "noInvoices": "ไม่มีใบแจ้งหนี้",
+      "noInvoicesSearch": "ไม่พบใบแจ้งหนี้ที่ตรงกับการค้นหาของคุณ",
+      "downloadPdf": "ดาวน์โหลด PDF"
+    },
+    "cancelModal": {
+      "title": "ยกเลิกการสมัครสมาชิก",
+      "confirmMessage": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการสมัครสมาชิก?",
+      "accessWarning": "การเข้าถึงของคุณจะดำเนินต่อไปจนถึง {date}",
+      "keepSubscription": "เก็บการสมัครสมาชิก",
+      "cancelling": "กำลังยกเลิก...",
+      "confirmCancellation": "ยืนยันการยกเลิก"
+    },
+    "invoiceModal": {
+      "date": "วันที่",
+      "status": "สถานะ",
+      "amount": "จำนวนเงิน"
+    },
+    "messages": {
+      "subscriptionCancelled": "การสมัครสมาชิกยกเลิกเรียบร้อยแล้ว",
+      "invoiceDownloadInitiated": "เริ่มดาวน์โหลดใบแจ้งหนี้"
+    },
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดข้อมูลการสมัครสมาชิก",
+      "failedToCancel": "ไม่สามารถยกเลิกการสมัครสมาชิก",
+      "failedToDownload": "ไม่สามารถดาวน์โหลดใบแจ้งหนี้"
+    }
+  },
+  "plans": {
+    "title": "เลือกแผน",
+    "loading": "กำลังโหลดแผน...",
+    "noPlans": "ไม่มีแผนที่ใช้งานได้ในขณะนี้",
+    "mostPopular": "ได้รับความนิยมมากที่สุด",
+    "currentPlan": "แผนปัจจุบัน",
+    "selectPlan": "เลือกแผน",
+    "processing": "กำลังประมวลผล...",
+    "taxIncluded": "รวมภาษี {rate}%",
+    "currencyLabel": "แสดงราคาใน:"
+  },
+  "tokens": {
+    "breadcrumbPlans": "แผน",
+    "breadcrumbTokenBundles": "แพ็คเกจโทเค็น",
+    "title": "แพ็คเกจโทเค็น",
+    "subtitle": "ซื้อโทเค็นเพิ่มเติมสำหรับบัญชีของคุณ",
+    "loading": "กำลังโหลดแพ็คเกจโทเค็น...",
+    "noBundles": "ไม่มีแพ็คเกจโทเค็นที่ใช้งานได้ในขณะนี้",
+    "tokensLabel": "{amount} โทเค็น",
+    "addToCart": "เพิ่มไปยังตะกร้า",
+    "backToPlans": "กลับไปยังแผน",
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดแพ็คเกจโทเค็น"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "แผน",
+    "breadcrumbAddons": "ส่วนเสริม",
+    "title": "ส่วนเสริม",
+    "subtitle": "ปรับปรุงการสมัครสมาชิกของคุณด้วยคุณสมบัติเพิ่มเติม",
+    "loading": "กำลังโหลดส่วนเสริม...",
+    "subscriptionAddons": {
+      "title": "ส่วนเสริมการสมัครสมาชิก",
+      "description": "ส่วนเสริมเหล่านี้ต้องมีการสมัครสมาชิกที่ใช้งาน และจะถูกเรียกเก็บเงินพร้อมกับแผนของคุณ",
+      "noAddons": "ไม่มีส่วนเสริมการสมัครสมาชิก"
+    },
+    "globalAddons": {
+      "title": "ส่วนเสริมระดับโลก",
+      "description": "ส่วนเสริมเหล่านี้ใช้ได้สำหรับผู้ใช้ทั้งหมด และนำไปใช้กับบัญชีทั้งหมดของคุณ",
+      "noAddons": "ไม่มีส่วนเสริมระดับโลก"
+    },
+    "addToCart": "เพิ่มไปยังตะกร้า",
+    "requiresSubscription": "ต้องมีการสมัครสมาชิก",
+    "backToPlans": "กลับไปยังแผน",
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดส่วนเสริม"
+    },
+    "detail": {
+      "title": "รายละเอียดส่วนเสริม",
+      "status": "สถานะ",
+      "startDate": "วันที่เริ่มต้น",
+      "expiryDate": "วันที่หมดอายุ",
+      "cancelledDate": "วันที่ยกเลิก",
+      "price": "ราคา",
+      "billingPeriod": "รอบการเรียกเก็บเงิน",
+      "invoice": "ใบแจ้งหนี้",
+      "cancelAddon": "ยกเลิกส่วนเสริม",
+      "cancelConfirm": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกส่วนเสริมนี้?",
+      "cancelSuccess": "ส่วนเสริมยกเลิกเรียบร้อยแล้ว",
+      "backToDashboard": "กลับไปยังแดชบอร์ด",
+      "alreadyCancelled": "ส่วนเสริมนี้ได้ถูกยกเลิกแล้ว"
+    }
+  },
+  "invoices": {
+    "title": "ใบแจ้งหนี้",
+    "loading": "กำลังโหลดใบแจ้งหนี้...",
+    "searchPlaceholder": "ค้นหาใบแจ้งหนี้...",
+    "filters": {
+      "allStatuses": "สถานะทั้งหมด",
+      "paid": "ชำระแล้ว",
+      "pending": "รอดำเนินการ",
+      "overdue": "เกินกำหนด",
+      "refunded": "คืนเงินแล้ว"
+    },
+    "tableHeaders": {
+      "date": "วันที่",
+      "invoiceNumber": "ใบแจ้งหนี้ #",
+      "amount": "จำนวนเงิน",
+      "status": "สถานะ",
+      "actions": "การดำเนินการ"
+    },
+    "noInvoices": "ไม่มีใบแจ้งหนี้",
+    "noInvoicesFiltered": "ไม่พบใบแจ้งหนี้ที่ตรงกับตัวกรองของคุณ",
+    "messages": {
+      "downloadInitiated": "เริ่มดาวน์โหลดใบแจ้งหนี้"
+    },
+    "errors": {
+      "failedToLoad": "ไม่สามารถโหลดใบแจ้งหนี้",
+      "failedToDownload": "ไม่สามารถดาวน์โหลดใบแจ้งหนี้"
+    },
+    "detail": {
+      "title": "รายละเอียดใบแจ้งหนี้",
+      "loading": "กำลังโหลดใบแจ้งหนี้...",
+      "invoiceTitle": "ใบแจ้งหนี้ {number}",
+      "date": "วันที่",
+      "dueDate": "วันครบกำหนด",
+      "currency": "สกุลเงิน",
+      "items": "รายการ",
+      "itemsTableHeaders": {
+        "description": "คำอธิบาย",
+        "qty": "จำนวน",
+        "unitPrice": "ราคาต่อหน่วย",
+        "total": "รวม"
+      },
+      "totalAmount": "จำนวนเงินรวม",
+      "downloadPdf": "ดาวน์โหลด PDF",
+      "payNow": "ชำระเงินตอนนี้",
+      "payByInvoice": "ชำระผ่านใบแจ้งหนี้",
+      "paymentMethod": "วิธีการชำระเงิน",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "โอนเงินผ่านธนาคาร",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "ไม่สามารถโหลดใบแจ้งหนี้",
+        "failedToDownload": "ไม่สามารถดาวน์โหลดใบแจ้งหนี้"
+      }
+    },
+    "pay": {
+      "title": "ชำระใบแจ้งหนี้",
+      "loading": "กำลังโหลดใบแจ้งหนี้...",
+      "invoiceTitle": "ใบแจ้งหนี้ {number}",
+      "date": "วันที่",
+      "status": "สถานะ",
+      "currency": "สกุลเงิน",
+      "items": "รายการ",
+      "totalAmount": "จำนวนเงินรวม",
+      "paymentTitle": "การชำระเงิน",
+      "alreadyPaid": "ใบแจ้งหนี้นี้ชำระแล้ว",
+      "paymentInfo": "คลิกด้านล่างเพื่อทำให้การชำระเงินสมบูรณ์อย่างปลอดภัย",
+      "processing": "กำลังประมวลผล...",
+      "payAmount": "ชำระ ${amount}",
+      "successTitle": "ชำระเงินสำเร็จ!",
+      "successMessage": "การชำระเงินของคุณได้รับการประมวลผลเรียบร้อยแล้ว",
+      "invoiceNowPaid": "ใบแจ้งหนี้ {number} ชำระแล้ว",
+      "errors": {
+        "failedToLoad": "ไม่สามารถโหลดใบแจ้งหนี้",
+        "paymentFailed": "ชำระเงินล้มเหลว กรุณาลองใหม่"
+      }
+    }
+  },
+  "login": {
+    "title": "ล็อกอิน",
+    "emailLabel": "อีเมล",
+    "passwordLabel": "รหัสผ่าน",
+    "loggingIn": "กำลังล็อกอิน...",
+    "loginButton": "ล็อกอิน",
+    "errors": {
+      "loginFailed": "ล็อกอินล้มเหลว",
+      "invalidCredentials": "ข้อมูลประจำตัวไม่ถูกต้อง"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "ที่อยู่สำหรับเรียกเก็บเงิน",
+      "loading": "กำลังโหลด...",
+      "firstNameLabel": "ชื่อจริง",
+      "firstNamePlaceholder": "ชื่อจริง",
+      "lastNameLabel": "นามสกุล",
+      "lastNamePlaceholder": "นามสกุล",
+      "companyLabel": "บริษัท (ไม่บังคับ)",
+      "companyPlaceholder": "ชื่อบริษัท",
+      "streetLabel": "ที่อยู่ *",
+      "streetPlaceholder": "ถนนและหมายเลข",
+      "cityLabel": "เมือง *",
+      "cityPlaceholder": "เมือง",
+      "zipLabel": "รหัสไปรษณีย์ *",
+      "zipPlaceholder": "รหัสไปรษณีย์",
+      "countryLabel": "ประเทศ *",
+      "countryPlaceholder": "เลือกประเทศ",
+      "errors": {
+        "firstNameRequired": "ชื่อจริงเป็นข้อบังคับ",
+        "lastNameRequired": "นามสกุลเป็นข้อบังคับ",
+        "streetRequired": "ที่อยู่เป็นข้อบังคับ",
+        "cityRequired": "เมืองเป็นข้อบังคับ",
+        "zipRequired": "รหัสไปรษณีย์เป็นข้อบังคับ",
+        "countryRequired": "ประเทศเป็นข้อบังคับ"
+      }
+    },
+    "emailBlock": {
+      "title": "อีเมล",
+      "emailPlaceholder": "ป้อนอีเมลของคุณ",
+      "checking": "กำลังตรวจสอบ...",
+      "newUser": {
+        "hint": "สร้างรหัสผ่านเพื่อดำเนินการต่อ",
+        "passwordPlaceholder": "สร้างรหัสผ่าน",
+        "confirmPlaceholder": "ยืนยันรหัสผ่าน",
+        "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+        "signingUp": "กำลังลงทะเบียน...",
+        "signUpButton": "ลงทะเบียนและดำเนินการต่อ"
+      },
+      "existingUser": {
+        "hint": "มีบัญชีอยู่แล้ว ป้อนรหัสผ่านเพื่อล็อกอิน",
+        "passwordPlaceholder": "ป้อนรหัสผ่าน",
+        "forgotPassword": "ลืมรหัสผ่าน?",
+        "loggingIn": "กำลังล็อกอิน...",
+        "loginButton": "ล็อกอิน"
+      },
+      "loggedIn": {
+        "loggedInAs": "ล็อกอินเป็น {email}",
+        "loggedInAsName": "ล็อกอินเป็น {name} อีเมล {email}",
+        "logoutButton": "ออกจากระบบ"
+      },
+      "passwordStrength": {
+        "weak": "อ่อนแอ",
+        "medium": "ปานกลาง",
+        "strong": "แข็งแกร่ง"
+      }
+    },
+    "paymentMethods": {
+      "title": "วิธีการชำระเงิน",
+      "loading": "กำลังโหลดวิธีการชำระเงิน...",
+      "noMethods": "ไม่มีวิธีการชำระเงิน",
+      "error": "ไม่สามารถโหลดวิธีการชำระเงิน"
+    },
+    "termsCheckbox": {
+      "agreeText": "ฉันยอมรับ",
+      "termsLink": "เงื่อนไขการใช้",
+      "popupTitle": "เงื่อนไขการใช้",
+      "popupLoading": "กำลังโหลด...",
+      "popupClose": "ปิด",
+      "failedToLoad": "ไม่สามารถโหลดเงื่อนไข กรุณาลองใหม่ในภายหลัง"
+    },
+    "sessionExpiredModal": {
+      "title": "เซสชันหมดอายุ",
+      "defaultMessage": "เซสชันของคุณหมดอายุ กรุณาล็อกอินอีกครั้งเพื่อดำเนินการต่อ",
+      "loginButton": "ล็อกอิน"
+    }
+  },
+  "planDetail": {
+    "title": "รายละเอียดแผน",
+    "loading": "กำลังโหลดรายละเอียดแผน...",
+    "error": "ไม่สามารถโหลดรายละเอียดแผน",
+    "backLink": "กลับ",
+    "name": "ชื่อ",
+    "price": "ราคา",
+    "billingPeriod": "รอบการเรียกเก็บเงิน",
+    "description": "คำอธิบาย",
+    "features": "คุณสมบัติ",
+    "status": "สถานะ",
+    "active": "ใช้งาน",
+    "archived": "เก็บถาวร"
+  },
+  "tokenBundleDetail": {
+    "title": "รายละเอียดแพ็คเกจโทเค็น",
+    "loading": "กำลังโหลดแพ็คเกจโทเค็น...",
+    "error": "ไม่สามารถโหลดแพ็คเกจโทเค็น",
+    "backLink": "กลับ",
+    "name": "ชื่อ",
+    "tokenAmount": "จำนวนโทเค็น",
+    "price": "ราคา",
+    "description": "คำอธิบาย"
+  },
+  "addonInfo": {
+    "title": "รายละเอียดส่วนเสริม",
+    "loading": "กำลังโหลดรายละเอียดส่วนเสริม...",
+    "error": "ไม่สามารถโหลดรายละเอียดส่วนเสริม",
+    "backLink": "กลับ",
+    "name": "ชื่อ",
+    "price": "ราคา",
+    "currency": "สกุลเงิน",
+    "billingPeriod": "รอบการเรียกเก็บเงิน",
+    "description": "คำอธิบาย"
+  },
+  "notFound": {
+    "message": "ไม่พบหน้าที่คุณค้นหา",
+    "backHome": "กลับไปยังแดชบอร์ด"
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "retry": "Réessayer",
+    "back": "Retour",
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "remove": "Supprimer",
+    "view": "Afficher",
+    "pay": "Payer",
+    "pdf": "PDF",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "total": "Total",
+    "logout": "Déconnexion",
+    "checkout": "Panier",
+    "backToPlans": "Retour aux Plans",
+    "backToSubscription": "Retour à l'Abonnement",
+    "browsePlans": "Parcourir les Plans",
+    "processing": "Traitement...",
+    "confirm": "Confirmer",
+    "noData": "-",
+    "tokenUnit": "TKN",
+    "pageInfo": "Page {currentPage} sur {totalPages}",
+    "present": "Présent",
+    "item": "article",
+    "items": "articles",
+    "status": {
+      "active": "Actif",
+      "pending": "En attente",
+      "paid": "Payé",
+      "overdue": "En retard",
+      "cancelled": "Annulé",
+      "cancelling": "Annulation en cours",
+      "trial": "Essai"
+    },
+    "errors": {
+      "failedToLoad": "Erreur de chargement des données",
+      "invalidCredentials": "Identifiants invalides",
+      "loginFailed": "Erreur de connexion",
+      "registrationFailed": "Erreur d'enregistrement",
+      "paymentFailed": "Paiement échoué. Veuillez réessayer.",
+      "loginFailedRetry": "Erreur de connexion. Veuillez réessayer.",
+      "registrationFailedRetry": "Erreur d'enregistrement. Veuillez réessayer."
+    },
+    "billingPeriods": {
+      "month": "mois",
+      "year": "année",
+      "week": "semaine",
+      "oneTime": "une seule fois"
+    }
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "subscription": "Abonnement",
+    "invoices": "Factures",
+    "plans": "Plans",
+    "tokens": "Jetons",
+    "addons": "Modules complémentaires",
+    "appearance": "Apparence",
+    "chat": "Chat",
+    "store": "Magasin"
+  },
+  "layout": {
+    "logo": "VBWD",
+    "shoppingCart": "Panier",
+    "cartEmpty": "Votre panier est vide",
+    "cartTotal": "Total :"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "loading": "Chargement...",
+    "profileCard": {
+      "title": "Profil",
+      "viewProfile": "Afficher le Profil"
+    },
+    "subscriptionCard": {
+      "title": "Abonnement Actuel",
+      "noPlan": "Aucun Plan",
+      "billingPeriod": "Période de Facturation",
+      "nextBilling": "Prochaine Facturation",
+      "tokenBalance": "Solde de Jetons",
+      "noActiveSubscription": "Aucun abonnement actif",
+      "manageSubscription": "Gérer l'Abonnement"
+    },
+    "invoicesCard": {
+      "title": "Factures Récentes",
+      "noInvoices": "Aucune facture",
+      "viewAllInvoices": "Afficher Toutes les Factures"
+    },
+    "historyCard": {
+      "title": "Historique des Abonnements",
+      "noHistory": "Aucun historique d'abonnement."
+    },
+    "addonsCard": {
+      "title": "Modules complémentaires",
+      "active": "Actifs",
+      "expired": "Expirés / Annulés",
+      "noAddons": "Aucun module complémentaire.",
+      "browseAddons": "Parcourir les Modules"
+    },
+    "tokenHistoryCard": {
+      "title": "Activité des Jetons",
+      "noActivity": "Aucune activité de jetons.",
+      "purchaseTokens": "Acheter des Jetons"
+    },
+    "quickActions": {
+      "title": "Actions Rapides",
+      "editProfile": "Modifier le Profil",
+      "manageSubscription": "Gérer l'Abonnement",
+      "browsePlans": "Parcourir les Plans",
+      "viewInvoices": "Afficher les Factures"
+    },
+    "errors": {
+      "failedToLoad": "Erreur de chargement du tableau de bord"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "loading": "Chargement du profil...",
+    "accountInfo": {
+      "title": "Informations du Compte",
+      "email": "Adresse E-mail",
+      "accountStatus": "État du Compte",
+      "statusActive": "Actif",
+      "tokenBalance": "Solde de Jetons"
+    },
+    "personalInfo": {
+      "title": "Informations Personnelles",
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastName": "Nom de Famille",
+      "lastNamePlaceholder": "Dupont",
+      "company": "Entreprise",
+      "companyPlaceholder": "ACME SARL",
+      "taxNumber": "Numéro de TVA",
+      "taxNumberPlaceholder": "FR12345678901",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+33 1 23 45 67 89"
+    },
+    "address": {
+      "title": "Adresse",
+      "addressLine1": "Adresse Ligne 1",
+      "addressLine1Placeholder": "123 Rue Principale",
+      "addressLine2": "Adresse Ligne 2",
+      "addressLine2Placeholder": "Appartement 4B",
+      "city": "Ville",
+      "cityPlaceholder": "Paris",
+      "postalCode": "Code Postal",
+      "postalCodePlaceholder": "75001",
+      "country": "Pays",
+      "countryPlaceholder": "France"
+    },
+    "actions": {
+      "saving": "Enregistrement...",
+      "saveChanges": "Enregistrer les Modifications"
+    },
+    "changePassword": {
+      "title": "Changer le Mot de Passe",
+      "currentPassword": "Mot de Passe Actuel",
+      "newPassword": "Nouveau Mot de Passe",
+      "confirmPassword": "Confirmer le Mot de Passe",
+      "changing": "Modification en cours...",
+      "changePassword": "Changer le Mot de Passe"
+    },
+    "messages": {
+      "profileUpdated": "Profil mis à jour avec succès",
+      "passwordChanged": "Mot de passe changé avec succès",
+      "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+      "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères"
+    },
+    "errors": {
+      "failedToLoad": "Erreur de chargement du profil",
+      "failedToUpdate": "Erreur de mise à jour du profil",
+      "failedToChangePassword": "Erreur lors du changement du mot de passe"
+    }
+  },
+  "subscription": {
+    "title": "Abonnement",
+    "loading": "Chargement de l'abonnement...",
+    "currentPlan": {
+      "title": "Plan Actuel",
+      "noPlan": "Aucun Plan",
+      "noActiveSubscription": "Vous n'avez pas d'abonnement actif.",
+      "price": "Prix",
+      "currentPeriod": "Période Actuelle",
+      "nextBillingDate": "Prochaine Date de Facturation"
+    },
+    "tokenBalance": {
+      "title": "Solde de Jetons",
+      "description": "Utilisez les jetons pour les appels API, les fonctionnalités et plus.",
+      "purchaseTokens": "Acheter des Jetons"
+    },
+    "manage": {
+      "title": "Gérer l'Abonnement",
+      "changePlan": "Changer de Plan",
+      "cancelSubscription": "Annuler l'Abonnement"
+    },
+    "invoices": {
+      "title": "Factures",
+      "searchPlaceholder": "Rechercher des factures...",
+      "tableHeaders": {
+        "invoiceNumber": "Facture #",
+        "date": "Date",
+        "amount": "Montant",
+        "status": "Statut",
+        "actions": "Actions"
+      },
+      "noInvoices": "Aucune facture.",
+      "noInvoicesSearch": "Aucune facture ne correspond à votre recherche.",
+      "downloadPdf": "Télécharger PDF"
+    },
+    "cancelModal": {
+      "title": "Annuler l'Abonnement",
+      "confirmMessage": "Êtes-vous sûr de vouloir annuler votre abonnement ?",
+      "accessWarning": "Votre accès continuera jusqu'au {date}.",
+      "keepSubscription": "Garder l'Abonnement",
+      "cancelling": "Annulation en cours...",
+      "confirmCancellation": "Confirmer l'Annulation"
+    },
+    "invoiceModal": {
+      "date": "Date",
+      "status": "Statut",
+      "amount": "Montant"
+    },
+    "messages": {
+      "subscriptionCancelled": "Abonnement annulé avec succès",
+      "invoiceDownloadInitiated": "Téléchargement de la facture initié"
+    },
+    "errors": {
+      "failedToLoad": "Erreur de chargement des données d'abonnement",
+      "failedToCancel": "Erreur lors de l'annulation de l'abonnement",
+      "failedToDownload": "Erreur lors du téléchargement de la facture"
+    }
+  },
+  "plans": {
+    "title": "Sélectionner un Plan",
+    "loading": "Chargement des plans...",
+    "noPlans": "Aucun plan disponible pour le moment.",
+    "mostPopular": "Populaire",
+    "currentPlan": "Plan Actuel",
+    "selectPlan": "Sélectionner un Plan",
+    "processing": "Traitement...",
+    "taxIncluded": "incl. {rate}% taxes",
+    "currencyLabel": "Afficher les prix en :"
+  },
+  "tokens": {
+    "breadcrumbPlans": "Plans",
+    "breadcrumbTokenBundles": "Forfaits de Jetons",
+    "title": "Forfaits de Jetons",
+    "subtitle": "Achetez des jetons supplémentaires pour votre compte",
+    "loading": "Chargement des forfaits de jetons...",
+    "noBundles": "Aucun forfait de jetons disponible pour le moment.",
+    "tokensLabel": "{amount} Jetons",
+    "addToCart": "Ajouter au Panier",
+    "backToPlans": "Retour aux Plans",
+    "errors": {
+      "failedToLoad": "Erreur de chargement des forfaits de jetons"
+    }
+  },
+  "addons": {
+    "breadcrumbPlans": "Plans",
+    "breadcrumbAddons": "Modules complémentaires",
+    "title": "Modules complémentaires",
+    "subtitle": "Améliorez votre abonnement avec des fonctionnalités supplémentaires",
+    "loading": "Chargement des modules complémentaires...",
+    "subscriptionAddons": {
+      "title": "Modules complémentaires d'Abonnement",
+      "description": "Ces modules complémentaires nécessitent un abonnement actif et seront facturés avec votre plan.",
+      "noAddons": "Aucun module complémentaire d'abonnement disponible."
+    },
+    "globalAddons": {
+      "title": "Modules complémentaires Globaux",
+      "description": "Ces modules complémentaires sont disponibles pour tous les utilisateurs et s'appliquent à tout votre compte.",
+      "noAddons": "Aucun module complémentaire global disponible."
+    },
+    "addToCart": "Ajouter au Panier",
+    "requiresSubscription": "Nécessite un Abonnement",
+    "backToPlans": "Retour aux Plans",
+    "errors": {
+      "failedToLoad": "Erreur de chargement des modules complémentaires"
+    },
+    "detail": {
+      "title": "Détails du Module Complémentaire",
+      "status": "Statut",
+      "startDate": "Date de Début",
+      "expiryDate": "Date d'Expiration",
+      "cancelledDate": "Date d'Annulation",
+      "price": "Prix",
+      "billingPeriod": "Période de Facturation",
+      "invoice": "Facture",
+      "cancelAddon": "Annuler le Module",
+      "cancelConfirm": "Êtes-vous sûr de vouloir annuler ce module complémentaire ?",
+      "cancelSuccess": "Module complémentaire annulé avec succès.",
+      "backToDashboard": "Retour au Tableau de Bord",
+      "alreadyCancelled": "Ce module complémentaire a été annulé."
+    }
+  },
+  "invoices": {
+    "title": "Factures",
+    "loading": "Chargement des factures...",
+    "searchPlaceholder": "Rechercher des factures...",
+    "filters": {
+      "allStatuses": "Tous les Statuts",
+      "paid": "Payée",
+      "pending": "En attente",
+      "overdue": "En retard",
+      "refunded": "Remboursée"
+    },
+    "tableHeaders": {
+      "date": "Date",
+      "invoiceNumber": "Facture #",
+      "amount": "Montant",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "noInvoices": "Aucune facture.",
+    "noInvoicesFiltered": "Aucune facture ne correspond à vos filtres.",
+    "messages": {
+      "downloadInitiated": "Téléchargement de la facture initié"
+    },
+    "errors": {
+      "failedToLoad": "Erreur de chargement des factures",
+      "failedToDownload": "Erreur lors du téléchargement de la facture"
+    },
+    "detail": {
+      "title": "Détails de la Facture",
+      "loading": "Chargement de la facture...",
+      "invoiceTitle": "Facture {number}",
+      "date": "Date",
+      "dueDate": "Date d'Échéance",
+      "currency": "Devise",
+      "items": "Articles",
+      "itemsTableHeaders": {
+        "description": "Description",
+        "qty": "Quantité",
+        "unitPrice": "Prix Unitaire",
+        "total": "Total"
+      },
+      "totalAmount": "Montant Total",
+      "downloadPdf": "Télécharger PDF",
+      "payNow": "Payer Maintenant",
+      "payByInvoice": "Payer par Virement",
+      "paymentMethod": "Méthode de Paiement",
+      "paymentMethods": {
+        "stripe": "Stripe",
+        "invoice": "Virement Bancaire",
+        "paypal": "PayPal",
+        "yookassa": "YooKassa"
+      },
+      "errors": {
+        "failedToLoad": "Erreur de chargement de la facture",
+        "failedToDownload": "Erreur lors du téléchargement de la facture"
+      }
+    },
+    "pay": {
+      "title": "Payer la Facture",
+      "loading": "Chargement de la facture...",
+      "invoiceTitle": "Facture {number}",
+      "date": "Date",
+      "status": "Statut",
+      "currency": "Devise",
+      "items": "Articles",
+      "totalAmount": "Montant Total",
+      "paymentTitle": "Paiement",
+      "alreadyPaid": "Cette facture a déjà été payée.",
+      "paymentInfo": "Cliquez ci-dessous pour effectuer votre paiement en toute sécurité.",
+      "processing": "Traitement...",
+      "payAmount": "Payer ${amount}",
+      "successTitle": "Paiement Réussi !",
+      "successMessage": "Votre paiement a été traité avec succès.",
+      "invoiceNowPaid": "La facture {number} est maintenant payée.",
+      "errors": {
+        "failedToLoad": "Erreur de chargement de la facture",
+        "paymentFailed": "Paiement échoué. Veuillez réessayer."
+      }
+    }
+  },
+  "login": {
+    "title": "Connexion",
+    "emailLabel": "Adresse E-mail",
+    "passwordLabel": "Mot de Passe",
+    "loggingIn": "Connexion en cours...",
+    "loginButton": "Se Connecter",
+    "errors": {
+      "loginFailed": "Erreur de connexion",
+      "invalidCredentials": "Identifiants invalides"
+    }
+  },
+  "components": {
+    "billingAddress": {
+      "title": "Adresse de Facturation",
+      "loading": "Chargement...",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Prénom",
+      "lastNameLabel": "Nom de Famille",
+      "lastNamePlaceholder": "Nom de Famille",
+      "companyLabel": "Entreprise (optionnel)",
+      "companyPlaceholder": "Nom de l'entreprise",
+      "streetLabel": "Adresse *",
+      "streetPlaceholder": "Rue et numéro",
+      "cityLabel": "Ville *",
+      "cityPlaceholder": "Ville",
+      "zipLabel": "Code Postal *",
+      "zipPlaceholder": "Code Postal",
+      "countryLabel": "Pays *",
+      "countryPlaceholder": "Sélectionner un pays",
+      "errors": {
+        "firstNameRequired": "Le prénom est requis",
+        "lastNameRequired": "Le nom de famille est requis",
+        "streetRequired": "L'adresse est requise",
+        "cityRequired": "La ville est requise",
+        "zipRequired": "Le code postal est requis",
+        "countryRequired": "Le pays est requis"
+      }
+    },
+    "emailBlock": {
+      "title": "Adresse E-mail",
+      "emailPlaceholder": "Entrez votre e-mail",
+      "checking": "Vérification...",
+      "newUser": {
+        "hint": "Créez un mot de passe pour continuer",
+        "passwordPlaceholder": "Créer un mot de passe",
+        "confirmPlaceholder": "Confirmer le mot de passe",
+        "passwordMismatch": "Les mots de passe ne correspondent pas",
+        "signingUp": "Inscription en cours...",
+        "signUpButton": "S'Inscrire et Continuer"
+      },
+      "existingUser": {
+        "hint": "Le compte existe. Entrez le mot de passe pour vous connecter.",
+        "passwordPlaceholder": "Entrez le mot de passe",
+        "forgotPassword": "Mot de passe oublié ?",
+        "loggingIn": "Connexion en cours...",
+        "loginButton": "Se Connecter"
+      },
+      "loggedIn": {
+        "loggedInAs": "Connecté en tant que {email}",
+        "loggedInAsName": "Connecté en tant que {name}, e-mail {email}",
+        "logoutButton": "Déconnexion"
+      },
+      "passwordStrength": {
+        "weak": "Faible",
+        "medium": "Moyen",
+        "strong": "Fort"
+      }
+    },
+    "paymentMethods": {
+      "title": "Méthode de Paiement",
+      "loading": "Chargement des méthodes de paiement...",
+      "noMethods": "Aucune méthode de paiement disponible",
+      "error": "Erreur de chargement des méthodes de paiement"
+    },
+    "termsCheckbox": {
+      "agreeText": "J'accepte les",
+      "termsLink": "Conditions d'Utilisation",
+      "popupTitle": "Conditions d'Utilisation",
+      "popupLoading": "Chargement...",
+      "popupClose": "Fermer",
+      "failedToLoad": "Erreur de chargement des conditions. Veuillez réessayer plus tard."
+    },
+    "sessionExpiredModal": {
+      "title": "Session Expirée",
+      "defaultMessage": "Votre session a expiré. Veuillez vous connecter de nouveau pour continuer.",
+      "loginButton": "Se Connecter"
+    }
+  },
+  "planDetail": {
+    "title": "Détails du Plan",
+    "loading": "Chargement des détails du plan...",
+    "error": "Erreur de chargement des détails du plan.",
+    "backLink": "Retour",
+    "name": "Nom",
+    "price": "Prix",
+    "billingPeriod": "Période de Facturation",
+    "description": "Description",
+    "features": "Fonctionnalités",
+    "status": "Statut",
+    "active": "Actif",
+    "archived": "Archivé"
+  },
+  "tokenBundleDetail": {
+    "title": "Détails du Forfait de Jetons",
+    "loading": "Chargement du forfait de jetons...",
+    "error": "Erreur de chargement du forfait de jetons.",
+    "backLink": "Retour",
+    "name": "Nom",
+    "tokenAmount": "Quantité de Jetons",
+    "price": "Prix",
+    "description": "Description"
+  },
+  "addonInfo": {
+    "title": "Détails du Module Complémentaire",
+    "loading": "Chargement des détails du module complémentaire...",
+    "error": "Erreur de chargement des détails du module complémentaire.",
+    "backLink": "Retour",
+    "name": "Nom",
+    "price": "Prix",
+    "currency": "Devise",
+    "billingPeriod": "Période de Facturation",
+    "description": "Description"
+  },
+  "notFound": {
+    "message": "La page que vous recherchez n'existe pas.",
+    "backHome": "Retour au Tableau de Bord"
+  }
+}

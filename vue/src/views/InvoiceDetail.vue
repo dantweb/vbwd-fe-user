@@ -1,0 +1,512 @@
+<template>
+  <div class="invoice-detail">
+    <h1>{{ $t('invoices.detail.title') }}</h1>
+
+    <!-- Loading State -->
+    <div
+      v-if="loading"
+      class="loading-state"
+      data-testid="invoice-loading"
+    >
+      <div class="spinner" />
+      <p>{{ $t('invoices.detail.loading') }}</p>
+    </div>
+
+    <!-- Error State -->
+    <div
+      v-else-if="error"
+      class="error-state"
+      data-testid="invoice-error"
+    >
+      <p>{{ error }}</p>
+      <router-link
+        to="/dashboard/subscription"
+        class="btn secondary"
+      >
+        {{ $t('common.backToSubscription') }}
+      </router-link>
+    </div>
+
+    <!-- Invoice Details -->
+    <div
+      v-else-if="invoice"
+      class="invoice-content"
+    >
+      <div class="card">
+        <div class="invoice-header">
+          <h2>Invoice {{ invoice.invoice_number }}</h2>
+          <span
+            class="status-badge"
+            :class="invoice.status.toLowerCase()"
+          >{{ invoice.status }}</span>
+        </div>
+
+        <div class="invoice-info">
+          <div class="detail-row">
+            <span class="label">{{ $t('invoices.detail.date') }}</span>
+            <span class="value">{{ formatDate(invoice.invoiced_at || invoice.created_at) }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">{{ $t('invoices.detail.dueDate') }}</span>
+            <span class="value">{{ formatDate(invoice.due_date) }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">{{ $t('invoices.detail.currency') }}</span>
+            <span class="value">{{ invoice.currency || 'USD' }}</span>
+          </div>
+          <div
+            v-if="invoice.payment_method"
+            class="detail-row"
+          >
+            <span class="label">{{ $t('invoices.detail.paymentMethod') }}</span>
+            <span class="value payment-method-badge">{{ paymentMethodLabel(invoice.payment_method) }}</span>
+          </div>
+        </div>
+
+        <!-- Line Items -->
+        <div
+          v-if="invoice.line_items?.length"
+          class="line-items"
+        >
+          <h3>{{ $t('invoices.detail.items') }}</h3>
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>{{ $t('invoices.detail.itemsTableHeaders.type') || 'Type' }}</th>
+                <th>{{ $t('invoices.detail.itemsTableHeaders.description') }}</th>
+                <th>{{ $t('invoices.detail.itemsTableHeaders.qty') }}</th>
+                <th>{{ $t('invoices.detail.itemsTableHeaders.unitPrice') }}</th>
+                <th>{{ $t('invoices.detail.itemsTableHeaders.total') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(item, index) in invoice.line_items"
+                :key="index"
+              >
+                <td>
+                  <span
+                    class="type-badge"
+                    :class="item.type?.toLowerCase()"
+                  >{{ itemTypeLabel(item.type) }}</span>
+                </td>
+                <td>
+                  <router-link
+                    v-if="itemLink(item)"
+                    :to="itemLink(item)!"
+                  >
+                    {{ item.description }}
+                  </router-link>
+                  <span v-else>{{ item.description }}</span>
+                </td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.unit_price }}</td>
+                <td>${{ item.total_price }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="total-section">
+          <div class="total-row">
+            <span class="total-label">{{ $t('invoices.detail.totalAmount') }}</span>
+            <span class="total-value">${{ invoice.total_amount || invoice.amount }}</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <router-link
+            to="/dashboard/subscription"
+            class="btn secondary"
+          >
+            {{ $t('common.back') }}
+          </router-link>
+          <button
+            class="btn secondary"
+            @click="downloadInvoice"
+          >
+            {{ $t('invoices.detail.downloadPdf') }}
+          </button>
+          <router-link
+            v-if="invoice.status === 'pending' && invoice.payment_method === 'stripe'"
+            :to="`/pay/stripe?invoice=${invoice.id}`"
+            class="btn primary"
+          >
+            {{ $t('invoices.detail.payNow') }}
+          </router-link>
+          <router-link
+            v-else-if="invoice.status === 'pending' && invoice.payment_method === 'paypal'"
+            :to="`/pay/paypal?invoice=${invoice.id}`"
+            class="btn primary"
+          >
+            {{ $t('invoices.detail.payNow') }}
+          </router-link>
+          <router-link
+            v-else-if="invoice.status === 'pending' && invoice.payment_method !== 'invoice'"
+            :to="`/dashboard/subscription/invoices/${invoice.id}/pay`"
+            class="btn primary"
+          >
+            {{ $t('invoices.detail.payNow') }}
+          </router-link>
+          <button
+            v-else-if="invoice.status === 'pending' && invoice.payment_method === 'invoice'"
+            class="btn secondary"
+            disabled
+          >
+            {{ $t('invoices.detail.payByInvoice') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import { api } from '@/api';
+
+interface LineItem {
+  type: string;
+  item_id?: string;
+  catalog_item_id?: string;
+  description: string;
+  quantity: number;
+  unit_price: string;
+  total_price: string;
+}
+
+interface Invoice {
+  id: string;
+  invoice_number: string;
+  status: string;
+  amount: string;
+  total_amount?: string;
+  currency: string;
+  payment_method?: string | null;
+  invoiced_at?: string;
+  created_at?: string;
+  due_date?: string;
+  line_items?: LineItem[];
+}
+
+const route = useRoute();
+const { t } = useI18n();
+
+const loading = ref(true);
+const error = ref<string | null>(null);
+const invoice = ref<Invoice | null>(null);
+
+onMounted(async () => {
+  await loadInvoice();
+});
+
+async function loadInvoice(): Promise<void> {
+  loading.value = true;
+  error.value = null;
+
+  try {
+    const invoiceId = route.params.invoiceId as string;
+    const response = await api.get(`/user/invoices/${invoiceId}`) as { invoice: Invoice } | Invoice;
+    invoice.value = (response as { invoice: Invoice }).invoice || response as Invoice;
+  } catch (err) {
+    error.value = (err as Error).message || t('invoices.detail.errors.failedToLoad');
+  } finally {
+    loading.value = false;
+  }
+}
+
+async function downloadInvoice(): Promise<void> {
+  if (!invoice.value) return;
+
+  try {
+    const response = await api.get(`/user/invoices/${invoice.value.id}/download`) as { downloadUrl?: string };
+    if (response.downloadUrl) {
+      window.open(response.downloadUrl, '_blank');
+    }
+  } catch (err) {
+    error.value = (err as Error).message || t('invoices.detail.errors.failedToDownload');
+  }
+}
+
+function formatDate(dateStr: string | null | undefined): string {
+  if (!dateStr) return '-';
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+function itemTypeLabel(type?: string): string {
+  const labels: Record<string, string> = {
+    subscription: 'Plan',
+    token_bundle: 'Token Bundle',
+    add_on: 'Add-On',
+  };
+  return labels[type || ''] || type || 'Item';
+}
+
+function paymentMethodLabel(method: string): string {
+  const labels: Record<string, string> = {
+    stripe: 'Stripe',
+    invoice: t('invoices.detail.paymentMethods.invoice'),
+    paypal: 'PayPal',
+  };
+  return labels[method] || method;
+}
+
+function itemLink(item: { type?: string; item_id?: string; catalog_item_id?: string }): string | null {
+  const catalogId = item.catalog_item_id || item.item_id;
+  if (!catalogId) return null;
+  switch (item.type) {
+    case 'subscription':
+      return `/dashboard/plans/${catalogId}`;
+    case 'token_bundle':
+      return `/dashboard/tokens/${catalogId}`;
+    case 'add_on':
+      return `/dashboard/add-ons/info/${catalogId}`;
+    default:
+      return null;
+  }
+}
+</script>
+
+<style scoped>
+.invoice-detail {
+  max-width: 800px;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.invoice-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.status-badge.paid {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.overdue {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.refunded {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.invoice-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-row .label {
+  color: #666;
+}
+
+.detail-row .value {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.payment-method-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.line-items {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.line-items h3 {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.items-table th,
+.items-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.items-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.items-table td:last-child,
+.items-table th:last-child {
+  text-align: right;
+}
+
+.type-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.type-badge.subscription {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.type-badge.token_bundle {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.type-badge.add_on {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.total-section {
+  border-top: 2px solid #eee;
+  padding-top: 15px;
+  margin-bottom: 25px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.total-label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.total-value {
+  font-weight: 700;
+  color: #27ae60;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn.primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #2980b9;
+}
+
+.btn.secondary {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.btn.secondary:hover {
+  background-color: #bdc3c7;
+}
+</style>
