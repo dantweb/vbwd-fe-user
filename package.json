@@ -17,7 +17,7 @@
     "plugin": "npx tsx bin/plugin-manager.ts"
   },
   "dependencies": {
-    "@vbwd/view-component": "^0.1.0",
+    "@dantweb/view-component": "^0.1.0",
     "pinia": "^2.1.7",
     "socket.io-client": "^4.7.2",
     "vue": "^3.4.0",
