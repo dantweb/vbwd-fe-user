@@ -13,9 +13,10 @@ module.exports = {
     'plugin:vue/vue3-recommended'
   ],
   rules: {
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/ban-types': 'off',
     'no-unused-vars': 'off',
     'vue/multi-word-component-names': 'off'
   },
