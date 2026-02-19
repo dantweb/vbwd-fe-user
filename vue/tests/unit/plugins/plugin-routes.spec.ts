@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { createRouter, createMemoryHistory } from 'vue-router'
-import { PluginRegistry, PlatformSDK } from '@dantweb/view-component'
-import type { IPlugin, IPlatformSDK } from '@dantweb/view-component'
+import { PluginRegistry, PlatformSDK } from 'vbwd-view-component'
+import type { IPlugin, IPlatformSDK } from 'vbwd-view-component'
 
 const NotFoundStub = { template: '<div>404 Not Found</div>' }
 const PluginPageStub = { template: '<div>Plugin Page</div>' }

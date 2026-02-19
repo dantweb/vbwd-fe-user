@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { PluginRegistry, PlatformSDK } from '@dantweb/view-component';
+import { PluginRegistry, PlatformSDK } from 'vbwd-view-component';
 
 vi.mock('vue-i18n', () => ({
   useI18n: () => ({ t: (key: string) => key })

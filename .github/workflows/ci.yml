@@ -24,8 +24,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run style checks
         run: ./bin/pre-commit-check.sh --style
@@ -45,8 +43,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run unit tests
         run: ./bin/pre-commit-check.sh --unit
@@ -66,8 +62,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run integration tests
         run: ./bin/pre-commit-check.sh --integration

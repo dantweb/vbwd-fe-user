@@ -325,7 +325,7 @@
 <script setup lang="ts">
 import { ref, computed, inject, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useCartStore } from '@dantweb/view-component';
+import { useCartStore } from 'vbwd-view-component';
 import { storeToRefs } from 'pinia';
 
 const enabledPlugins = inject<Set<string>>('enabledPlugins', new Set());

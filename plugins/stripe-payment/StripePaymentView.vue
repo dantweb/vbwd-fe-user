@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { usePaymentRedirect } from '@dantweb/view-component';
+import { usePaymentRedirect } from 'vbwd-view-component';
 import { api } from '@/api';
 
 const { loading, error, invoiceId, readInvoiceFromQuery, createAndRedirect } =

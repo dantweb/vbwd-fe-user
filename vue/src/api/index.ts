@@ -4,7 +4,7 @@
  * Singleton ApiClient used by all stores and components.
  * This ensures the auth token is shared across the application.
  */
-import { ApiClient } from '@dantweb/view-component';
+import { ApiClient } from 'vbwd-view-component';
 import { ref } from 'vue';
 
 // Session expired state - reactive so components can react to it

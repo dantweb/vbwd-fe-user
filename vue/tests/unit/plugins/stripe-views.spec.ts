@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount, flushPromises, RouterLinkStub } from '@vue/test-utils'
 import { ref } from 'vue'
 
-// Mock the shared composables from @dantweb/view-component
+// Mock the shared composables from vbwd-view-component
 const mockRedirect = {
   loading: ref(false),
   error: ref<string | null>(null),
@@ -23,7 +23,7 @@ const mockStatus = {
   stopPolling: vi.fn(),
 }
 
-vi.mock('@dantweb/view-component', () => ({
+vi.mock('vbwd-view-component', () => ({
   usePaymentRedirect: () => mockRedirect,
   usePaymentStatus: () => mockStatus,
 }))

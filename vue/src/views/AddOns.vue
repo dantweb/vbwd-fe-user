@@ -188,7 +188,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { api } from '@/api';
 import { useSubscriptionStore } from '../stores/subscription';
-import { useCartStore } from '@dantweb/view-component';
+import { useCartStore } from 'vbwd-view-component';
 
 interface AddOn {
   id: string;

@@ -29,7 +29,7 @@ vi.mock('vue-router', () => ({
 }));
 
 const mockAddItem = vi.fn();
-vi.mock('@dantweb/view-component', () => ({
+vi.mock('vbwd-view-component', () => ({
   useCartStore: () => ({
     items: [],
     addItem: mockAddItem,

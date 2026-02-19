@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { PlatformSDK } from '@dantweb/view-component'
+import { PlatformSDK } from 'vbwd-view-component'
 import { stripePaymentPlugin } from '../../../../plugins/stripe-payment'
 
 describe('Stripe Payment Plugin', () => {

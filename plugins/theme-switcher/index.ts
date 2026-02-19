@@ -1,4 +1,4 @@
-import type { IPlugin, IPlatformSDK } from '@dantweb/view-component';
+import type { IPlugin, IPlatformSDK } from 'vbwd-view-component';
 import { themePresets } from './presets';
 import { applyTheme } from './apply-theme';
 import en from './locales/en.json';

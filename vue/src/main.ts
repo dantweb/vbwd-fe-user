@@ -4,8 +4,8 @@ import App from './App.vue';
 import router from './router';
 import { initializeApi } from '@/api';
 import i18n, { initLocale } from '@/i18n';
-import { PluginRegistry, PlatformSDK } from '@dantweb/view-component';
-import type { IPlugin } from '@dantweb/view-component';
+import { PluginRegistry, PlatformSDK } from 'vbwd-view-component';
+import type { IPlugin } from 'vbwd-view-component';
 import { getEnabledPlugins } from '@/utils/pluginLoader';
 
 // Initialize API with stored auth token before mounting app
