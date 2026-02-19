@@ -27,11 +27,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run ESLint
-        run: npm run lint
-
-      - name: Run TypeScript check
-        run: npx vue-tsc --noEmit
+      - name: Run style checks
+        run: ./bin/pre-commit-check.sh --style
 
   unit:
     name: Unit Tests
@@ -52,7 +49,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run unit tests
-        run: npx vitest run vue/tests/unit/
+        run: ./bin/pre-commit-check.sh --unit
 
   integration:
     name: Integration Tests
@@ -72,18 +69,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check for integration tests
-        id: check_tests
-        run: |
-          if ls vue/tests/integration/*.spec.ts vue/tests/integration/**/*.spec.ts 2>/dev/null | head -1 | grep -q .; then
-            echo "found=true" >> $GITHUB_OUTPUT
-          else
-            echo "found=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Run integration tests
-        if: steps.check_tests.outputs.found == 'true'
-        run: npx vitest run vue/tests/integration/
+        run: ./bin/pre-commit-check.sh --integration
 
   summary:
     name: Summary
