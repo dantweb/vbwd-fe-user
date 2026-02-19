@@ -1,0 +1,85 @@
+services:
+  # Development mode with hot reload
+  dev:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+    environment:
+      - VITE_API_URL=/api/v1
+    profiles:
+      - dev
+
+  # Test runner
+  test:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && npm run test"
+    profiles:
+      - test
+
+  # Watch mode for tests
+  test-watch:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && npm run test:watch"
+    profiles:
+      - test-watch
+
+  # Style checks
+  lint:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && ./bin/pre-commit-check.sh --style"
+    profiles:
+      - lint
+
+  # Unit tests
+  unit:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && ./bin/pre-commit-check.sh --unit"
+    profiles:
+      - unit
+
+  # Integration tests
+  integration:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./vue:/app
+      - ./plugins:/plugins
+      - ../../vbwd-fe-core:/core
+      - node_modules:/app/node_modules
+    command: sh -c "npm install && ./bin/pre-commit-check.sh --integration"
+    profiles:
+      - integration
+
+volumes:
+  node_modules:
