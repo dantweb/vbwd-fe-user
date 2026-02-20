@@ -25,5 +25,5 @@ module.exports = {
     es2022: true,
     node: true
   },
-  ignorePatterns: ['node_modules/', 'dist/']
+  ignorePatterns: ['node_modules/', 'dist/', 'vbwd-fe-core/']
 };
