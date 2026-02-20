@@ -1,0 +1,3 @@
+[submodule "vbwd-fe-core"]
+	path = vbwd-fe-core
+	url = https://github.com/dantweb/vbwd-fe-core.git
