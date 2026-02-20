@@ -245,7 +245,7 @@ export const useTaroStore = defineStore('taro', {
       this.error = null;
 
       try {
-        const response = await api.post('/taro/session', {});
+        const response = await api.post('/taro/session', {}) as any;
 
         if (!response.success) {
           throw new Error(response.message || 'Failed to create session');
@@ -287,7 +287,7 @@ export const useTaroStore = defineStore('taro', {
             question,
             follow_up_type: followUpType,
           }
-        );
+        ) as any;
 
         if (!response.success) {
           throw new Error(response.message || 'Failed to add follow-up');
@@ -319,7 +319,7 @@ export const useTaroStore = defineStore('taro', {
           ...(params?.status && { status: params.status }),
         };
 
-        const response = await api.get('/taro/history', { params: queryParams });
+        const response = await api.get('/taro/history', { params: queryParams }) as any;
 
         if (!response.success) {
           throw new Error(response.message || 'Failed to fetch history');
@@ -363,7 +363,7 @@ export const useTaroStore = defineStore('taro', {
       this.error = null;
 
       try {
-        const response = await api.get('/taro/limits');
+        const response = await api.get('/taro/limits') as any;
 
         if (!response.success) {
           throw new Error(response.message || 'Failed to fetch limits');
@@ -552,7 +552,7 @@ export const useTaroStore = defineStore('taro', {
             situation_text: trimmed,
             language: getLocale()
           }
-        );
+        ) as any;
 
         if (!response.success) {
           throw new Error(response.error || 'Failed to generate reading');
@@ -601,7 +601,7 @@ export const useTaroStore = defineStore('taro', {
             question: trimmed,
             language: getLocale()
           }
-        );
+        ) as any;
 
         if (!response.success) {
           throw new Error(response.error || 'Failed to get response');
@@ -634,7 +634,7 @@ export const useTaroStore = defineStore('taro', {
         const response = await api.post(
           `/taro/session/${this.currentSession.session_id}/card-explanation`,
           { language: getLocale() }
-        );
+        ) as any;
 
         if (!response.success) {
           throw new Error(response.error || 'Failed to get explanation');

@@ -43,7 +43,7 @@ export function formatMarkdown(text: string): FormattedContent {
   // Convert links [text](url) to <a> tags with external link icon
   html = html.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    (match, text, url) => {
+    (_match, text, url) => {
       hasLinks = true;
       // Validate URL
       const isValidUrl = url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/');

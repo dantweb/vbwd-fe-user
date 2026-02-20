@@ -529,18 +529,6 @@ async function loadData(): Promise<void> {
   }
 }
 
-async function fetchUsageStats(): Promise<void> {
-  try {
-    const response = await api.get('/user/usage') as { api_calls?: number; storage_mb?: number };
-    usageStats.value = {
-      apiCalls: response.api_calls || 0,
-      storageMb: response.storage_mb || 0,
-    };
-  } catch {
-    usageStats.value = { apiCalls: 0, storageMb: 0 };
-  }
-}
-
 async function fetchTokenBalance(): Promise<void> {
   try {
     const response = await api.get('/user/tokens/balance') as { balance: number };

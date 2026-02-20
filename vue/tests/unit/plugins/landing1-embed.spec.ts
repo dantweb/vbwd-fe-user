@@ -193,7 +193,7 @@ describe('EmbedLanding1View', () => {
     })
     await wrapper.vm.$nextTick()
 
-    const call = postMessageSpy.mock.calls[0]
+    const call = postMessageSpy.mock.calls[0] as any
     const payload = call[0].payload
     expect(payload).toHaveProperty('planSlug')
     expect(payload).toHaveProperty('planName')

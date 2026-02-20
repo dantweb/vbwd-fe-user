@@ -423,11 +423,6 @@ const closeCurrentSession = () => {
   taroStore.closeSession();
 };
 
-const selectCard = (cardId: string) => {
-  selectedCardId.value = cardId;
-  selectedCardFullscreen.value = false;
-};
-
 const showCardFullscreen = (cardId: string) => {
   selectedCardId.value = cardId;
   selectedCardFullscreen.value = true;

@@ -513,13 +513,7 @@ test.describe('Taro Oracle Flow - Oracle Dialog Phases', () => {
     const submitBtn = activeSession.locator('[data-testid="submit-situation-btn"]');
     await submitBtn.click();
 
-    // Loading state should appear briefly
-    const loadingSpinner = activeSession.locator('.spinner-small');
-    const isLoadingVisible = await loadingSpinner
-      .isVisible({ timeout: 2000 })
-      .catch(() => false);
-    // Loading state may be brief, so it's ok if we miss it
-    // But submit button should be disabled during loading
+    // Loading state should appear briefly and submit button should be disabled during loading
     const isSubmitDisabled = await submitBtn.isDisabled({ timeout: 1000 });
     expect(isSubmitDisabled).toBeTruthy();
   });
@@ -661,12 +655,6 @@ test.describe('Taro Oracle Flow - Error Handling & Edge Cases', () => {
       await page.waitForTimeout(400);
     }
 
-    // Get initial oracle message
-    const conversationBox = activeSession.locator('.conversation-box');
-    const initialMessages = await conversationBox
-      .locator('.conversation-message')
-      .count();
-
     // Click Discuss
     const discussBtn = activeSession.locator('button:has-text("Discuss")');
     await discussBtn.click();
@@ -682,7 +670,7 @@ test.describe('Taro Oracle Flow - Error Handling & Edge Cases', () => {
     await page.waitForTimeout(1000);
 
     // Check message order
-    const messages = conversationBox.locator('.conversation-message');
+    const messages = activeSession.locator('.conversation-message');
     const messageCount = await messages.count();
 
     // Last user message should contain the situation text

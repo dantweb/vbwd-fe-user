@@ -18,7 +18,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./vue/src/*"],
-      "@plugins/*": ["./plugins/*"]
+      "@plugins/*": ["./plugins/*"],
+      "vbwd-view-component": ["./node_modules/vbwd-view-component"],
+      "vbwd-view-component/*": ["./node_modules/vbwd-view-component/*"],
+      "#/*": ["./vue/src/*"]
     },
     "types": ["vite/client", "vitest/globals"]
   },
@@ -29,6 +32,10 @@
     "plugins/**/*.ts",
     "plugins/**/*.vue",
     "vue/tests/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "vue/tests/unit/server/**"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

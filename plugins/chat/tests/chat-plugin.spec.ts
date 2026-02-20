@@ -41,8 +41,8 @@ describe('Chat Plugin', () => {
 
     const translations = sdk.getTranslations()
     expect(translations['en']).toBeDefined()
-    expect(translations['en'].chat).toBeDefined()
-    expect(translations['en'].chat.title).toBe('Chat')
+    expect((translations['en'] as any).chat).toBeDefined()
+    expect((translations['en'] as any).chat.title).toBe('Chat')
   })
 
   it('should add german translations on install', async () => {
@@ -51,8 +51,8 @@ describe('Chat Plugin', () => {
 
     const translations = sdk.getTranslations()
     expect(translations['de']).toBeDefined()
-    expect(translations['de'].chat).toBeDefined()
-    expect(translations['de'].chat.send).toBe('Senden')
+    expect((translations['de'] as any).chat).toBeDefined()
+    expect((translations['de'] as any).chat.send).toBe('Senden')
   })
 
   it('should set active status on activate', async () => {

@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
-import { useTaroStore } from '../taro';
+import { useTaroStore } from '../src/stores/taro';
 
 // Mock API client
-vi.mock('@/api/client', () => ({
+vi.mock('@/api', () => ({
   api: {
     post: vi.fn(),
     get: vi.fn(),
   },
 }));
 
-import { api } from '@/api/client';
+import { api } from '@/api';
 
 describe('Taro Store', () => {
   beforeEach(() => {
@@ -517,6 +517,7 @@ describe('Taro Store', () => {
             cards: [],
             created_at: new Date().toISOString(),
             follow_up_count: 0,
+            tokens_consumed: 5,
           },
         ];
         store.error = 'Some error';

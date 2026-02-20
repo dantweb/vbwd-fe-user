@@ -51,7 +51,7 @@ describe('ChatView', () => {
         })
       }
       return Promise.reject(new Error('Not mocked'))
-    }) as ReturnType<typeof vi.fn>
+    }) as any
 
     localStorage.setItem('auth_token', 'test-token')
   })
