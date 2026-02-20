@@ -1,6 +1,5 @@
 name: CI
 
-
 on:
   push:
     branches:
@@ -16,17 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Checkout vbwd-fe-core
-        uses: actions/checkout@v4
-        with:
-          repository: dantweb/vbwd-fe-core
-          path: vbwd-fe-core-checkout
-
-      - name: Setup symlink for vbwd-fe-core
-        run: |
-          mkdir -p ../
-          ln -s ${{ github.workspace }}/vbwd-fe-core-checkout ../../vbwd-fe-core
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -47,17 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout vbwd-fe-core
-        uses: actions/checkout@v4
-        with:
-          repository: dantweb/vbwd-fe-core
-          path: vbwd-fe-core-checkout
-
-      - name: Setup symlink for vbwd-fe-core
-        run: |
-          mkdir -p ../
-          ln -s ${{ github.workspace }}/vbwd-fe-core-checkout ../../vbwd-fe-core
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -76,17 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Checkout vbwd-fe-core
-        uses: actions/checkout@v4
-        with:
-          repository: dantweb/vbwd-fe-core
-          path: vbwd-fe-core-checkout
-
-      - name: Setup symlink for vbwd-fe-core
-        run: |
-          mkdir -p ../
-          ln -s ${{ github.workspace }}/vbwd-fe-core-checkout ../../vbwd-fe-core
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
