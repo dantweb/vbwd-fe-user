@@ -1,0 +1,14 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy entire repo (vbwd-fe-core submodule must be present - clone with --recurse-submodules)
+COPY . .
+
+# Build the core library first so the file: dependency resolves
+RUN cd vbwd-fe-core && npm install && npm run build
+
+# Install main app (resolves vbwd-view-component from ./vbwd-fe-core)
+RUN npm install
+
+CMD ["npm", "run", "test"]
