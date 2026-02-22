@@ -4,6 +4,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   root: './vue',
+  envDir: resolve(__dirname),
   plugins: [vue()],
   resolve: {
     alias: {
@@ -13,7 +14,7 @@ export default defineConfig({
     dedupe: ['pinia', 'vue']
   },
   server: {
-    middlewareMode: false,
+    allowedHosts: true,
     proxy: {
       '/api': {
         target: process.env.VITE_BACKEND_URL || 'http://host.docker.internal:5000',
