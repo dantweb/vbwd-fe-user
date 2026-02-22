@@ -6,7 +6,8 @@ WORKDIR /app
 COPY . .
 
 # Build the core library first so the file: dependency resolves
-RUN cd vbwd-fe-core && npm install && npm run build
+# Remove node_modules after build to prevent npm conflict with parent install
+RUN cd vbwd-fe-core && npm install && npm run build && rm -rf node_modules
 
 # Install main app (resolves vbwd-view-component from ./vbwd-fe-core)
 RUN npm install
