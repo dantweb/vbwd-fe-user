@@ -1,4 +1,5 @@
 node_modules
+vbwd-fe-core
 dist
 .env
 .env.local
