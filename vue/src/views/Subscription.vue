@@ -31,58 +31,64 @@
       v-else
       class="subscription-content"
     >
-      <!-- Current Subscription Card -->
+      <!-- Active Subscriptions Table -->
       <div
         class="card subscription-card"
         data-testid="current-subscription"
       >
-        <h2>{{ $t('subscription.currentPlan.title') }}</h2>
+        <h2>{{ $t('subscription.activeSubscriptions.title') }}</h2>
         <div
-          v-if="subscription"
-          class="plan-info"
+          v-if="activeSubscriptions.length > 0"
+          class="active-subs-table-wrap"
         >
-          <div class="plan-header">
-            <span
-              class="plan-name"
-              data-testid="plan-name"
-            >{{ subscription.plan?.name || $t('subscription.currentPlan.noPlan') }}</span>
-            <span
-              class="plan-status"
-              :class="subscription.status.toLowerCase()"
-              data-testid="plan-status"
-            >
-              {{ formatStatus(subscription.status) }}
-            </span>
-          </div>
-          <p
-            v-if="subscription.plan?.description"
-            class="plan-description"
-          >
-            {{ subscription.plan.description }}
-          </p>
-          <div class="plan-details">
-            <div class="detail-row">
-              <span class="label">{{ $t('subscription.currentPlan.price') }}</span>
-              <span class="value">{{ formatPrice(subscription.plan?.price) }} / {{ subscription.plan?.billing_period || 'month' }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="label">{{ $t('subscription.currentPlan.currentPeriod') }}</span>
-              <span class="value">
-                {{ formatDate(subscription.started_at) }} - {{ formatDate(subscription.expires_at) }}
-              </span>
-            </div>
-            <div class="detail-row">
-              <span class="label">{{ $t('subscription.currentPlan.nextBillingDate') }}</span>
-              <span class="value">{{ formatDate(subscription.expires_at) }}</span>
-            </div>
-          </div>
+          <table class="active-subs-table">
+            <thead>
+              <tr>
+                <th>{{ $t('subscription.activeSubscriptions.plan') }}</th>
+                <th>{{ $t('subscription.activeSubscriptions.nextPayment') }}</th>
+                <th>{{ $t('subscription.activeSubscriptions.price') }}</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="sub in activeSubscriptions"
+                :key="sub.id"
+                data-testid="active-sub-row"
+              >
+                <td>
+                  <span
+                    class="plan-name-cell"
+                    data-testid="plan-name"
+                  >{{ sub.plan?.name || $t('subscription.currentPlan.noPlan') }}</span>
+                  <span
+                    class="plan-status"
+                    :class="sub.status.toLowerCase()"
+                    data-testid="plan-status"
+                  >{{ formatStatus(sub.status) }}</span>
+                </td>
+                <td>{{ formatDate(sub.expires_at) }}</td>
+                <td>{{ formatPrice(sub.plan?.price) }} / {{ sub.plan?.billing_period || 'month' }}</td>
+                <td class="actions-cell">
+                  <button
+                    v-if="sub.status === 'ACTIVE'"
+                    class="btn danger small"
+                    data-testid="cancel-subscription"
+                    @click="requestCancel(sub)"
+                  >
+                    {{ $t('subscription.manage.cancelSubscription') }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div
           v-else
           class="no-subscription"
           data-testid="no-subscription"
         >
-          <p>{{ $t('subscription.currentPlan.noActiveSubscription') }}</p>
+          <p>{{ $t('subscription.activeSubscriptions.noSubscriptions') }}</p>
           <router-link
             to="/dashboard/plans"
             class="btn primary"
@@ -115,56 +121,6 @@
             @click="goToPurchaseTokens"
           >
             {{ $t('subscription.tokenBalance.purchaseTokens') }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Usage Statistics Card -->
-      <div
-        v-if="subscription"
-        class="card usage-card"
-        data-testid="usage-statistics"
-      >
-        <h2>Usage Statistics</h2>
-        <div class="usage-grid">
-          <div
-            class="usage-item"
-            data-testid="usage-api"
-          >
-            <span class="usage-label">API Calls</span>
-            <span class="usage-value">{{ formatNumber(usageStats.apiCalls) }}</span>
-          </div>
-          <div
-            class="usage-item"
-            data-testid="usage-storage"
-          >
-            <span class="usage-label">Storage</span>
-            <span class="usage-value">{{ usageStats.storageMb }} MB</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Subscription Actions -->
-      <div
-        v-if="subscription"
-        class="card actions-card"
-      >
-        <h2>{{ $t('subscription.manage.title') }}</h2>
-        <div class="actions">
-          <router-link
-            to="/dashboard/plans"
-            class="btn primary"
-            data-testid="change-plan"
-          >
-            {{ $t('subscription.manage.changePlan') }}
-          </router-link>
-          <button
-            v-if="subscription.status === 'ACTIVE'"
-            class="btn danger"
-            data-testid="cancel-subscription"
-            @click="showCancelModal = true"
-          >
-            {{ $t('subscription.manage.cancelSubscription') }}
           </button>
         </div>
       </div>
@@ -334,12 +290,12 @@
         <h3>{{ $t('subscription.cancelModal.title') }}</h3>
         <p>{{ $t('subscription.cancelModal.confirmMessage') }}</p>
         <p class="warning">
-          {{ $t('subscription.cancelModal.accessWarning', { date: formatDate(subscription?.expires_at) }) }}
+          {{ $t('subscription.cancelModal.accessWarning', { date: formatDate(subscriptionToCancel?.expires_at) }) }}
         </p>
         <div class="modal-actions">
           <button
             class="btn"
-            @click="showCancelModal = false"
+            @click="showCancelModal = false; subscriptionToCancel = null"
           >
             {{ $t('subscription.cancelModal.keepSubscription') }}
           </button>
@@ -443,11 +399,9 @@ const successMessage = ref('');
 const selectedInvoice = ref<Invoice | null>(null);
 const tokenBalance = ref(0);
 const cancellationNotice = ref(false);
+const subscriptionToCancel = ref<{ id: string; expires_at: string | null } | null>(null);
 
-// Usage statistics
-const usageStats = ref({ apiCalls: 0, storageMb: 0 });
-
-// Search and sorting
+// Invoice search and sorting
 const searchQuery = ref('');
 const sortField = ref<string>('invoiced_at');
 const sortDirection = ref<'asc' | 'desc'>('desc');
@@ -456,6 +410,7 @@ const pageSize = 10;
 
 // Computed
 const subscription = computed(() => subscriptionStore.subscription);
+const activeSubscriptions = computed(() => subscriptionStore.activeSubscriptions);
 
 const filteredInvoices = computed(() => {
   let result = [...invoicesStore.invoices];
@@ -517,10 +472,9 @@ async function loadData(): Promise<void> {
   try {
     await Promise.all([
       subscriptionStore.fetchSubscription().catch(() => null),
+      subscriptionStore.fetchActiveSubscriptions().catch(() => null),
       invoicesStore.fetchInvoices().catch(() => null),
       fetchTokenBalance(),
-      // TODO: fetchUsageStats() - endpoint /api/v1/user/usage does not exist yet
-      // fetchUsageStats(),
     ]);
   } catch (err) {
     error.value = (err as Error).message || t('subscription.errors.failedToLoad');
@@ -549,12 +503,18 @@ function sortBy(field: string): void {
   currentPage.value = 1;
 }
 
+function requestCancel(sub: { id: string; expires_at: string | null }): void {
+  subscriptionToCancel.value = sub;
+  showCancelModal.value = true;
+}
+
 async function confirmCancel(): Promise<void> {
   cancelling.value = true;
 
   try {
-    await subscriptionStore.cancelSubscription();
+    await subscriptionStore.cancelSubscription(subscriptionToCancel.value?.id);
     showCancelModal.value = false;
+    subscriptionToCancel.value = null;
     cancellationNotice.value = true;
     showSuccess(t('subscription.messages.subscriptionCancelled'));
   } catch (err) {
@@ -787,39 +747,41 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Usage Statistics */
-.usage-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+/* Active Subscriptions Table */
+.active-subs-table-wrap {
+  overflow-x: auto;
 }
 
-.usage-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
+.active-subs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.active-subs-table th,
+.active-subs-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.active-subs-table th {
   background: #f8f9fa;
-  border-radius: 8px;
-}
-
-.usage-label {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.usage-value {
-  font-size: 1.5rem;
   font-weight: 600;
   color: #2c3e50;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
-/* Actions */
-.actions {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+.active-subs-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.plan-name-cell {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-right: 8px;
 }
 
 .btn {
@@ -864,6 +826,11 @@ h1 {
 .btn:disabled {
   background-color: #95a5a6;
   cursor: not-allowed;
+}
+
+.btn.small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
 }
 
 /* Invoices Section */

@@ -77,13 +77,14 @@
       "viewProfile": "View Profile"
     },
     "subscriptionCard": {
-      "title": "Current Subscription",
+      "title": "Active Subscriptions",
       "noPlan": "No Plan",
       "billingPeriod": "Billing Period",
       "nextBilling": "Next Billing",
       "tokenBalance": "Token Balance",
       "noActiveSubscription": "No active subscription",
-      "manageSubscription": "Manage Subscription"
+      "manageSubscription": "Manage Subscription",
+      "additionalSubscriptions": "Additional Subscriptions"
     },
     "invoicesCard": {
       "title": "Recent Invoices",
@@ -187,6 +188,13 @@
       "price": "Price",
       "currentPeriod": "Current Period",
       "nextBillingDate": "Next Billing Date"
+    },
+    "activeSubscriptions": {
+      "title": "Active Subscriptions",
+      "plan": "Plan",
+      "nextPayment": "Next Payment",
+      "price": "Price",
+      "noSubscriptions": "You don't have any active subscriptions."
     },
     "tokenBalance": {
       "title": "Token Balance",

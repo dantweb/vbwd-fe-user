@@ -74,43 +74,10 @@
         data-testid="subscription-summary"
       >
         <h3>{{ $t('dashboard.subscriptionCard.title') }}</h3>
+
+        <!-- No active subscriptions -->
         <div
-          v-if="subscription"
-          class="subscription-info"
-        >
-          <div class="plan-header">
-            <span
-              class="plan-name"
-              data-testid="plan-name"
-            >{{ subscription.plan?.name || $t('dashboard.subscriptionCard.noPlan') }}</span>
-            <span
-              class="plan-status"
-              :class="subscription.status.toLowerCase()"
-              data-testid="subscription-status"
-            >
-              {{ formatStatus(subscription.status) }}
-            </span>
-          </div>
-          <div class="subscription-details">
-            <div class="detail-item">
-              <span class="label">{{ $t('dashboard.subscriptionCard.billingPeriod') }}</span>
-              <span class="value">{{ subscription.plan?.billing_period || '-' }}</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">{{ $t('dashboard.subscriptionCard.nextBilling') }}</span>
-              <span class="value">{{ formatDate(subscription.expires_at) }}</span>
-            </div>
-            <div
-              class="detail-item token-balance"
-              data-testid="token-balance"
-            >
-              <span class="label">{{ $t('dashboard.subscriptionCard.tokenBalance') }}</span>
-              <span class="value highlight">{{ formatNumber(tokenBalance) }} {{ $t('common.tokenUnit') }}</span>
-            </div>
-          </div>
-        </div>
-        <div
-          v-else
+          v-if="activeSubscriptions.length === 0"
           class="no-subscription"
         >
           <p>{{ $t('dashboard.subscriptionCard.noActiveSubscription') }}</p>
@@ -121,8 +88,66 @@
             {{ $t('common.browsePlans') }}
           </router-link>
         </div>
+
+        <!-- Primary (is_single) subscription -->
+        <div
+          v-if="primarySubscription"
+          class="subscription-info"
+        >
+          <div class="plan-header">
+            <span
+              class="plan-name"
+              data-testid="plan-name"
+            >{{ primarySubscription.plan?.name || $t('dashboard.subscriptionCard.noPlan') }}</span>
+            <span
+              class="plan-status"
+              :class="primarySubscription.status.toLowerCase()"
+              data-testid="subscription-status"
+            >
+              {{ formatStatus(primarySubscription.status) }}
+            </span>
+          </div>
+          <div class="subscription-details">
+            <div class="detail-item">
+              <span class="label">{{ $t('dashboard.subscriptionCard.billingPeriod') }}</span>
+              <span class="value">{{ primarySubscription.plan?.billing_period || '-' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">{{ $t('dashboard.subscriptionCard.nextBilling') }}</span>
+              <span class="value">{{ formatDate(primarySubscription.expires_at) }}</span>
+            </div>
+            <div
+              class="detail-item token-balance"
+              data-testid="token-balance"
+            >
+              <span class="label">{{ $t('dashboard.subscriptionCard.tokenBalance') }}</span>
+              <span class="value highlight">{{ formatNumber(tokenBalance) }} {{ $t('common.tokenUnit') }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional multi-subscriptions (is_single=false categories) -->
+        <div
+          v-if="multiSubscriptions.length > 0"
+          class="multi-subs"
+        >
+          <h4>{{ $t('dashboard.subscriptionCard.additionalSubscriptions') }}</h4>
+          <div
+            v-for="sub in multiSubscriptions"
+            :key="sub.id"
+            class="multi-sub-item"
+            data-testid="multi-sub-item"
+          >
+            <span class="multi-sub-name">{{ sub.plan?.name || $t('dashboard.subscriptionCard.noPlan') }}</span>
+            <span
+              class="plan-status"
+              :class="sub.status.toLowerCase()"
+            >{{ formatStatus(sub.status) }}</span>
+          </div>
+        </div>
+
         <router-link
-          v-if="subscription"
+          v-if="activeSubscriptions.length > 0"
           to="/dashboard/subscription"
           class="card-link"
         >
@@ -380,6 +405,24 @@ const userInitials = computed(() => {
 
 // Subscription computed
 const subscription = computed(() => subscriptionStore.subscription);
+const activeSubscriptions = computed(() => subscriptionStore.activeSubscriptions);
+
+// Primary subscription: from an is_single=true category, or first in list
+const primarySubscription = computed(() => {
+  const subs = activeSubscriptions.value;
+  return (
+    subs.find(sub => sub.plan?.categories?.some(c => c.is_single)) ||
+    subs[0] ||
+    null
+  );
+});
+
+// Multi subscriptions: everything except the primary
+const multiSubscriptions = computed(() => {
+  const primary = primarySubscription.value;
+  return activeSubscriptions.value.filter(sub => sub.id !== primary?.id);
+});
+
 const subscriptionHistory = computed(() => subscriptionStore.history);
 const activeAddons = computed(() => subscriptionStore.activeAddons);
 const inactiveAddons = computed(() => subscriptionStore.inactiveAddons);
@@ -417,6 +460,7 @@ async function loadDashboardData(): Promise<void> {
     await Promise.all([
       profileStore.fetchProfile(),
       subscriptionStore.fetchSubscription().catch(() => null),
+      subscriptionStore.fetchActiveSubscriptions().catch(() => null),
       subscriptionStore.fetchHistory().catch(() => null),
       subscriptionStore.fetchUserAddons().catch(() => null),
       invoicesStore.fetchInvoices().catch(() => null),
@@ -693,6 +737,39 @@ h1 {
   color: white;
   text-decoration: none;
   border-radius: 4px;
+}
+
+/* Multi-subscriptions */
+.multi-subs {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--vbwd-border-light, #eee);
+}
+
+.multi-subs h4 {
+  font-size: 0.8rem;
+  color: var(--vbwd-text-muted, #666);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.multi-sub-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--vbwd-border-light, #f0f0f0);
+}
+
+.multi-sub-item:last-child {
+  border-bottom: none;
+}
+
+.multi-sub-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--vbwd-text-heading, #2c3e50);
 }
 
 /* Invoices Card */

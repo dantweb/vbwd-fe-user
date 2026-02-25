@@ -1,6 +1,13 @@
 import { defineStore } from 'pinia';
 import { api } from '@/api';
 
+export interface PlanCategory {
+  id: string;
+  slug: string;
+  name: string;
+  is_single: boolean;
+}
+
 export interface Plan {
   id: string;
   name: string;
@@ -8,6 +15,7 @@ export interface Plan {
   price: number;
   billing_period: string;
   description?: string;
+  categories?: PlanCategory[];
 }
 
 export interface Subscription {
@@ -22,6 +30,7 @@ export interface Subscription {
   expires_at: string | null;
   cancelled_at: string | null;
   paused_at: string | null;
+  created_at: string | null;
   plan?: Plan;
   pending_plan?: Plan;
 }
@@ -60,6 +69,7 @@ export interface TokenTransaction {
 export const useSubscriptionStore = defineStore('subscription', {
   state: () => ({
     subscription: null as Subscription | null,
+    activeSubscriptions: [] as Subscription[],
     usage: null as Usage | null,
     loading: false,
     error: null as string | null,
@@ -106,6 +116,22 @@ export const useSubscriptionStore = defineStore('subscription', {
       }
     },
 
+    async fetchActiveSubscriptions() {
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const response = await api.get('/user/subscriptions/active-all') as { subscriptions: Subscription[] };
+        this.activeSubscriptions = response.subscriptions || [];
+        return response;
+      } catch (error) {
+        this.error = (error as Error).message || 'Failed to fetch active subscriptions';
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+
     async fetchUsage() {
       this.loading = true;
       this.error = null;
@@ -122,8 +148,9 @@ export const useSubscriptionStore = defineStore('subscription', {
       }
     },
 
-    async cancelSubscription() {
-      if (!this.subscription?.id) {
+    async cancelSubscription(subscriptionId?: string) {
+      const id = subscriptionId || this.subscription?.id;
+      if (!id) {
         throw new Error('No active subscription to cancel');
       }
 
@@ -131,9 +158,12 @@ export const useSubscriptionStore = defineStore('subscription', {
       this.error = null;
 
       try {
-        const response = await api.post(`/user/subscriptions/${this.subscription.id}/cancel`);
-        // Refetch subscription to get updated status
-        await this.fetchSubscription();
+        const response = await api.post(`/user/subscriptions/${id}/cancel`);
+        // Refetch to get updated state
+        await Promise.all([
+          this.fetchSubscription().catch(() => null),
+          this.fetchActiveSubscriptions().catch(() => null),
+        ]);
         return response as { subscription: Subscription; message: string };
       } catch (error) {
         this.error = (error as Error).message || 'Failed to cancel subscription';
@@ -171,7 +201,11 @@ export const useSubscriptionStore = defineStore('subscription', {
       try {
         const response = await api.get('/user/subscriptions') as { subscriptions: Subscription[] };
         this.history = (response.subscriptions || [])
-          .sort((a, b) => new Date(b.started_at || 0).getTime() - new Date(a.started_at || 0).getTime());
+          .sort((a, b) => {
+            const aTime = new Date(b.started_at || b.created_at || 0).getTime();
+            const bTime = new Date(a.started_at || a.created_at || 0).getTime();
+            return aTime - bTime;
+          });
         return response;
       } catch (error) {
         this.historyError = (error as Error).message || 'Failed to fetch history';
@@ -231,6 +265,7 @@ export const useSubscriptionStore = defineStore('subscription', {
 
     reset() {
       this.subscription = null;
+      this.activeSubscriptions = [];
       this.usage = null;
       this.error = null;
       this.loading = false;
