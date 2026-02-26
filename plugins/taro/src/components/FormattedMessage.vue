@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable-next-line vue/no-v-html -->
   <div
     :class="['formatted-message', { 'has-links': formatted.hasLinks }]"
     v-html="formatted.html"

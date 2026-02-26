@@ -404,7 +404,6 @@ const userInitials = computed(() => {
 });
 
 // Subscription computed
-const subscription = computed(() => subscriptionStore.subscription);
 const activeSubscriptions = computed(() => subscriptionStore.activeSubscriptions);
 
 // Primary subscription: from an is_single=true category, or first in list

@@ -94,7 +94,8 @@ describe('SubscriptionStore', () => {
       started_at: '2025-01-01',
       expires_at: '2025-02-01',
       cancelled_at: null,
-      paused_at: null
+      paused_at: null,
+      created_at: '2025-01-01'
     };
 
     // Mock cancel response and refetch
@@ -125,7 +126,8 @@ describe('SubscriptionStore', () => {
       started_at: '2025-01-01',
       expires_at: '2025-02-01',
       cancelled_at: null,
-      paused_at: null
+      paused_at: null,
+      created_at: '2025-01-01'
     };
 
     // Mock upgrade response and refetch
@@ -152,7 +154,8 @@ describe('SubscriptionStore', () => {
       started_at: '2025-01-01',
       expires_at: '2025-02-01',
       cancelled_at: null,
-      paused_at: null
+      paused_at: null,
+      created_at: '2025-01-01'
     };
     store.error = 'Some error';
     store.loading = true;

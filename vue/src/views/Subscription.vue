@@ -409,7 +409,6 @@ const currentPage = ref(1);
 const pageSize = 10;
 
 // Computed
-const subscription = computed(() => subscriptionStore.subscription);
 const activeSubscriptions = computed(() => subscriptionStore.activeSubscriptions);
 
 const filteredInvoices = computed(() => {
