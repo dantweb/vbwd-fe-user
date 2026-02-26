@@ -7,6 +7,7 @@
 #   ./bin/pre-commit-check.sh --unit       # Style + unit tests
 #   ./bin/pre-commit-check.sh --integration # Style + integration tests
 #   ./bin/pre-commit-check.sh --all        # Run everything
+#   ./bin/pre-commit-check.sh --full       # Alias for --all
 
 set -e
 
@@ -47,7 +48,7 @@ while [[ $# -gt 0 ]]; do
             RUN_INTEGRATION=true
             shift
             ;;
-        --all)
+        --all|--full)
             RUN_STYLE=true
             RUN_UNIT=true
             RUN_INTEGRATION=true
