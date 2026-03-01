@@ -6,10 +6,11 @@ WORKDIR /app
 COPY . .
 
 # Build shared component library first so the file: dependency resolves
-RUN cd vbwd-fe-core && npm install && npm run build && rm -rf node_modules
+RUN cd vbwd-fe-core && rm -f package-lock.json && npm install && npm run build && rm -rf node_modules
 
 # Install and build main application
-RUN npm install
+# Remove lockfile so npm resolves platform-specific optional deps (e.g. @rollup/rollup-linux-x64-musl)
+RUN rm -f package-lock.json && npm install
 
 ARG VITE_API_URL=/api/v1
 ENV VITE_API_URL=$VITE_API_URL
