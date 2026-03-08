@@ -7,9 +7,24 @@
     <div v-html="widgetHtml" />
   </div>
 
-  <!-- Menu widget: render as nav -->
+  <!-- Menu widget: render as nav (supports source_css for full burger-menu styling) -->
   <nav v-else-if="widget.widget_type === 'menu'" class="cms-widget cms-widget--menu">
-    <ul class="cms-menu">
+    <component :is="'style'" v-if="widgetCss">{{ widgetCss }}</component>
+    <button
+      class="cms-burger"
+      :class="{ 'cms-burger--open': menuOpen }"
+      type="button"
+      aria-label="Toggle menu"
+      @click="menuOpen = !menuOpen"
+    >
+      <span /><span /><span />
+    </button>
+    <div
+      class="cms-menu-overlay"
+      :class="{ 'cms-menu-overlay--open': menuOpen }"
+      @click="menuOpen = false"
+    />
+    <ul class="cms-menu" :class="{ 'cms-menu--open': menuOpen }">
       <li
         v-for="item in rootItems"
         :key="item.id"
@@ -17,11 +32,19 @@
         :class="{ 'cms-menu__item--has-children': childrenOf(item.id).length > 0 }"
       >
         <a
-          :href="itemHref(item)"
+          :href="childrenOf(item.id).length ? '#' : itemHref(item)"
           :target="item.target || '_self'"
           class="cms-menu__link"
-        >{{ item.label }}</a>
-        <ul v-if="childrenOf(item.id).length" class="cms-menu__sub">
+          @click="childrenOf(item.id).length ? toggleSub($event, item.id) : undefined"
+        >
+          {{ item.label }}
+          <span v-if="childrenOf(item.id).length" class="cms-menu__arrow" :class="{ 'cms-menu__arrow--open': openSubs.includes(item.id) }">▾</span>
+        </a>
+        <ul
+          v-if="childrenOf(item.id).length"
+          class="cms-menu__sub"
+          :class="{ 'cms-menu__sub--open': openSubs.includes(item.id) }"
+        >
           <li v-for="child in childrenOf(item.id)" :key="child.id" class="cms-menu__item">
             <a :href="itemHref(child)" :target="child.target || '_self'" class="cms-menu__link">
               {{ child.label }}
@@ -62,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import type { CmsWidgetData, CmsMenuItemData } from '../stores/useCmsStore';
 
 const props = defineProps<{
@@ -86,8 +109,9 @@ const widgetCss = computed(() => props.widget.source_css ?? '');
 // ── Menu helpers ───────────────────────────────────────────────────────────────
 
 const menuItems = computed<CmsMenuItemData[]>(() => props.widget.menu_items ?? []);
-
 const rootItems = computed(() => menuItems.value.filter(i => !i.parent_id));
+const menuOpen = ref(false);
+const openSubs = ref<string[]>([]);
 
 function childrenOf(parentId: string) {
   return menuItems.value.filter(i => i.parent_id === parentId);
@@ -98,6 +122,17 @@ function itemHref(item: CmsMenuItemData) {
   if (item.page_slug) return `/${item.page_slug}`;
   return '#';
 }
+
+function toggleSub(e: Event, id: string) {
+  e.preventDefault();
+  const idx = openSubs.value.indexOf(id);
+  if (idx > -1) openSubs.value.splice(idx, 1);
+  else openSubs.value.push(id);
+}
+
+function onEsc(e: KeyboardEvent) { if (e.key === 'Escape') menuOpen.value = false; }
+onMounted(() => document.addEventListener('keydown', onEsc));
+onUnmounted(() => document.removeEventListener('keydown', onEsc));
 
 // ── Slideshow helpers ──────────────────────────────────────────────────────────
 
@@ -118,15 +153,13 @@ function nextSlide() {
 
 <style scoped>
 .cms-widget--html { width: 100%; }
-/* Menu */
-.cms-widget--menu { width: 100%; }
-.cms-menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0; }
-.cms-menu__item { position: relative; }
-.cms-menu__link { display: block; padding: 0.6rem 1rem; color: inherit; text-decoration: none; white-space: nowrap; }
-.cms-menu__link:hover { opacity: 0.75; }
-.cms-menu__sub { display: none; position: absolute; top: 100%; left: 0; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e5e7eb); border-radius: 4px; list-style: none; padding: 0.25rem 0; min-width: 160px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.cms-menu__item--has-children:hover .cms-menu__sub { display: block; }
-.cms-menu__sub .cms-menu__link { padding: 0.5rem 1rem; }
+/* Menu — structural only; appearance controlled by widget source_css */
+.cms-widget--menu { width: 100%; position: relative; }
+.cms-menu { list-style: none; margin: 0; padding: 0; }
+.cms-menu__sub { list-style: none; margin: 0; padding: 0; }
+/* Burger button — hidden by default, source_css shows it on mobile */
+.cms-burger { display: none; }
+.cms-menu-overlay { display: none; }
 
 /* Slideshow */
 .cms-slideshow { position: relative; overflow: hidden; }
