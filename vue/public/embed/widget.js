@@ -11,6 +11,7 @@
   }
 
   var origin = scriptTag.getAttribute('data-origin') || '';
+  var embed = scriptTag.getAttribute('data-embed') || 'landing1';
   var locale = scriptTag.getAttribute('data-locale') || 'en';
   var theme = scriptTag.getAttribute('data-theme') || 'light';
   var containerId = scriptTag.getAttribute('data-container') || 'vbwd-iframe';
@@ -32,8 +33,8 @@
   }
 
   // Build iframe URL
-  var iframeSrc = origin + '/embed/landing1?locale=' +
-    encodeURIComponent(locale) + '&theme=' + encodeURIComponent(theme);
+  var iframeSrc = origin + '/embed/' + encodeURIComponent(embed) +
+    '?locale=' + encodeURIComponent(locale) + '&theme=' + encodeURIComponent(theme);
 
   // Create iframe
   var iframe = document.createElement('iframe');
@@ -67,6 +68,12 @@
         bubbles: true
       });
       container.dispatchEvent(customEvent);
+
+      // Default behaviour: redirect to checkout unless host page called preventDefault()
+      if (!customEvent.defaultPrevented) {
+        var checkoutBase = scriptTag.getAttribute('data-checkout-url') || (origin + '/checkout');
+        window.location.href = checkoutBase + '?tarif_plan_id=' + encodeURIComponent(data.payload.planSlug);
+      }
     }
 
     if (data.type === 'vbwd:resize') {

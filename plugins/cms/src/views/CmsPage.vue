@@ -100,6 +100,9 @@ function escAttr(str: string) {
 }
 
 const renderedHtml = computed(() => {
+  // Prefer raw content_html (set via HTML tab) so embedded scripts / iframes are preserved
+  const raw = (store.currentPage as any)?.content_html;
+  if (raw) return raw;
   const doc = store.currentPage?.content_json;
   if (!doc || typeof doc !== 'object') return '';
   return renderNode(doc as TNode);

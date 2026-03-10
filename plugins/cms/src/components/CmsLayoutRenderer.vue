@@ -8,7 +8,7 @@
       >
         <div class="container">
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <div class="cms-page__body" v-html="contentHtml" />
+          <div ref="contentAreaEl" class="cms-page__body" v-html="contentHtml" />
         </div>
       </main>
 
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, watch, nextTick, onMounted } from 'vue';
 import type { CmsLayout, CmsWidgetData } from '../stores/useCmsStore';
 import CmsWidgetRenderer from './CmsWidgetRenderer.vue';
 
@@ -34,6 +34,37 @@ const props = defineProps<{
   layout: CmsLayout;
   contentHtml: string;
 }>();
+
+const contentAreaEl = ref<HTMLElement | HTMLElement[] | null>(null);
+
+function runScripts(container: HTMLElement) {
+  container.querySelectorAll('script').forEach(old => {
+    const s = document.createElement('script');
+    if (old.src) {
+      Array.from(old.attributes).forEach(a => s.setAttribute(a.name, a.value));
+    } else {
+      s.textContent = old.textContent;
+    }
+    old.replaceWith(s);
+  });
+}
+
+function getContentEl(): HTMLElement | null {
+  const v = Array.isArray(contentAreaEl.value) ? contentAreaEl.value[0] : contentAreaEl.value;
+  return v instanceof HTMLElement ? v : null;
+}
+
+onMounted(async () => {
+  await nextTick();
+  const el = getContentEl();
+  if (el) runScripts(el);
+});
+
+watch(() => props.contentHtml, async () => {
+  await nextTick();
+  const el = getContentEl();
+  if (el) runScripts(el);
+});
 
 function widgetFor(areaName: string): CmsWidgetData | undefined {
   const assignment = props.layout.assignments?.find(a => a.area_name === areaName);

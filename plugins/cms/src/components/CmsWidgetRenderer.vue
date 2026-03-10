@@ -1,6 +1,6 @@
 <template>
   <!-- HTML widget: decoded from content_json.content (base64) + source_css -->
-  <div v-if="widget.widget_type === 'html'" class="cms-widget cms-widget--html">
+  <div v-if="widget.widget_type === 'html'" ref="htmlWidgetEl" class="cms-widget cms-widget--html">
     <!-- eslint-disable-next-line vue/no-v-html -->
     <component :is="'style'" v-if="widgetCss">{{ widgetCss }}</component>
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, watch, onMounted, onUnmounted, nextTick } from 'vue';
 import type { CmsWidgetData, CmsMenuItemData } from '../stores/useCmsStore';
 
 const props = defineProps<{
@@ -93,6 +93,8 @@ const props = defineProps<{
 }>();
 
 // ── HTML widget helpers ────────────────────────────────────────────────────────
+
+const htmlWidgetEl = ref<HTMLElement | null>(null);
 
 const widgetHtml = computed(() => {
   const b64 = (props.widget.content_json as any)?.content;
@@ -102,6 +104,31 @@ const widgetHtml = computed(() => {
   } catch {
     return b64;
   }
+});
+
+// Re-execute <script> tags that v-html silently drops
+function runScripts(container: HTMLElement) {
+  container.querySelectorAll('script').forEach(old => {
+    const s = document.createElement('script');
+    if (old.src) {
+      Array.from(old.attributes).forEach(a => s.setAttribute(a.name, a.value));
+    } else {
+      s.textContent = old.textContent;
+    }
+    old.replaceWith(s);
+  });
+}
+
+// onMounted handles the initial render (immediate watch fires before DOM exists)
+onMounted(async () => {
+  await nextTick();
+  if (htmlWidgetEl.value) runScripts(htmlWidgetEl.value);
+});
+
+// watch handles subsequent content changes (e.g. widget updated while page is open)
+watch(widgetHtml, async () => {
+  await nextTick();
+  if (htmlWidgetEl.value) runScripts(htmlWidgetEl.value);
 });
 
 const widgetCss = computed(() => props.widget.source_css ?? '');
