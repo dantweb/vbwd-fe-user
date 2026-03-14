@@ -47,7 +47,7 @@ describe('Landing1 Plugin', () => {
     const landing1Route = routes.find(r => r.path === '/landing1')
     expect(landing1Route).toBeDefined()
     expect(landing1Route!.name).toBe('landing1')
-    expect(landing1Route!.meta).toEqual({ requiresAuth: false })
+    expect(landing1Route!.meta).toEqual({ requiresAuth: false, cmsLayout: true })
   })
 
   it('should have activate method', () => {
