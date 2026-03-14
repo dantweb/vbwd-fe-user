@@ -1,6 +1,7 @@
 import type { IPlugin, IPlatformSDK } from 'vbwd-view-component';
 import { userNavRegistry } from '@/plugins/userNavRegistry';
 import { registerCmsVueComponent } from '../cms/src/registry/vueComponentRegistry';
+import { checkoutContextRegistry } from '../checkout/checkoutContextRegistry';
 import en from './locales/en.json';
 
 export const ghrmPlugin: IPlugin = {
@@ -19,6 +20,12 @@ export const ghrmPlugin: IPlugin = {
     ]).then(([catalogue, detail]) => {
       registerCmsVueComponent('GhrmCatalogueContent', catalogue.default);
       registerCmsVueComponent('GhrmPackageDetail', detail.default);
+    });
+
+    // Inject GHRM context banner into the checkout page (zero coupling — checkout
+    // renders whatever component the registry holds, with no GHRM knowledge)
+    import('./src/components/GhrmCheckoutContext.vue').then(({ default: component }) => {
+      checkoutContextRegistry.register(component);
     });
 
     // Public catalogue routes — all rendered via CmsPage with the appropriate page slug
@@ -71,5 +78,6 @@ export const ghrmPlugin: IPlugin = {
   deactivate() {
     this._active = false;
     userNavRegistry.unregister('ghrm');
+    checkoutContextRegistry.unregister();
   },
 };

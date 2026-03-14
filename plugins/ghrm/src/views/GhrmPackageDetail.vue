@@ -48,13 +48,14 @@
         </div>
         <!-- CTA -->
         <div class="ghrm-detail-cta">
-          <router-link
+          <button
             v-if="!isSubscribed"
-            :to="`/checkout?tarif_plan_id=${pkg.id}`"
             class="ghrm-cta-btn"
+            data-testid="ghrm-get-package-btn"
+            @click="handleGetPackage"
           >
             {{ $t('ghrm.getPackage') }}
-          </router-link>
+          </button>
         </div>
       </div>
 
@@ -159,7 +160,6 @@
           <template v-else-if="activeTab === 'versions'">
             <GhrmVersionsTable :versions="store.versions" />
           </template>
-
         </div>
       </div>
 
@@ -194,7 +194,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from 'vbwd-view-component';
 import { useGhrmStore } from '../stores/useGhrmStore';
 import GhrmMarkdownRenderer from '../components/GhrmMarkdownRenderer.vue';
@@ -202,6 +202,7 @@ import GhrmVersionsTable from '../components/GhrmVersionsTable.vue';
 import GhrmGithubConnectButton from '../components/GhrmGithubConnectButton.vue';
 
 const route = useRoute();
+const router = useRouter();
 const store = useGhrmStore();
 const authStore = useAuthStore();
 
@@ -220,6 +221,23 @@ const tabs = [
   { id: 'docs', label: 'Documentation' },
   { id: 'versions', label: 'Versions' },
 ];
+
+function handleGetPackage() {
+  if (!pkg.value) return;
+  if (!authStore.isAuthenticated) {
+    sessionStorage.setItem('redirect_after_login', route.fullPath);
+    router.push('/login');
+    return;
+  }
+  router.push({
+    path: '/checkout',
+    query: {
+      tarif_plan_id: pkg.value.tariff_plan_id,
+      package_name: pkg.value.name,
+      package_slug: pkg.value.slug,
+    },
+  });
+}
 
 async function load() {
   await store.fetchPackage(packageSlug.value);

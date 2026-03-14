@@ -90,6 +90,13 @@
         @logout="handleLogout"
       />
 
+      <!-- Plugin-injected context banner (e.g. GHRM "Getting access to: …") -->
+      <component
+        :is="checkoutContextRegistry.component.value"
+        v-if="checkoutContextRegistry.component.value"
+        data-testid="checkout-context-banner"
+      />
+
       <!-- Order Summary -->
       <div
         class="card order-summary"
@@ -186,6 +193,7 @@ import EmailBlock from '@/components/checkout/EmailBlock.vue';
 import PaymentMethodsBlock from '@/components/checkout/PaymentMethodsBlock.vue';
 import TermsCheckbox from '@/components/checkout/TermsCheckbox.vue';
 import BillingAddressBlock from '@/components/checkout/BillingAddressBlock.vue';
+import { checkoutContextRegistry } from './checkoutContextRegistry';
 
 const route = useRoute();
 const router = useRouter();

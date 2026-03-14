@@ -34,6 +34,7 @@
     "oauthRedirecting": "Redirecting to your settings...",
     "syncing": "Syncing...",
     "lastSynced": "Last synced",
-    "never": "Never"
+    "never": "Never",
+    "accessingPackage": "Getting access to:"
   }
 }

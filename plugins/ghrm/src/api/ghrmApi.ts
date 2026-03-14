@@ -34,6 +34,7 @@ export interface GhrmPackage {
   id: string;
   slug: string;
   name: string;
+  tariff_plan_id: string;
   description: string | null;
   author_name: string | null;
   icon_url: string | null;
