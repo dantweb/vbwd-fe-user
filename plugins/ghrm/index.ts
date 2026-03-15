@@ -2,6 +2,7 @@ import type { IPlugin, IPlatformSDK } from 'vbwd-view-component';
 import { userNavRegistry } from '@/plugins/userNavRegistry';
 import { registerCmsVueComponent } from '../cms/src/registry/vueComponentRegistry';
 import { checkoutContextRegistry } from '../checkout/checkoutContextRegistry';
+import { planDetailTabRegistry } from '@/utils/planDetailTabRegistry';
 import en from './locales/en.json';
 
 export const ghrmPlugin: IPlugin = {
@@ -56,6 +57,30 @@ export const ghrmPlugin: IPlugin = {
       component: () => import('./src/views/GhrmSearch.vue'),
       meta: { requiresAuth: false, cmsLayout: true },
     });
+    // Register plan detail tabs — only shown when the plan has a linked GHRM package.
+    // The condition calls getPackageByPlan(planId): resolves → show tab, rejects 404 → hide.
+    Promise.all([
+      import('./src/components/GhrmPlanSoftwareTab.vue'),
+      import('./src/components/GhrmPlanGithubAccessTab.vue'),
+      import('./src/api/ghrmApi'),
+    ]).then(([softwareTab, githubTab, { ghrmApi }]) => {
+      const ghrmCondition = (planId: string) =>
+        ghrmApi.getPackageByPlan(planId).then(() => true).catch(() => false);
+
+      planDetailTabRegistry.register({
+        id: 'ghrm-software',
+        label: 'Software',
+        component: softwareTab.default,
+        condition: ghrmCondition,
+      });
+      planDetailTabRegistry.register({
+        id: 'ghrm-github-access',
+        label: 'GitHub Access',
+        component: githubTab.default,
+        condition: ghrmCondition,
+      });
+    });
+
     // OAuth callback
     sdk.addRoute({
       path: '/ghrm/auth/github/callback',
@@ -72,6 +97,8 @@ export const ghrmPlugin: IPlugin = {
       to: '/category',
       labelKey: 'ghrm.title',
       testId: 'nav-ghrm',
+      group: 'store',
+      externalIcon: true,
     });
   },
 

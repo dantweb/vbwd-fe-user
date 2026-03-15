@@ -55,6 +55,8 @@
                 v-for="sub in activeSubscriptions"
                 :key="sub.id"
                 data-testid="active-sub-row"
+                style="cursor: pointer"
+                @click="goToPlan(sub)"
               >
                 <td>
                   <span
@@ -69,7 +71,7 @@
                 </td>
                 <td>{{ formatDate(sub.expires_at) }}</td>
                 <td>{{ formatPrice(sub.plan?.price) }} / {{ sub.plan?.billing_period || 'month' }}</td>
-                <td class="actions-cell">
+                <td class="actions-cell" @click.stop>
                   <button
                     v-if="sub.status === 'ACTIVE'"
                     class="btn danger small"
@@ -524,7 +526,7 @@ async function confirmCancel(): Promise<void> {
 }
 
 function viewInvoice(invoice: Invoice): void {
-  selectedInvoice.value = invoice;
+  router.push(`/dashboard/invoice/${invoice.id}`);
 }
 
 async function downloadInvoice(invoiceId: string): Promise<void> {
@@ -555,6 +557,12 @@ function showSuccess(message: string): void {
   setTimeout(() => {
     successMessage.value = '';
   }, 3000);
+}
+
+function goToPlan(sub: { plan?: { slug?: string } }): void {
+  if (sub.plan?.slug) {
+    router.push(`/dashboard/plan/${sub.plan.slug}`)
+  }
 }
 
 function formatStatus(status: string): string {
@@ -1078,5 +1086,64 @@ h1 {
 .toast.success {
   background-color: #27ae60;
   color: white;
+}
+
+@media (max-width: 768px) {
+  .subscription {
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .no-subscription {
+    padding: 20px 10px;
+  }
+
+  .no-subscription p {
+    word-break: break-word;
+  }
+
+  .no-subscription .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  .plan-header {
+    flex-wrap: wrap;
+  }
+
+  .detail-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .detail-row .value {
+    word-break: break-all;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 }
 </style>

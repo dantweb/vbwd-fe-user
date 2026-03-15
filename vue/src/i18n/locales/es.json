@@ -239,10 +239,17 @@
     "noPlans": "No hay planes disponibles en este momento.",
     "mostPopular": "Más Popular",
     "currentPlan": "Plan Actual",
-    "selectPlan": "Seleccionar Plan",
+    "selectPlan": "Seleccionar plan",
     "processing": "Procesando...",
     "taxIncluded": "incl. {rate}% impuesto",
-    "currencyLabel": "Mostrar precios en:"
+    "currencyLabel": "Mostrar precios en:",
+    "tableHeaders": {
+      "name": "Nombre",
+      "price": "Precio",
+      "billingPeriod": "Facturación",
+      "status": "Estado",
+      "actions": "Acciones"
+    }
   },
   "tokens": {
     "breadcrumbPlans": "Planes",
@@ -335,7 +342,8 @@
         "description": "Descripción",
         "qty": "Cantidad",
         "unitPrice": "Precio Unitario",
-        "total": "Total"
+        "total": "Total",
+        "type": "Tipo"
       },
       "totalAmount": "Monto Total",
       "downloadPdf": "Descargar PDF",

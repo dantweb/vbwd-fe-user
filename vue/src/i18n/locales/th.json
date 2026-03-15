@@ -242,7 +242,14 @@
     "selectPlan": "เลือกแผน",
     "processing": "กำลังประมวลผล...",
     "taxIncluded": "รวมภาษี {rate}%",
-    "currencyLabel": "แสดงราคาใน:"
+    "currencyLabel": "แสดงราคาใน:",
+    "tableHeaders": {
+      "name": "ชื่อ",
+      "price": "ราคา",
+      "billingPeriod": "การเรียกเก็บ",
+      "status": "สถานะ",
+      "actions": "การดำเนินการ"
+    }
   },
   "tokens": {
     "breadcrumbPlans": "แผน",
@@ -335,7 +342,8 @@
         "description": "คำอธิบาย",
         "qty": "จำนวน",
         "unitPrice": "ราคาต่อหน่วย",
-        "total": "รวม"
+        "total": "รวม",
+        "type": "ประเภท"
       },
       "totalAmount": "จำนวนเงินรวม",
       "downloadPdf": "ดาวน์โหลด PDF",

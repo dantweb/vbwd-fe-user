@@ -239,10 +239,17 @@
     "noPlans": "目前没有可用的计划。",
     "mostPopular": "最受欢迎",
     "currentPlan": "当前计划",
-    "selectPlan": "选择计划",
+    "selectPlan": "选择方案",
     "processing": "处理中...",
     "taxIncluded": "含 {rate}% 税",
-    "currencyLabel": "显示价格为："
+    "currencyLabel": "显示价格为：",
+    "tableHeaders": {
+      "name": "名称",
+      "price": "价格",
+      "billingPeriod": "计费",
+      "status": "状态",
+      "actions": "操作"
+    }
   },
   "tokens": {
     "breadcrumbPlans": "计划",
@@ -335,7 +342,8 @@
         "description": "描述",
         "qty": "数量",
         "unitPrice": "单价",
-        "total": "合计"
+        "total": "合计",
+        "type": "类型"
       },
       "totalAmount": "总金额",
       "downloadPdf": "下载 PDF",

@@ -306,7 +306,7 @@
           <router-link
             v-for="invoice in recentInvoices"
             :key="invoice.id"
-            :to="`/dashboard/subscription/invoices/${invoice.id}`"
+            :to="`/dashboard/invoice/${invoice.id}`"
             class="invoice-item invoice-item-link"
             data-testid="invoice-item"
           >

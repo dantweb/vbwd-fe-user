@@ -250,7 +250,14 @@
     "selectPlan": "Select Plan",
     "processing": "Processing...",
     "taxIncluded": "incl. {rate}% tax",
-    "currencyLabel": "Display prices in:"
+    "currencyLabel": "Display prices in:",
+    "tableHeaders": {
+      "name": "Name",
+      "price": "Price",
+      "billingPeriod": "Billing",
+      "status": "Status",
+      "actions": "Actions"
+    }
   },
   "tokens": {
     "breadcrumbPlans": "Plans",
@@ -343,7 +350,8 @@
         "description": "Description",
         "qty": "Qty",
         "unitPrice": "Unit Price",
-        "total": "Total"
+        "total": "Total",
+        "type": "Type"
       },
       "totalAmount": "Total Amount",
       "downloadPdf": "Download PDF",

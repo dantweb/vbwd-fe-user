@@ -51,6 +51,7 @@ export interface GhrmPackage {
   latest_released_at: string | null;
   last_synced_at: string | null;
   related_slugs: string[];
+  features?: string[];
 }
 
 export interface GhrmPackageListItem {
@@ -110,6 +111,9 @@ export const ghrmApi = {
   },
   getInstallInstructions(slug: string): Promise<GhrmInstallInstructions> {
     return get(`${API}/packages/${slug}/install`);
+  },
+  getPackageByPlan(planId: string): Promise<GhrmPackage> {
+    return get(`${API}/packages/by-plan/${planId}`)
   },
   getAccessStatus(): Promise<GhrmAccessStatus> {
     return get(`${API}/access`);

@@ -55,6 +55,12 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/dashboard/plan/:planSlug',
+    name: 'tarif-plan-detail',
+    component: () => import('../views/TarifPlanDetail.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
     path: '/dashboard/tokens',
     name: 'tokens',
     component: () => import('../views/Tokens.vue'),
@@ -97,16 +103,26 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/dashboard/subscription/invoices/:invoiceId',
+    path: '/dashboard/invoice/:invoiceId',
     name: 'invoice-detail',
     component: () => import('../views/InvoiceDetail.vue'),
     meta: { requiresAuth: true }
   },
   {
-    path: '/dashboard/subscription/invoices/:invoiceId/pay',
+    // Legacy redirect — keeps old bookmarked URLs working
+    path: '/dashboard/subscription/invoices/:invoiceId',
+    redirect: (to) => ({ name: 'invoice-detail', params: { invoiceId: to.params.invoiceId } }),
+  },
+  {
+    path: '/dashboard/invoice/:invoiceId/pay',
     name: 'invoice-pay',
     component: () => import('../views/InvoicePay.vue'),
     meta: { requiresAuth: true }
+  },
+  {
+    // Legacy redirect
+    path: '/dashboard/subscription/invoices/:invoiceId/pay',
+    redirect: (to) => ({ name: 'invoice-pay', params: { invoiceId: to.params.invoiceId } }),
   },
 ];
 

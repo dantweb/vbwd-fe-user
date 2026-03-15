@@ -69,42 +69,64 @@
           class="line-items"
         >
           <h3>{{ $t('invoices.detail.items') }}</h3>
-          <table class="items-table">
-            <thead>
-              <tr>
-                <th>{{ $t('invoices.detail.itemsTableHeaders.type') || 'Type' }}</th>
-                <th>{{ $t('invoices.detail.itemsTableHeaders.description') }}</th>
-                <th>{{ $t('invoices.detail.itemsTableHeaders.qty') }}</th>
-                <th>{{ $t('invoices.detail.itemsTableHeaders.unitPrice') }}</th>
-                <th>{{ $t('invoices.detail.itemsTableHeaders.total') }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(item, index) in invoice.line_items"
-                :key="index"
-              >
-                <td>
-                  <span
-                    class="type-badge"
-                    :class="item.type?.toLowerCase()"
-                  >{{ itemTypeLabel(item.type) }}</span>
-                </td>
-                <td>
-                  <router-link
-                    v-if="itemLink(item)"
-                    :to="itemLink(item)!"
-                  >
-                    {{ item.description }}
-                  </router-link>
-                  <span v-else>{{ item.description }}</span>
-                </td>
-                <td>{{ item.quantity }}</td>
-                <td>${{ item.unit_price }}</td>
-                <td>${{ item.total_price }}</td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Desktop table -->
+          <div class="items-table-wrap">
+            <table class="items-table">
+              <thead>
+                <tr>
+                  <th>{{ $t('invoices.detail.itemsTableHeaders.type') }}</th>
+                  <th>{{ $t('invoices.detail.itemsTableHeaders.description') }}</th>
+                  <th>{{ $t('invoices.detail.itemsTableHeaders.qty') }}</th>
+                  <th>{{ $t('invoices.detail.itemsTableHeaders.unitPrice') }}</th>
+                  <th>{{ $t('invoices.detail.itemsTableHeaders.total') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(item, index) in invoice.line_items"
+                  :key="index"
+                  :style="itemLink(item) ? 'cursor: pointer' : ''"
+                  @click="itemLink(item) && router.push(itemLink(item)!)"
+                >
+                  <td>
+                    <span
+                      class="type-badge"
+                      :class="item.type?.toLowerCase()"
+                    >{{ itemTypeLabel(item.type) }}</span>
+                  </td>
+                  <td>{{ item.description }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ formatAmount(item.unit_price, invoice.currency) }}</td>
+                  <td>{{ formatAmount(item.total_price, invoice.currency) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile cards (one per line item) -->
+          <div class="items-cards">
+            <div
+              v-for="(item, index) in invoice.line_items"
+              :key="index"
+              class="item-card"
+              :class="{ 'item-card-clickable': itemLink(item) }"
+              @click="itemLink(item) && router.push(itemLink(item)!)"
+            >
+              <div class="item-card-header">
+                <span
+                  class="type-badge"
+                  :class="item.type?.toLowerCase()"
+                >{{ itemTypeLabel(item.type) }}</span>
+                <span class="item-card-total">{{ formatAmount(item.total_price, invoice.currency) }}</span>
+              </div>
+              <div class="item-card-desc">{{ item.description }}</div>
+              <div class="item-card-meta">
+                <span>{{ $t('invoices.detail.itemsTableHeaders.qty') }}: {{ item.quantity }}</span>
+                <span>{{ $t('invoices.detail.itemsTableHeaders.unitPrice') }}: {{ formatAmount(item.unit_price, invoice.currency) }}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="total-section">
@@ -144,7 +166,7 @@
           </router-link>
           <router-link
             v-else-if="invoice.status === 'pending' && invoice.payment_method !== 'invoice'"
-            :to="`/dashboard/subscription/invoices/${invoice.id}/pay`"
+            :to="`/dashboard/invoice/${invoice.id}/pay`"
             class="btn primary"
           >
             {{ $t('invoices.detail.payNow') }}
@@ -164,7 +186,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { api } from '@/api';
 
@@ -193,6 +215,7 @@ interface Invoice {
 }
 
 const route = useRoute();
+const router = useRouter();
 const { t } = useI18n();
 
 const loading = ref(true);
@@ -262,16 +285,22 @@ function paymentMethodLabel(method: string): string {
   return labels[method] || method;
 }
 
+function formatAmount(value: string | number | null | undefined, currency = 'USD'): string {
+  if (value === null || value === undefined || value === '') return '—';
+  const num = typeof value === 'string' ? parseFloat(value) : value;
+  if (isNaN(num)) return '—';
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(num);
+}
+
 function itemLink(item: { type?: string; item_id?: string; catalog_item_id?: string }): string | null {
-  const catalogId = item.catalog_item_id || item.item_id;
-  if (!catalogId) return null;
-  switch (item.type) {
-    case 'subscription':
-      return `/dashboard/plans/${catalogId}`;
-    case 'token_bundle':
-      return `/dashboard/tokens/${catalogId}`;
-    case 'add_on':
-      return `/dashboard/add-ons/info/${catalogId}`;
+  const catalogId = item.catalog_item_id;
+  switch (item.type?.toUpperCase()) {
+    case 'SUBSCRIPTION':
+      return catalogId ? `/dashboard/plan/${catalogId}` : null;
+    case 'TOKEN_BUNDLE':
+      return catalogId ? `/dashboard/tokens/${catalogId}` : null;
+    case 'ADD_ON':
+      return catalogId ? `/dashboard/add-ons/info/${catalogId}` : null;
     default:
       return null;
   }
@@ -405,9 +434,66 @@ h1 {
   margin-bottom: 15px;
 }
 
+.items-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .items-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 420px;
+}
+
+.item-row-clickable {
+  cursor: pointer;
+}
+
+/* Mobile item cards (hidden on desktop) */
+.items-cards {
+  display: none;
+}
+
+.item-card {
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #fafafa;
+}
+
+.item-card-clickable {
+  cursor: pointer;
+}
+
+.item-card-clickable:hover {
+  background: #f0f7ff;
+}
+
+.item-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.item-card-total {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.item-card-desc {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.item-card-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: #666;
 }
 
 .items-table th,
@@ -508,5 +594,48 @@ h1 {
 
 .btn.secondary:hover {
   background-color: #bdc3c7;
+}
+
+@media (max-width: 768px) {
+  .invoice-detail {
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .invoice-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .detail-row .value {
+    font-size: 0.9rem;
+  }
+
+  /* Hide table, show cards */
+  .items-table-wrap {
+    display: none;
+  }
+
+  .items-cards {
+    display: block;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

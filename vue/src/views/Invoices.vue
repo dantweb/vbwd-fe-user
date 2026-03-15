@@ -327,7 +327,7 @@ function sortBy(field: string): void {
 }
 
 function viewInvoice(invoice: Invoice): void {
-  router.push(`/dashboard/subscription/invoices/${invoice.id}`);
+  router.push(`/dashboard/invoice/${invoice.id}`);
 }
 
 async function downloadInvoice(invoiceId: string): Promise<void> {
@@ -344,7 +344,7 @@ async function downloadInvoice(invoiceId: string): Promise<void> {
 }
 
 function payInvoice(invoice: Invoice): void {
-  router.push(`/dashboard/subscription/invoices/${invoice.id}/pay`);
+  router.push(`/dashboard/invoice/${invoice.id}/pay`);
 }
 
 function showSuccess(message: string): void {
@@ -605,6 +605,43 @@ h1 {
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .invoices {
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-box input,
+  .filter-box select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .invoice-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .actions-cell {
+    gap: 4px;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 }
 
 .toast.success {

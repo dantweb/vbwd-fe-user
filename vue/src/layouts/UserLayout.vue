@@ -15,7 +15,30 @@
       <div class="logo-mobile">
         <h2>VBWD</h2>
       </div>
-      <div class="header-spacer" />
+      <!-- Mobile header cart button -->
+      <button
+        class="mobile-cart-btn"
+        data-testid="mobile-cart-icon"
+        @click.stop="goToCheckout"
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+        <span
+          v-if="cartItemCount > 0"
+          class="mobile-cart-badge"
+          data-testid="mobile-cart-count"
+        >{{ cartItemCount }}</span>
+      </button>
     </header>
 
     <!-- Sidebar (Desktop and Mobile Expanded) -->
@@ -97,6 +120,37 @@
               >
                 {{ $t('nav.addons') }}
               </router-link>
+              <!-- Plugin store group items (e.g. GHRM Software Catalogue) -->
+              <router-link
+                v-for="item in storeGroupNavItems"
+                :key="item.pluginName"
+                :to="item.to"
+                class="nav-subitem nav-subitem--external"
+                :data-testid="item.testId"
+                @click="closeMobileMenu"
+              >
+                {{ $t(item.labelKey) }}
+                <svg
+                  v-if="item.externalIcon"
+                  class="external-icon"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  aria-hidden="true"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line
+                    x1="10"
+                    y1="14"
+                    x2="21"
+                    y2="3"
+                  />
+                </svg>
+              </router-link>
             </div>
           </div>
 
@@ -149,7 +203,7 @@
           <button
             class="cart-btn"
             data-testid="cart-icon"
-            @click="toggleCart"
+            @click.stop="toggleCart"
           >
             <svg
               width="20"
@@ -255,7 +309,7 @@
         >
           <button
             class="user-menu-btn"
-            @click="toggleUserMenu"
+            @click.stop="toggleUserMenu"
           >
             <svg
               class="user-icon"
@@ -328,6 +382,7 @@ const router = useRouter();
 
 const sidebarNavItems = computed(() => userNavRegistry.getSidebarItems());
 const menuNavItems = computed(() => userNavRegistry.getMenuItems());
+const storeGroupNavItems = computed(() => userNavRegistry.getGroupItems('store'));
 
 // Cart store
 const cartStoreRaw = useCartStore();
@@ -390,6 +445,7 @@ function closeUserMenu() {
 
 function goToCheckout() {
   showCart.value = false;
+  closeMobileMenu();
   const planItems = cartItems.value.filter(i => i.type === 'PLAN');
   if (planItems.length > 0) {
     router.push({ name: 'checkout', params: { planSlug: planItems[0].id } });
@@ -494,8 +550,36 @@ onUnmounted(() => {
   color: white;
 }
 
-.header-spacer {
+.mobile-cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #e74c3c;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  pointer-events: none;
 }
 
 /* Desktop Sidebar */
@@ -508,6 +592,7 @@ onUnmounted(() => {
   position: fixed;
   height: 100vh;
   z-index: 1000;
+  overflow: visible;
 }
 
 .sidebar-content {
@@ -591,10 +676,23 @@ onUnmounted(() => {
   color: white;
 }
 
+.nav-subitem--external {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.external-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
 /* Sidebar Footer */
 .sidebar-footer {
   margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: visible;
+  flex-shrink: 0;
 }
 
 .cart-wrapper {
@@ -818,14 +916,16 @@ onUnmounted(() => {
 
 .user-dropdown {
   position: absolute;
-  bottom: 100%;
+  bottom: calc(100% + 4px);
   left: 0;
   right: 0;
   background-color: #34495e;
   padding: 10px;
-  margin-bottom: 5px;
   border-radius: 4px;
-  z-index: 100;
+  z-index: 200;
+  max-height: min(280px, 50vh);
+  overflow-y: auto;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .user-dropdown-item {
@@ -916,6 +1016,24 @@ onUnmounted(() => {
   .main-content {
     margin-left: 0;
     margin-top: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Cart dropdown: fixed from top of screen on mobile so it's always visible */
+  .cart-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    left: auto;
+    width: 320px;
+    max-width: calc(100vw - 16px);
+    bottom: auto;
+    margin: 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
   }
 }
 

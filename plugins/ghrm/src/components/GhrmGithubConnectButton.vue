@@ -43,13 +43,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAuthStore } from 'vbwd-view-component';
 import { useGhrmStore } from '../stores/useGhrmStore';
 import { ghrmApi } from '../api/ghrmApi';
 
-const router = useRouter();
-const authStore = useAuthStore();
 const store = useGhrmStore();
 const status = ref(store.accessStatus);
 const connecting = ref(false);
@@ -57,10 +53,6 @@ const disconnecting = ref(false);
 const errorMsg = ref('');
 
 async function connect() {
-  if (!authStore.isAuthenticated) {
-    router.push('/login');
-    return;
-  }
   connecting.value = true;
   errorMsg.value = '';
   try {
@@ -85,10 +77,8 @@ async function disconnect() {
 }
 
 onMounted(async () => {
-  if (authStore.isAuthenticated) {
-    await store.fetchAccessStatus();
-    status.value = store.accessStatus;
-  }
+  await store.fetchAccessStatus();
+  status.value = store.accessStatus;
 });
 </script>
 

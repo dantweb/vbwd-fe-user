@@ -29,6 +29,18 @@ export interface UserNavItem {
    *   'menu'    – entry in the user dropdown menu
    */
   placement?: 'sidebar' | 'menu';
+  /**
+   * Collapsible nav group this item belongs to.
+   * Items with a group are rendered inside that group's sub-menu and
+   * are excluded from getSidebarItems().
+   * Currently supported value: 'store'
+   */
+  group?: 'store';
+  /**
+   * When true, an external-link icon (↗) is shown next to the label
+   * to signal that the link opens a public-facing area.
+   */
+  externalIcon?: boolean;
 }
 
 class UserNavRegistry {
@@ -50,10 +62,10 @@ class UserNavRegistry {
     this._items.delete(pluginName);
   }
 
-  /** All items that appear in the sidebar nav. */
+  /** All items that appear as top-level sidebar links (no group). */
   getSidebarItems(): UserNavItem[] {
     return Array.from(this._items.values()).filter(
-      (i) => (i.placement ?? 'sidebar') === 'sidebar',
+      (i) => (i.placement ?? 'sidebar') === 'sidebar' && !i.group,
     );
   }
 
@@ -61,6 +73,13 @@ class UserNavRegistry {
   getMenuItems(): UserNavItem[] {
     return Array.from(this._items.values()).filter(
       (i) => i.placement === 'menu',
+    );
+  }
+
+  /** All items registered under a specific collapsible group. */
+  getGroupItems(group: string): UserNavItem[] {
+    return Array.from(this._items.values()).filter(
+      (i) => i.group === group,
     );
   }
 }

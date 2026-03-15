@@ -239,10 +239,17 @@
     "noPlans": "На данный момент тарифы недоступны.",
     "mostPopular": "Самый Популярный",
     "currentPlan": "Текущий Тариф",
-    "selectPlan": "Выбрать Тариф",
+    "selectPlan": "Выбрать план",
     "processing": "Обработка...",
     "taxIncluded": "с налогом {rate}%",
-    "currencyLabel": "Показывать цены в:"
+    "currencyLabel": "Показывать цены в:",
+    "tableHeaders": {
+      "name": "Название",
+      "price": "Цена",
+      "billingPeriod": "Биллинг",
+      "status": "Статус",
+      "actions": "Действия"
+    }
   },
   "tokens": {
     "breadcrumbPlans": "Тарифы",
@@ -335,7 +342,8 @@
         "description": "Описание",
         "qty": "Кол-во",
         "unitPrice": "Цена за ед.",
-        "total": "Итого"
+        "total": "Итого",
+        "type": "Тип"
       },
       "totalAmount": "Общая Сумма",
       "downloadPdf": "Скачать PDF",

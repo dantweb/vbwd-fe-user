@@ -1,6 +1,69 @@
 <template>
   <div class="plans">
-    <h1>{{ $t('plans.title') }}</h1>
+    <div class="plans-header">
+      <h1>{{ $t('plans.title') }}</h1>
+      <div class="view-toggle">
+        <button
+          :class="['view-toggle-btn', { active: viewMode === 'cards' }]"
+          data-testid="view-cards"
+          @click="viewMode = 'cards'"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+          ><rect
+            x="0"
+            y="0"
+            width="7"
+            height="7"
+          /><rect
+            x="9"
+            y="0"
+            width="7"
+            height="7"
+          /><rect
+            x="0"
+            y="9"
+            width="7"
+            height="7"
+          /><rect
+            x="9"
+            y="9"
+            width="7"
+            height="7"
+          /></svg>
+        </button>
+        <button
+          :class="['view-toggle-btn', { active: viewMode === 'table' }]"
+          data-testid="view-table"
+          @click="viewMode = 'table'"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+          ><rect
+            x="0"
+            y="1"
+            width="16"
+            height="2"
+          /><rect
+            x="0"
+            y="6"
+            width="16"
+            height="2"
+          /><rect
+            x="0"
+            y="11"
+            width="16"
+            height="2"
+          /></svg>
+        </button>
+      </div>
+    </div>
 
     <!-- Loading State -->
     <div
@@ -36,94 +99,165 @@
       <p>{{ $t('plans.noPlans') }}</p>
     </div>
 
-    <!-- Plans Grid -->
-    <div
-      v-else
-      class="plans-grid"
-      data-testid="plans-grid"
-    >
+    <template v-else>
+      <!-- Cards View -->
       <div
-        v-for="plan in plans"
-        :key="plan.id"
-        :class="['plan-card', { popular: plan.popular, current: isCurrentPlan(plan.id) }]"
-        :data-testid="`plan-${plan.slug}`"
+        v-if="viewMode === 'cards'"
+        class="plans-grid"
+        data-testid="plans-grid"
       >
         <div
-          v-if="plan.popular"
-          class="popular-badge"
+          v-for="plan in plans"
+          :key="plan.id"
+          :class="['plan-card', { popular: plan.popular, current: isCurrentPlan(plan.id) }]"
+          :data-testid="`plan-${plan.slug}`"
+          @click="viewPlan(plan)"
         >
-          {{ $t('plans.mostPopular') }}
-        </div>
-        <div
-          v-if="isCurrentPlan(plan.id)"
-          class="current-badge"
-        >
-          {{ $t('plans.currentPlan') }}
-        </div>
-        <h2>{{ plan.name }}</h2>
-        <div class="price">
-          <span class="amount">{{ formatPrice(plan.display_price) }}</span>
-          <span class="period">/{{ formatBillingPeriod(plan.billing_period) }}</span>
-        </div>
-        <p
-          v-if="plan.description"
-          class="description"
-        >
-          {{ plan.description }}
-        </p>
-        <ul
-          v-if="plan.features && plan.features.length > 0"
-          class="features"
-        >
-          <li
-            v-for="feature in plan.features"
-            :key="feature"
+          <div
+            v-if="plan.popular"
+            class="popular-badge"
           >
-            {{ feature }}
-          </li>
-        </ul>
-        <div
-          v-if="plan.tax_rate !== undefined"
-          class="tax-info"
-        >
-          <span class="tax-rate">{{ $t('plans.taxIncluded', { rate: plan.tax_rate }) }}</span>
+            {{ $t('plans.mostPopular') }}
+          </div>
+          <div
+            v-if="isCurrentPlan(plan.id)"
+            class="current-badge"
+          >
+            {{ $t('plans.currentPlan') }}
+          </div>
+          <h2>{{ plan.name }}</h2>
+          <div class="price">
+            <span class="amount">{{ formatPrice(plan.display_price) }}</span>
+            <span class="period">/{{ formatBillingPeriod(plan.billing_period) }}</span>
+          </div>
+          <p
+            v-if="plan.description"
+            class="description"
+          >
+            {{ plan.description }}
+          </p>
+          <ul
+            v-if="plan.features && plan.features.length > 0"
+            class="features"
+          >
+            <li
+              v-for="feature in plan.features"
+              :key="feature"
+            >
+              {{ feature }}
+            </li>
+          </ul>
+          <div
+            v-if="plan.tax_rate !== undefined"
+            class="tax-info"
+          >
+            <span class="tax-rate">{{ $t('plans.taxIncluded', { rate: plan.tax_rate }) }}</span>
+          </div>
+          <button
+            :class="['select-btn', { disabled: isCurrentPlan(plan.id) }]"
+            :disabled="isCurrentPlan(plan.id) || subscribing"
+            :data-testid="`select-plan-${plan.slug}`"
+            @click.stop="selectPlan(plan)"
+          >
+            <span v-if="subscribing && selectedPlanId === plan.id">{{ $t('plans.processing') }}</span>
+            <span v-else-if="isCurrentPlan(plan.id)">{{ $t('plans.currentPlan') }}</span>
+            <span v-else>{{ $t('plans.selectPlan') }}</span>
+          </button>
         </div>
-        <button
-          :class="['select-btn', { disabled: isCurrentPlan(plan.id) }]"
-          :disabled="isCurrentPlan(plan.id) || subscribing"
-          :data-testid="`select-plan-${plan.slug}`"
-          @click="selectPlan(plan)"
-        >
-          <span v-if="subscribing && selectedPlanId === plan.id">{{ $t('plans.processing') }}</span>
-          <span v-else-if="isCurrentPlan(plan.id)">{{ $t('plans.currentPlan') }}</span>
-          <span v-else>{{ $t('plans.selectPlan') }}</span>
-        </button>
       </div>
-    </div>
 
-    <!-- Currency Selector -->
-    <div
-      v-if="plans.length > 0"
-      class="currency-selector"
-    >
-      <label for="currency">{{ $t('plans.currencyLabel') }}</label>
-      <select
-        id="currency"
-        v-model="selectedCurrency"
-        data-testid="currency-select"
-        @change="loadPlans"
+      <!-- Table View -->
+      <div
+        v-else
+        class="plans-table-wrapper"
       >
-        <option value="EUR">
-          EUR
-        </option>
-        <option value="USD">
-          USD
-        </option>
-        <option value="GBP">
-          GBP
-        </option>
-      </select>
-    </div>
+        <table
+          class="plans-table"
+          data-testid="plans-table"
+        >
+          <thead>
+            <tr>
+              <th>{{ $t('plans.tableHeaders.name') || 'Name' }}</th>
+              <th>{{ $t('plans.tableHeaders.price') || 'Price' }}</th>
+              <th>{{ $t('plans.tableHeaders.billingPeriod') || 'Billing' }}</th>
+              <th>{{ $t('plans.tableHeaders.status') || 'Status' }}</th>
+              <th>{{ $t('plans.tableHeaders.actions') || 'Actions' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="plan in plans"
+              :key="plan.id"
+              class="plan-row"
+              :data-testid="`plan-row-${plan.slug}`"
+              @click="viewPlan(plan)"
+            >
+              <td class="plan-name-cell">
+                <span class="plan-name">{{ plan.name }}</span>
+                <span
+                  v-if="plan.popular"
+                  class="badge popular-tag"
+                >{{ $t('plans.mostPopular') }}</span>
+                <span
+                  v-if="isCurrentPlan(plan.id)"
+                  class="badge current-tag"
+                >{{ $t('plans.currentPlan') }}</span>
+              </td>
+              <td class="plan-price-cell">
+                {{ formatPrice(plan.display_price) }}/{{ formatBillingPeriod(plan.billing_period) }}
+              </td>
+              <td>{{ plan.billing_period || '—' }}</td>
+              <td>
+                <span :class="['status-dot', isCurrentPlan(plan.id) ? 'status-dot--active' : 'status-dot--inactive']" />
+                {{ isCurrentPlan(plan.id) ? $t('plans.currentPlan') : '—' }}
+              </td>
+              <td
+                class="actions-cell"
+                @click.stop
+              >
+                <button
+                  class="view-btn"
+                  :data-testid="`view-plan-${plan.slug}`"
+                  @click="viewPlan(plan)"
+                >
+                  {{ $t('common.view') || 'View' }}
+                </button>
+                <button
+                  :class="['select-btn-sm', { disabled: isCurrentPlan(plan.id) }]"
+                  :disabled="isCurrentPlan(plan.id) || subscribing"
+                  :data-testid="`select-plan-${plan.slug}`"
+                  @click="selectPlan(plan)"
+                >
+                  <span v-if="isCurrentPlan(plan.id)">{{ $t('plans.currentPlan') }}</span>
+                  <span v-else>{{ $t('plans.selectPlan') }}</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Currency Selector -->
+      <div class="currency-selector">
+        <label for="currency">{{ $t('plans.currencyLabel') }}</label>
+        <select
+          id="currency"
+          v-model="selectedCurrency"
+          data-testid="currency-select"
+          @change="loadPlans"
+        >
+          <option value="EUR">
+            EUR
+          </option>
+          <option value="USD">
+            USD
+          </option>
+          <option value="GBP">
+            GBP
+          </option>
+        </select>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -142,6 +276,7 @@ const subscriptionStore = useSubscriptionStore();
 const selectedCurrency = ref('EUR');
 const subscribing = ref(false);
 const selectedPlanId = ref<string | null>(null);
+const viewMode = ref<'cards' | 'table'>('cards');
 
 const loading = computed(() => plansStore.loading);
 const error = computed(() => plansStore.error);
@@ -161,14 +296,13 @@ async function loadPlans(): Promise<void> {
   }
 }
 
+function viewPlan(plan: Plan): void {
+  router.push({ name: 'tarif-plan-detail', params: { planSlug: plan.slug } });
+}
+
 async function selectPlan(plan: Plan): Promise<void> {
   if (isCurrentPlan(plan.id)) return;
-
-  // Navigate to checkout with plan info
-  router.push({
-    name: 'checkout',
-    params: { planSlug: plan.slug },
-  });
+  router.push({ name: 'checkout', params: { planSlug: plan.slug } });
 }
 
 function formatPrice(price: number): string {
@@ -193,7 +327,6 @@ function formatBillingPeriod(period?: string): string {
 }
 
 onMounted(async () => {
-  // Load current subscription to check which plan is active
   try {
     await subscriptionStore.fetchSubscription();
   } catch {
@@ -208,10 +341,46 @@ onMounted(async () => {
   max-width: 1200px;
 }
 
+.plans-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 h1 {
-  margin-bottom: 40px;
   color: #2c3e50;
-  text-align: center;
+  margin: 0;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.view-toggle-btn.active {
+  background: #fff;
+  color: #2c3e50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .loading-state,
@@ -247,6 +416,7 @@ h1 {
   cursor: pointer;
 }
 
+/* Cards */
 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -262,11 +432,13 @@ h1 {
   position: relative;
   border: 2px solid transparent;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .plan-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3498db;
 }
 
 .plan-card.popular {
@@ -379,6 +551,177 @@ h1 {
 .select-btn:disabled {
   background-color: #95a5a6;
   cursor: default;
+}
+
+/* Table */
+.plans-table-wrapper {
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.plans-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.plans-table th {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+.plans-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #2c3e50;
+}
+
+.plan-row {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.plan-row:hover {
+  background: #f8f9fa;
+}
+
+.plan-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.plan-name {
+  font-weight: 600;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.popular-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.current-tag {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.plan-price-cell {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-dot--active {
+  background: #27ae60;
+}
+
+.status-dot--inactive {
+  background: #bdc3c7;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.view-btn:hover {
+  opacity: 0.8;
+}
+
+.select-btn-sm {
+  padding: 6px 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.select-btn-sm:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.select-btn-sm.disabled,
+.select-btn-sm:disabled {
+  background: #95a5a6;
+  cursor: default;
+}
+
+/* Responsive: collapse table on small screens */
+@media (max-width: 768px) {
+  .plans {
+    max-width: 100%;
+  }
+
+  .plans-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .plans-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .plans-table {
+    min-width: 520px;
+  }
+
+  .plans-table th,
+  .plans-table td {
+    padding: 10px 10px;
+    font-size: 0.85rem;
+  }
+
+  .actions-cell {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .currency-selector {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
 }
 
 .currency-selector {

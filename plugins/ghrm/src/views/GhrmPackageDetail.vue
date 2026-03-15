@@ -67,6 +67,28 @@
         {{ pkg.description }}
       </p>
 
+      <!-- Features -->
+      <div
+        v-if="pkg.features && pkg.features.length"
+        class="ghrm-features"
+        data-testid="ghrm-features"
+      >
+        <h3 class="ghrm-section-label">
+          {{ $t('ghrm.features') || 'Features' }}
+        </h3>
+        <table class="ghrm-features-table">
+          <tbody>
+            <tr
+              v-for="f in pkg.features"
+              :key="f"
+            >
+              <td class="ghrm-feature-check">✓</td>
+              <td>{{ f }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- Tabs -->
       <div class="ghrm-tabs">
         <div class="ghrm-tabs__bar">
@@ -284,4 +306,9 @@ watch(packageSlug, load);
 .ghrm-muted { color: #9ca3af; font-style: italic; }
 .ghrm-loading, .ghrm-error { text-align: center; padding: 60px 20px; color: #6b7280; }
 .ghrm-error { color: #dc2626; }
+.ghrm-features { margin-bottom: 28px; }
+.ghrm-section-label { font-size: 0.82rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin: 0 0 10px; }
+.ghrm-features-table { border-collapse: collapse; width: 100%; }
+.ghrm-features-table td { padding: 7px 8px; border-bottom: 1px solid #f0f0f0; color: #374151; font-size: 0.9rem; }
+.ghrm-feature-check { color: #27ae60; font-weight: 700; width: 28px; }
 </style>

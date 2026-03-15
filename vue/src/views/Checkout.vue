@@ -468,7 +468,7 @@ function goToSubscription() {
 function goToInvoice() {
   const invoiceId = store.checkoutResult?.invoice?.id;
   if (invoiceId) {
-    router.push(`/dashboard/subscription/invoices/${invoiceId}`);
+    router.push(`/dashboard/invoice/${invoiceId}`);
   } else {
     router.push('/dashboard/subscription/invoices');
   }
