@@ -198,7 +198,6 @@ watch(effectiveSlug, (slug) => {
 
 onMounted(() => {
   store.fetchPage(effectiveSlug.value);
-  if (!store.categories.length) store.fetchCategories();
 });
 
 onUnmounted(() => {
