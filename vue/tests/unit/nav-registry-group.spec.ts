@@ -7,14 +7,6 @@
  */
 import { describe, it, expect, beforeEach } from 'vitest'
 
-// Import fresh instance for each test
-async function makeRegistry() {
-  const mod = await import('../../src/plugins/userNavRegistry?t=' + Math.random())
-  return new (mod as any).UserNavRegistryClass()
-}
-
-// We test the class, not the singleton, so import the class directly.
-// If UserNavRegistryClass is not exported, we test via the registry behavior.
 import { userNavRegistry } from '../../src/plugins/userNavRegistry'
 
 describe('UserNavRegistry — group support', () => {

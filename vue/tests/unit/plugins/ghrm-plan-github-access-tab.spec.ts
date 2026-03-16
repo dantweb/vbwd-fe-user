@@ -46,7 +46,7 @@ const mockGetPackageByPlan = vi.mocked(ghrmApi.getPackageByPlan)
 function mountTab() {
   setActivePinia(createPinia())
   return mount(GhrmPlanGithubAccessTab, {
-    props: { planSlug: 'plan-uuid-123' },
+    props: { planSlug: 'plan-uuid-123', planId: 'plan-id-123' },
     global: { mocks: { $t: (k: string) => k } },
   })
 }
@@ -78,7 +78,7 @@ describe('GhrmPlanGithubAccessTab', () => {
     storeFetchAccessStatus.mockImplementation(() => {
       accessStatusRef.value = { connected: true, github_username: 'dantweb', access_status: 'active' }
     })
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' } as any)
     storeFetchInstallInstructions.mockImplementation(() => {
       installInstructionsRef.value = { git: 'git clone ...', npm: 'npm install ...', pip: 'pip install ...', composer: 'composer require ...' }
     })
@@ -91,7 +91,7 @@ describe('GhrmPlanGithubAccessTab', () => {
     storeFetchAccessStatus.mockImplementation(() => {
       accessStatusRef.value = { connected: true, github_username: 'dantweb', access_status: 'active' }
     })
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' } as any)
     storeFetchInstallInstructions.mockImplementation(() => {
       installInstructionsRef.value = { git: 'git clone ...', npm: 'npm install ...', pip: 'pip install ...', composer: 'composer require ...' }
     })
@@ -104,7 +104,7 @@ describe('GhrmPlanGithubAccessTab', () => {
     storeFetchAccessStatus.mockImplementation(() => {
       accessStatusRef.value = { connected: true, github_username: 'dantweb', access_status: 'pending' }
     })
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' } as any)
     storeFetchInstallInstructions.mockResolvedValue(undefined)
     const wrapper = mountTab()
     await flushPromises()

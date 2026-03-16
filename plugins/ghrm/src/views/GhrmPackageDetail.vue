@@ -14,15 +14,6 @@
     </div>
 
     <template v-else>
-      <!-- Breadcrumb -->
-      <GhrmBreadcrumb
-        v-if="detailBreadcrumbConfig"
-        :config="detailBreadcrumbConfig"
-        :category-label="categoryLabel"
-        :category-to="`/category/${categorySlug}`"
-        :package-name="pkg?.name"
-      />
-
       <!-- Header -->
       <div class="ghrm-detail-header">
         <img

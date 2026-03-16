@@ -76,7 +76,7 @@ describe('GhrmPlanSoftwareTab', () => {
   })
 
   it('calls fetchPackage and fetchVersions on success', async () => {
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' } as any)
     storeFetchPackage.mockResolvedValue(undefined)
     storeFetchVersions.mockResolvedValue(undefined)
     mountTab()
@@ -86,7 +86,7 @@ describe('GhrmPlanSoftwareTab', () => {
   })
 
   it('renders overview sub-tab by default', async () => {
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'my-pkg' } as any)
     storeFetchPackage.mockResolvedValue(undefined)
     storeFetchVersions.mockResolvedValue(undefined)
     const wrapper = mountTab()

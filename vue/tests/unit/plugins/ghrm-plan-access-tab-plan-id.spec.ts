@@ -56,7 +56,7 @@ describe('GhrmPlanGithubAccessTab — planId prop', () => {
     const planSlug = 'plugin-paypal'
 
     accessStatusRef.value = { connected: true, github_username: 'dantweb', access_status: 'active' }
-    mockGetPackageByPlan.mockResolvedValue({ slug: 'paypal-pkg' })
+    mockGetPackageByPlan.mockResolvedValue({ slug: 'paypal-pkg' } as any)
 
     setActivePinia(createPinia())
     mount(GhrmPlanGithubAccessTab, {

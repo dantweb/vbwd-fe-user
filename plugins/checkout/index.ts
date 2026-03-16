@@ -19,7 +19,7 @@ export const checkoutPlugin: IPlugin = {
       path: '/checkout',
       name: 'checkout-public',
       component: () => import('./PublicCheckoutView.vue') as Promise<{ default: unknown }>,
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, noLayout: true }
     });
 
     sdk.addTranslations('en', en);

@@ -102,6 +102,7 @@ export interface TarifPlan {
 const props = defineProps<{
   embedMode?: boolean;
   category?: string;
+  planSlugs?: string[];
 }>();
 
 const emit = defineEmits<{
@@ -125,7 +126,10 @@ async function loadPlans() {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Failed to load plans');
     const data = await response.json();
-    plans.value = (data.plans || []).filter((p: TarifPlan) => p.is_active !== false);
+    const all = (data.plans || []).filter((p: TarifPlan) => p.is_active !== false);
+    plans.value = props.planSlugs?.length
+      ? all.filter((p: TarifPlan) => props.planSlugs!.includes(p.slug))
+      : all;
   } catch (e) {
     error.value = (e as Error).message || t('common.errors.generic');
   } finally {
@@ -171,7 +175,8 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style>
+/* Non-scoped so CMS page styles and NativePricingPlans widget CSS can override these rules. */
 .landing1 {
   max-width: 1200px;
   margin: 0 auto;
@@ -185,101 +190,101 @@ onMounted(() => {
 
 .landing1-header h1 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: var(--vbwd-text-heading, #2c3e50);
   margin-bottom: 10px;
 }
 
-.subtitle {
-  color: #666;
+.landing1 .subtitle {
+  color: var(--vbwd-text-muted, #666);
   font-size: 1.1rem;
 }
 
-.loading-state,
-.error-state,
-.empty-state {
+.landing1 .loading-state,
+.landing1 .error-state,
+.landing1 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: #666;
+  color: var(--vbwd-text-muted, #666);
 }
 
-.spinner {
+.landing1 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #3498db;
+  border: 3px solid var(--vbwd-border-light, #f3f3f3);
+  border-top: 3px solid var(--vbwd-color-primary, #3498db);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: landing1-spin 1s linear infinite;
   margin: 0 auto 15px;
 }
 
-@keyframes spin {
+@keyframes landing1-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.retry-btn {
+.landing1 .retry-btn {
   margin-top: 15px;
   padding: 10px 20px;
-  background: #3498db;
-  color: white;
+  background: var(--vbwd-color-primary, #3498db);
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.plans-grid {
+.landing1 .plans-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
-.plan-card {
-  background: white;
+.landing1 .plan-card {
+  background: var(--vbwd-card-bg, #fff);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--vbwd-card-shadow, 0 2px 10px rgba(0, 0, 0, 0.08));
   text-align: center;
   transition: all 0.2s;
   border: 2px solid transparent;
 }
 
-.plan-card:hover {
+.landing1 .plan-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  border-color: #3498db;
+  border-color: var(--vbwd-color-primary, #3498db);
 }
 
-.plan-name {
+.landing1 .plan-name {
   font-size: 1.4rem;
-  color: #2c3e50;
+  color: var(--vbwd-text-heading, #2c3e50);
   margin-bottom: 15px;
 }
 
-.plan-price {
+.landing1 .plan-price {
   font-size: 2rem;
   font-weight: 700;
-  color: #3498db;
+  color: var(--vbwd-color-primary, #3498db);
   margin-bottom: 15px;
 }
 
-.billing-period {
+.landing1 .billing-period {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #666;
+  color: var(--vbwd-text-muted, #666);
 }
 
-.plan-description {
-  color: #666;
+.landing1 .plan-description {
+  color: var(--vbwd-text-muted, #666);
   font-size: 0.9rem;
   margin-bottom: 20px;
   line-height: 1.5;
 }
 
-.choose-plan-btn {
+.landing1 .choose-plan-btn {
   width: 100%;
   padding: 14px;
-  background-color: #3498db;
-  color: white;
+  background-color: var(--vbwd-color-primary, #3498db);
+  color: #fff;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -288,7 +293,7 @@ onMounted(() => {
   transition: background-color 0.2s;
 }
 
-.choose-plan-btn:hover {
-  background-color: #2980b9;
+.landing1 .choose-plan-btn:hover {
+  background-color: var(--vbwd-color-primary-hover, #2980b9);
 }
 </style>

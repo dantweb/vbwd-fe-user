@@ -6,12 +6,19 @@ export const cmsPlugin: IPlugin = {
   name: 'cms',
   version: '1.0.0',
   description: 'CMS Pages — public-facing page and category browsing',
+  dependencies: ['landing1'],
   _active: false,
 
   install(sdk: IPlatformSDK) {
     // Register built-in CMS vue-component widgets
     import('./src/components/CmsBreadcrumb.vue').then((m) => {
       registerCmsVueComponent('CmsBreadcrumb', m.default);
+    });
+    import('./src/components/NativePricingPlans.vue').then((m) => {
+      registerCmsVueComponent('NativePricingPlans', m.default);
+    });
+    import('./src/components/ContactForm.vue').then((m) => {
+      registerCmsVueComponent('ContactForm', m.default);
     });
     sdk.addRoute({
       path: '/:slug(.+)',

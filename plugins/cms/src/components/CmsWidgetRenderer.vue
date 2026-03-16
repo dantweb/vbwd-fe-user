@@ -4,7 +4,7 @@
     :is="resolvedVueComponent"
     v-if="widget.widget_type === 'vue-component' && resolvedVueComponent"
     v-bind="(widget.content_json as any)?.props || {}"
-    :config="(widget.config as any) ?? undefined"
+    :config="{ ...(widget.config ?? {}), widget_slug: widget.slug }"
     class="cms-widget cms-widget--vue"
   />
   <div

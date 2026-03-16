@@ -19,7 +19,8 @@ const defaultConfig = {
   css: '',
 }
 
-function mountBreadcrumb(props: Record<string, unknown>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mountBreadcrumb(props: any) {
   return mount(GhrmBreadcrumb, {
     props,
     global: {
