@@ -45,6 +45,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install plugin
+        run: |
+          git clone --depth=1 https://github.com/VBWD-platform/vbwd-fe-user-plugin-${{ matrix.plugin }}.git plugins/${{ matrix.plugin }}
+
       - name: Run plugin tests
         run: |
           if find plugins/${{ matrix.plugin }} -name "*.spec.ts" -o -name "*.test.ts" | grep -q .; then
