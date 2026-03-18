@@ -1,10 +1,11 @@
 import { createVbwdUserApp } from './factory';
 import { getEnabledPlugins } from '@/utils/pluginLoader';
+import type { IPlugin } from 'vbwd-view-component';
 
 (async () => {
   try {
     // Load plugins from local plugins/ directory (Vite glob)
-    let plugins = [];
+    let plugins: IPlugin[] = [];
     try {
       plugins = await getEnabledPlugins();
       console.warn(`[VBWD] Using ${plugins.length} enabled plugin(s)`);
