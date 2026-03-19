@@ -261,4 +261,4 @@ vbwd-fe-core/          # git submodule — shared component library
 
 ## License
 
-CC0 1.0 Universal (Public Domain)
+BSL 1.1 (Business Source Licence)
