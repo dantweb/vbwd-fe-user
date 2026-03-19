@@ -28,6 +28,8 @@ RUN_UNIT=false
 RUN_INTEGRATION=false
 
 # Parse arguments
+PLUGIN_NAME=""
+
 while [[ $# -gt 0 ]]; do
     case $1 in
         --style)
@@ -54,21 +56,24 @@ while [[ $# -gt 0 ]]; do
             RUN_INTEGRATION=true
             shift
             ;;
+        --plugin)
+            PLUGIN_NAME="$2"
+            shift 2
+            ;;
         --help|-h)
             echo "Usage: $0 [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --style       Run style checks (eslint, vue-tsc) [default]"
-            echo "  --unit        Run style checks + unit tests"
-            echo "  --integration Run style checks + integration tests"
-            echo "  --all         Run everything"
-            echo "  --help        Show this help message"
+            echo "  --style              Run style checks (eslint, vue-tsc) [default]"
+            echo "  --unit               Run style checks + unit tests"
+            echo "  --integration        Run style checks + integration tests"
+            echo "  --all                Run everything"
+            echo "  --plugin <name>      Run checks for a single plugin only"
+            echo "  --help               Show this help message"
             echo ""
             echo "Examples:"
-            echo "  $0                  # Style checks only"
-            echo "  $0 --unit           # Style checks + unit tests"
-            echo "  $0 --integration    # Style checks + integration tests"
-            echo "  $0 --all            # Everything"
+            echo "  $0 --unit                     # All: style + unit"
+            echo "  $0 --plugin booking --unit     # Booking plugin only"
             exit 0
             ;;
         *)
@@ -108,20 +113,38 @@ print_warning() {
 
 # Function to run style checks
 run_style() {
-    print_header "Style Checks"
+    if [ -n "$PLUGIN_NAME" ]; then
+        print_header "Style Checks (plugin: $PLUGIN_NAME)"
+    else
+        print_header "Style Checks"
+    fi
 
     cd "$REPO_DIR"
 
-    # ESLint
-    echo "Running ESLint..."
-    if npm run lint; then
-        print_success "ESLint passed"
-    else
-        print_error "ESLint failed"
-        OVERALL_EXIT=1
+    local lint_target=""
+    if [ -n "$PLUGIN_NAME" ]; then
+        lint_target="plugins/$PLUGIN_NAME/"
     fi
 
-    # TypeScript check
+    # ESLint
+    echo "Running ESLint..."
+    if [ -n "$lint_target" ]; then
+        if npx eslint "$lint_target" --ext .vue,.ts,.tsx; then
+            print_success "ESLint passed"
+        else
+            print_error "ESLint failed"
+            OVERALL_EXIT=1
+        fi
+    else
+        if npm run lint; then
+            print_success "ESLint passed"
+        else
+            print_error "ESLint failed"
+            OVERALL_EXIT=1
+        fi
+    fi
+
+    # TypeScript check (always runs full project — TS needs all files)
     echo ""
     echo "Running TypeScript check..."
     if npx vue-tsc --noEmit; then
@@ -134,12 +157,21 @@ run_style() {
 
 # Function to run unit tests
 run_unit() {
-    print_header "Unit Tests"
+    if [ -n "$PLUGIN_NAME" ]; then
+        print_header "Unit Tests (plugin: $PLUGIN_NAME)"
+    else
+        print_header "Unit Tests"
+    fi
 
     cd "$REPO_DIR"
 
+    local test_path="vue/tests/unit/"
+    if [ -n "$PLUGIN_NAME" ]; then
+        test_path="plugins/$PLUGIN_NAME/tests/unit/"
+    fi
+
     echo "Running unit tests..."
-    VITEST_OUT=$(npx vitest run vue/tests/unit/ 2>&1)
+    VITEST_OUT=$(npx vitest run "$test_path" 2>&1)
     VITEST_EXIT=$?
     echo "$VITEST_OUT" | tail -20
     if [[ "$VITEST_EXIT" == "0" ]]; then
