@@ -144,7 +144,7 @@ run_style() {
         fi
     fi
 
-    # TypeScript check (always runs full project — TS needs all files)
+    # TypeScript check (full project — always runs)
     echo ""
     echo "Running TypeScript check..."
     if npx vue-tsc --noEmit; then

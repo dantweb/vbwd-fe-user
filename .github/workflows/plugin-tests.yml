@@ -41,8 +41,12 @@ jobs:
 
       - run: npm install
 
-      - name: Install plugin
-        run: git clone --depth=1 https://github.com/VBWD-platform/vbwd-fe-user-plugin-${{ matrix.plugin }}.git plugins/${{ matrix.plugin }}
+      - name: Install ALL plugins (vue-tsc needs full project)
+        run: |
+          for entry in "chat:vbwd-fe-user-plugin-chat" "checkout:vbwd-fe-user-plugin-checkout" "cms:vbwd-fe-user-plugin-cms" "ghrm:vbwd-fe-user-plugin-ghrm" "landing1:vbwd-fe-user-plugin-landing1" "paypal-payment:vbwd-fe-user-plugin-paypal-payment" "stripe-payment:vbwd-fe-user-plugin-stripe-payment" "taro:vbwd-fe-user-plugin-taro" "theme-switcher:vbwd-fe-user-plugin-theme-switcher" "yookassa-payment:vbwd-fe-user-plugin-yookassa-payment" "booking:vbwd-fe-user-plugin-booking"; do
+            name="${entry%%:*}"; repo="${entry##*:}"
+            git clone --depth=1 -q "https://github.com/VBWD-platform/${repo}.git" "plugins/$name" 2>/dev/null || echo "Skipping $name"
+          done
 
-      - name: Run pre-commit (style + unit)
+      - name: Run pre-commit (style + unit) for plugin
         run: ./bin/pre-commit-check.sh --plugin ${{ matrix.plugin }} --unit
