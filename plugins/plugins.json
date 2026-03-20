@@ -59,6 +59,12 @@
       "version": "1.0.0",
       "installedAt": "2026-03-11T10:00:00.000Z",
       "source": "local"
+    },
+    "booking": {
+      "enabled": true,
+      "version": "0.1.0",
+      "installedAt": "2026-03-19T15:54:42.122Z",
+      "source": "local"
     }
   }
 }
