@@ -270,8 +270,9 @@ const handleRegister = async () => {
       authError.value = response.error || t('common.errors.registrationFailed');
     }
   } catch (e) {
-    analytics.track('registration-failed', { error_type: 'network_error' });
-    authError.value = t('common.errors.registrationFailedRetry');
+    const errorMessage = e instanceof Error ? e.message : t('common.errors.registrationFailedRetry');
+    analytics.track('registration-failed', { error_type: errorMessage });
+    authError.value = errorMessage;
   } finally {
     submitting.value = false;
   }
