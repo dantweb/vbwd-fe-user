@@ -36,13 +36,15 @@ export interface AddOn {
 }
 
 export interface LineItem {
-  type: 'subscription' | 'token_bundle' | 'add_on';
+  type: 'subscription' | 'token_bundle' | 'add_on' | 'shop_product';
   id: string;
   name: string;
   price: number;
   description?: string;
   total_price?: string;
   token_amount?: number;
+  quantity?: number;
+  currency?: string;
 }
 
 export interface CheckoutResult {
@@ -92,6 +94,7 @@ export const useCheckoutStore = defineStore('checkout', () => {
     let total = Number(plan.value?.price || plan.value?.display_price || 0);
     total += selectedBundles.value.reduce((sum, b) => sum + Number(b.price), 0);
     total += selectedAddons.value.reduce((sum, a) => sum + Number(a.price), 0);
+    total += shopItems.value.reduce((sum, item) => sum + Number(item.price), 0);
     return total;
   });
 
@@ -121,6 +124,9 @@ export const useCheckoutStore = defineStore('checkout', () => {
         name: a.name,
         price: a.price,
       });
+    });
+    shopItems.value.forEach((item) => {
+      items.push(item);
     });
     return items;
   });
@@ -239,12 +245,45 @@ export const useCheckoutStore = defineStore('checkout', () => {
     }
   }
 
+  // Shop cart items (ecommerce) — stored separately from subscription line items
+  const shopItems = ref<LineItem[]>([]);
+
+  async function loadFromShopCart() {
+    loading.value = true;
+    error.value = null;
+    isCartCheckout.value = true;
+
+    try {
+      const raw = localStorage.getItem('vbwd_shop_cart');
+      const cartItems = raw ? JSON.parse(raw) : [];
+
+      if (!cartItems.length) {
+        error.value = 'Cart is empty';
+        return;
+      }
+
+      shopItems.value = cartItems.map((item: Record<string, unknown>) => ({
+        type: 'shop_product' as const,
+        id: item.productId as string,
+        name: item.productName as string,
+        price: (item.price as number) * ((item.quantity as number) || 1),
+        quantity: (item.quantity as number) || 1,
+        currency: (item.currency as string) || 'EUR',
+        total_price: String((item.price as number) * ((item.quantity as number) || 1)),
+      }));
+    } catch {
+      error.value = 'Failed to load cart';
+    } finally {
+      loading.value = false;
+    }
+  }
+
   function setPaymentMethod(code: string) {
     paymentMethodCode.value = code;
   }
 
   async function submitCheckout() {
-    if (!plan.value && selectedBundles.value.length === 0 && selectedAddons.value.length === 0) {
+    if (!plan.value && selectedBundles.value.length === 0 && selectedAddons.value.length === 0 && shopItems.value.length === 0) {
       error.value = 'No items selected';
       return;
     }
@@ -253,6 +292,48 @@ export const useCheckoutStore = defineStore('checkout', () => {
     error.value = null;
 
     try {
+      // Shop cart checkout — call ecommerce API
+      if (isCartCheckout.value && shopItems.value.length > 0) {
+        const raw = localStorage.getItem('vbwd_shop_cart');
+        const cartItems = raw ? JSON.parse(raw) : [];
+
+        const payload: Record<string, unknown> = {
+          items: cartItems.map((item: Record<string, unknown>) => ({
+            product_id: item.productId,
+            quantity: item.quantity || 1,
+            variant_id: item.variantId || null,
+          })),
+        };
+
+        if (paymentMethodCode.value) {
+          payload.payment_method_code = paymentMethodCode.value;
+        }
+
+        const response = await api.post('/shop/cart/checkout', payload) as {
+          invoice_id: string;
+          invoice_number: string;
+          total: string;
+        };
+
+        checkoutResult.value = {
+          invoice: {
+            id: response.invoice_id,
+            invoice_number: response.invoice_number,
+            status: 'PENDING',
+            amount: response.total,
+            total_amount: response.total,
+            currency: 'EUR',
+            line_items: [],
+          },
+          message: 'Order created',
+        };
+
+        // Clear shop cart after successful checkout
+        localStorage.removeItem('vbwd_shop_cart');
+        return;
+      }
+
+      // Subscription checkout
       const payload: Record<string, unknown> = {
         token_bundle_ids: selectedBundles.value.map((b) => b.id),
         add_on_ids: selectedAddons.value.map((a) => a.id),
@@ -294,6 +375,7 @@ export const useCheckoutStore = defineStore('checkout', () => {
     submitting.value = false;
     isCartCheckout.value = false;
     paymentMethodCode.value = null;
+    shopItems.value = [];
   }
 
   return {
@@ -316,6 +398,8 @@ export const useCheckoutStore = defineStore('checkout', () => {
     loadPlan,
     loadOptions,
     loadFromCart,
+    loadFromShopCart,
+    shopItems,
     setPaymentMethod,
     addBundle,
     removeBundle,

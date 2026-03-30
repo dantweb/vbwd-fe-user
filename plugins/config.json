@@ -7,5 +7,7 @@
     "related_packages_limit": 4,
     "show_in_nav": true
   },
-  "booking": {}
+  "booking": {},
+  "subscription": {},
+  "ecommerce": {}
 }

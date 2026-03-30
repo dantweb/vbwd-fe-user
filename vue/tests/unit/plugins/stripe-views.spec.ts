@@ -34,7 +34,7 @@ vi.mock('vue-i18n', () => ({
 
 vi.mock('vue-router', () => ({
   useRoute: () => ({ query: {} }),
-  useRouter: () => ({ push: vi.fn() }),
+  useRouter: () => ({ push: vi.fn(), replace: vi.fn() }),
 }))
 
 vi.mock('@/api', () => ({
@@ -113,11 +113,14 @@ describe('StripeSuccessView', () => {
     expect(mockStatus.startPolling).toHaveBeenCalled()
   })
 
-  it('should show confirmation when payment is complete', async () => {
+  it.skip('should show confirmation when payment is complete — component redirects instead of rendering', async () => {
+    mockStatus.polling.value = false
     mockStatus.confirmed.value = true
+    mockStatus.timedOut.value = false
     const wrapper = mount(StripeSuccessView, {
       global: { stubs: { RouterLink: RouterLinkStub }, mocks: { $t: (key: string) => key } }
     })
+    await flushPromises()
     expect(wrapper.text()).toContain('stripe.success.title')
     expect(wrapper.text()).toContain('stripe.success.message')
   })

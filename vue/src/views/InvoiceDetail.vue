@@ -95,7 +95,17 @@
                       :class="item.type?.toLowerCase()"
                     >{{ itemTypeLabel(item.type, item.extra_data) }}</span>
                   </td>
-                  <td>{{ item.description }}</td>
+                  <td>
+                    <router-link
+                      v-if="itemLink(item)"
+                      :to="itemLink(item)!"
+                      class="item-description-link"
+                      @click.stop
+                    >
+                      {{ item.description }}
+                    </router-link>
+                    <span v-else>{{ item.description }}</span>
+                  </td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ formatAmount(item.unit_price, invoice.currency) }}</td>
                   <td>{{ formatAmount(item.total_price, invoice.currency) }}</td>
@@ -522,6 +532,14 @@ h1 {
 .items-table td:last-child,
 .items-table th:last-child {
   text-align: right;
+}
+
+.item-description-link {
+  color: var(--vbwd-color-primary, #3498db);
+  text-decoration: none;
+}
+.item-description-link:hover {
+  text-decoration: underline;
 }
 
 .type-badge {

@@ -11,17 +11,10 @@
  * - Backend with booking plugin (capture_mode: "manual") + stripe plugin
  * - Demo data populated (dr-smith resource)
  */
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 const BASE = process.env.E2E_BASE_URL || 'http://localhost:8080';
 const API = `${BASE}/api/v1`;
-
-const STRIPE_CARD = {
-  number: '4111111111111111',
-  expiry: '1130',
-  cvc: '123',
-  name: 'Marc Muster',
-};
 
 async function getAdminToken(): Promise<string> {
   const resp = await fetch(`${API}/auth/login`, {
@@ -41,14 +34,6 @@ async function getUserToken(): Promise<string> {
   });
   const data = await resp.json();
   return data.access_token || data.token;
-}
-
-function getNextWeekday(targetDay: number): string {
-  const now = new Date();
-  const daysUntilTarget = (targetDay - now.getDay() + 7) % 7 || 7;
-  const target = new Date(now);
-  target.setDate(now.getDate() + daysUntilTarget);
-  return target.toISOString().split('T')[0];
 }
 
 test.describe('Booking — Authorize-Only via API', () => {
@@ -75,7 +60,7 @@ test.describe('Booking — Authorize-Only via API', () => {
       }),
     });
     expect(checkoutResp.status).toBe(201);
-    const { invoice_id, invoice_number } = await checkoutResp.json();
+    const { invoice_id } = await checkoutResp.json();
 
     // 2. Simulate authorization via admin mark (since we can't do real Stripe auth in test)
     // In production, Stripe webhook would call emit_payment_authorized()

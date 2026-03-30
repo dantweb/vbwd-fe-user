@@ -18,10 +18,12 @@ plugins/booking/
 plugins/chat/
 plugins/checkout/
 plugins/cms/
+plugins/ecommerce/
 plugins/ghrm/
 plugins/landing1/
 plugins/paypal-payment/
 plugins/stripe-payment/
+plugins/subscription/
 plugins/taro/
 plugins/theme-switcher/
 plugins/yookassa-payment/
