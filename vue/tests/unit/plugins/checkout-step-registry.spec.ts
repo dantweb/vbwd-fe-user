@@ -4,7 +4,7 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { defineComponent } from 'vue'
-import { CheckoutStepRegistry } from '../../../../plugins/checkout/checkoutStepRegistry'
+import { CheckoutStepRegistry } from '../../../src/registries/checkoutStepRegistry'
 
 const DummyStepA = defineComponent({ template: '<div>Step A</div>' })
 const DummyStepB = defineComponent({ template: '<div>Step B</div>' })

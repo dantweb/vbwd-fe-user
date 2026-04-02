@@ -3,7 +3,7 @@
  * Sprint 07e — tests the complete flow from browsing to order completion.
  *
  * Prerequisites:
- * - Backend running with ecommerce plugin enabled
+ * - Backend running with shop plugin enabled
  * - Demo data populated (products, categories, warehouses, stock)
  * - Stripe test keys configured
  * - Mailpit running for email verification
@@ -19,16 +19,6 @@ async function getUserToken(): Promise<string> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email: 'test@example.com', password: 'TestPass123@' }),
-  });
-  const data = await response.json();
-  return data.access_token || data.token;
-}
-
-async function getAdminToken(): Promise<string> {
-  const response = await fetch(`${API}/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'admin@example.com', password: 'AdminPass123@' }),
   });
   const data = await response.json();
   return data.access_token || data.token;

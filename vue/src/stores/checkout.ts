@@ -315,6 +315,8 @@ export const useCheckoutStore = defineStore('checkout', () => {
           total: string;
         };
 
+        // Store invoice ID for payment — don't set checkoutResult yet
+        // (the watcher in PublicCheckoutView redirects to payment provider)
         checkoutResult.value = {
           invoice: {
             id: response.invoice_id,
@@ -328,32 +330,33 @@ export const useCheckoutStore = defineStore('checkout', () => {
           message: 'Order created',
         };
 
-        // Clear shop cart after successful checkout
+        // Clear shop cart
         localStorage.removeItem('vbwd_shop_cart');
-        return;
-      }
 
-      // Subscription checkout
-      const payload: Record<string, unknown> = {
-        token_bundle_ids: selectedBundles.value.map((b) => b.id),
-        add_on_ids: selectedAddons.value.map((a) => a.id),
-      };
+        // Watcher in PublicCheckoutView redirects to payment provider
+      } else {
+        // Subscription checkout
+        const payload: Record<string, unknown> = {
+          token_bundle_ids: selectedBundles.value.map((b) => b.id),
+          add_on_ids: selectedAddons.value.map((a) => a.id),
+        };
 
-      if (plan.value) {
-        payload.plan_id = plan.value.id;
-      }
+        if (plan.value) {
+          payload.plan_id = plan.value.id;
+        }
 
-      if (paymentMethodCode.value) {
-        payload.payment_method_code = paymentMethodCode.value;
-      }
+        if (paymentMethodCode.value) {
+          payload.payment_method_code = paymentMethodCode.value;
+        }
 
-      const response = await api.post('/user/checkout', payload) as CheckoutResult;
-      checkoutResult.value = response;
+        const response = await api.post('/user/checkout', payload) as CheckoutResult;
+        checkoutResult.value = response;
 
-      // Clear cart after successful checkout
-      if (isCartCheckout.value) {
-        const cartStore = useCartStore();
-        cartStore.clearCart();
+        // Clear cart after successful checkout
+        if (isCartCheckout.value) {
+          const cartStore = useCartStore();
+          cartStore.clearCart();
+        }
       }
     } catch (e: unknown) {
       const err = e as { response?: { data?: { error?: string } }; message?: string };
