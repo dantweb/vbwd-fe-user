@@ -73,5 +73,36 @@ export function isAuthenticated(): boolean {
   return !!localStorage.getItem('auth_token');
 }
 
+/**
+ * Check if user has a specific user-facing permission.
+ * Permissions are stored in localStorage on login.
+ */
+export function hasUserPermission(permission: string): boolean {
+  try {
+    const raw = localStorage.getItem('user_permissions');
+    if (!raw) return false;
+    const perms: string[] = JSON.parse(raw);
+    if (perms.includes('*')) return true;
+    if (perms.includes(permission)) return true;
+    return perms.some(
+      (p) => p.endsWith('.*') && permission.startsWith(p.slice(0, -1))
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Get all user permissions from localStorage.
+ */
+export function getUserPermissions(): string[] {
+  try {
+    const raw = localStorage.getItem('user_permissions');
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
 // Initialize on module load
 initializeApi();

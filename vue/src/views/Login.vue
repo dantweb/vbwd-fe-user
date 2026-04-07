@@ -65,7 +65,7 @@ async function handleLogin() {
     const response = await api.post('/auth/login', {
       email: email.value,
       password: password.value
-    }) as { success: boolean; token: string; user_id: string; error?: string };
+    }) as { success: boolean; token: string; user_id: string; user?: { user_permissions?: string[] }; error?: string };
 
     if (!response.success) {
       throw new Error(response.error || t('login.errors.loginFailed'));
@@ -73,6 +73,11 @@ async function handleLogin() {
 
     localStorage.setItem('auth_token', response.token);
     localStorage.setItem('user_id', response.user_id);
+
+    // Store user permissions for route guards and sidebar filtering
+    const userPermissions = response.user?.user_permissions ?? [];
+    localStorage.setItem('user_permissions', JSON.stringify(userPermissions));
+
     api.setToken(response.token);
 
     // Clear any session expired state

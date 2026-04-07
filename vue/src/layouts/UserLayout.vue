@@ -385,12 +385,25 @@ import { useRouter } from 'vue-router';
 import { useCartStore } from 'vbwd-view-component';
 import { storeToRefs } from 'pinia';
 import { userNavRegistry } from '@/plugins/userNavRegistry';
+import { hasUserPermission } from '@/api';
 
 const router = useRouter();
 
-const sidebarNavItems = computed(() => userNavRegistry.getSidebarItems());
-const menuNavItems = computed(() => userNavRegistry.getMenuItems());
-const storeGroupNavItems = computed(() => userNavRegistry.getGroupItems('store'));
+const sidebarNavItems = computed(() =>
+  userNavRegistry.getSidebarItems().filter(
+    (item) => !item.requiredUserPermission || hasUserPermission(item.requiredUserPermission)
+  )
+);
+const menuNavItems = computed(() =>
+  userNavRegistry.getMenuItems().filter(
+    (item) => !item.requiredUserPermission || hasUserPermission(item.requiredUserPermission)
+  )
+);
+const storeGroupNavItems = computed(() =>
+  userNavRegistry.getGroupItems('store').filter(
+    (item) => !item.requiredUserPermission || hasUserPermission(item.requiredUserPermission)
+  )
+);
 
 // Cart store
 const cartStoreRaw = useCartStore();
@@ -472,6 +485,8 @@ function formatPrice(price: number): string {
 function logout() {
   localStorage.removeItem('auth_token');
   localStorage.removeItem('user');
+  localStorage.removeItem('user_id');
+  localStorage.removeItem('user_permissions');
   router.push('/login');
 }
 

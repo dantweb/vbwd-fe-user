@@ -41,6 +41,11 @@ export interface UserNavItem {
    * to signal that the link opens a public-facing area.
    */
   externalIcon?: boolean;
+  /**
+   * User-facing permission required to see this nav item.
+   * If set, the item is hidden when the user lacks this permission.
+   */
+  requiredUserPermission?: string;
 }
 
 class UserNavRegistry {
