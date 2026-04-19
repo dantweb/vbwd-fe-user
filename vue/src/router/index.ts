@@ -21,12 +21,6 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/dashboard/taro',
-    name: 'taro',
-    component: () => import('@plugins/taro/src/Taro.vue'),
-    meta: { requiresAuth: true }
-  },
-  {
     path: '/dashboard/profile',
     name: 'profile',
     component: () => import('../views/Profile.vue'),
