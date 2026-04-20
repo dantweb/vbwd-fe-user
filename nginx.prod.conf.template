@@ -1,9 +1,16 @@
 server {
     listen 80;
 
+    # Use docker's internal resolver and runtime variables so missing upstreams
+    # (e.g. plugin-api not yet up, or absent in older instance composes) cause
+    # a 502 at request time instead of preventing nginx from starting.
+    resolver 127.0.0.11 valid=10s ipv6=off;
+    set $api_upstream ${API_UPSTREAM};
+    set $plugin_api_upstream ${PLUGIN_API_UPSTREAM};
+
     # Proxy uploaded media files to backend
     location /uploads/ {
-        proxy_pass http://${API_UPSTREAM};
+        proxy_pass http://$api_upstream;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -12,7 +19,7 @@ server {
 
     # Proxy all /api/ requests to the backend container
     location /api/ {
-        proxy_pass http://${API_UPSTREAM};
+        proxy_pass http://$api_upstream;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -22,7 +29,7 @@ server {
     # Proxy /_plugins/* to the plugin-api sidecar (HMAC-authenticated endpoint
     # called by the fe-admin User Plugins tab).
     location /_plugins {
-        proxy_pass http://${PLUGIN_API_UPSTREAM};
+        proxy_pass http://$plugin_api_upstream;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
