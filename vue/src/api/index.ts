@@ -35,16 +35,39 @@ export function initializeApi(): void {
 /**
  * Handle session expiry
  * Clears auth state and sets the expired flag
+ *
+ * Special-case: on /checkout/* routes the user is treated as a fresh
+ * anonymous visitor (the checkout view supports inline login/signup via
+ * EmailBlock — there is no guest checkout, but the user picks their own
+ * path). Showing the "Session Expired → Log In" modal forces a full
+ * detour through the login page and loses checkout context. Instead we
+ * silently clear auth state and reload so the view re-mounts in its
+ * anonymous flow.
  */
 export function handleSessionExpiry(message = 'Session expired'): void {
   // Only trigger once
   if (sessionExpired.value) return;
 
+  // Always clear auth — whether or not we show the modal.
+  clearApiAuth();
+
+  if (isOnCheckoutRoute()) {
+    // Reload so PublicCheckoutView's `isAuthenticated` ref re-reads
+    // localStorage and re-renders the EmailBlock in its anonymous state
+    // (login + sign-up tabs). No modal, no /login redirect.
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
+    return;
+  }
+
   sessionExpired.value = true;
   sessionExpiredMessage.value = message;
+}
 
-  // Clear auth state
-  clearApiAuth();
+function isOnCheckoutRoute(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.location.pathname.startsWith('/checkout');
 }
 
 /**
