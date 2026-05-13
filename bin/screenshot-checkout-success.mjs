@@ -11,13 +11,21 @@
  * Saves PNGs into:
  *   docs/dev_log/20260510/reports/screenshots/<site>-checkout-success.png
  */
-import { chromium } from "/Users/dantweb/dantweb/vbwd-sdk-2/vbwd-fe-user/node_modules/playwright/index.mjs";
+// Environment:
+//   VBWD_ADMIN_EMAIL / VBWD_ADMIN_PASSWORD  required
+//   OUT_DIR   destination for the PNGs (default: ./screenshots/checkout-success
+//             relative to the current working dir)
+import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const ADMIN_EMAIL    = "admin@vbwd.cc";
-const ADMIN_PASSWORD = "AdminPassword@314";
-const OUT_DIR        = "/Users/dantweb/dantweb/vbwd-sdk-2/docs/dev_log/20260510/reports/screenshots";
+const ADMIN_EMAIL    = process.env.VBWD_ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.VBWD_ADMIN_PASSWORD;
+if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+  console.error("✗ set VBWD_ADMIN_EMAIL and VBWD_ADMIN_PASSWORD in the environment");
+  process.exit(2);
+}
+const OUT_DIR = process.env.OUT_DIR || resolve(process.cwd(), "screenshots", "checkout-success");
 mkdirSync(OUT_DIR, { recursive: true });
 
 const sites = [

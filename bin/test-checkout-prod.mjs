@@ -7,16 +7,23 @@
  *   doctor.vbwd.cc   — booking checkout
  *   ghrm.vbwd.cc     — subscription plan checkout (first plan with a positive price)
  *
- * Strategy: log in as admin (admin@vbwd.cc / AdminPassword@314), pick the
- * relevant entity, POST to the right /checkout endpoint with
+ * Strategy: log in as the admin (creds from env), pick the relevant entity,
+ * POST to the right /checkout endpoint with
  * payment_method_code=invoice (no real money moves), assert invoice id.
  *
  * Run:
  *   node bin/test-checkout-prod.mjs
  */
 
-const ADMIN_EMAIL    = "admin@vbwd.cc";
-const ADMIN_PASSWORD = "AdminPassword@314";
+// Credentials come from the environment. Hard-coding them would leak into
+// public repos — set them per-environment (e.g., via a .env file) or pass
+// them inline:  VBWD_ADMIN_EMAIL=… VBWD_ADMIN_PASSWORD=… node bin/test-checkout-prod.mjs
+const ADMIN_EMAIL    = process.env.VBWD_ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.VBWD_ADMIN_PASSWORD;
+if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+  console.error("✗ set VBWD_ADMIN_EMAIL and VBWD_ADMIN_PASSWORD in the environment");
+  process.exit(2);
+}
 
 const sites = [
   { name: "vbwd.cc",        host: "vbwd.cc",        kind: "subscription" },

@@ -16,15 +16,42 @@
  *
  * Saved into docs/dev_log/20260511/reports/screenshots/.
  */
-import { chromium } from "/Users/dantweb/dantweb/vbwd-sdk-2/vbwd-fe-user/node_modules/playwright/index.mjs";
+// Environment (NO hardcoded creds — this file ships in a public repo):
+//   VBWD_HOST                target host                  (default: vbwd.cc)
+//   VBWD_ADMIN_EMAIL         user 1 — sender              (required)
+//   VBWD_ADMIN_PASSWORD                                    (required)
+//   VBWD_ADMIN_NICKNAME      meinchat handle for sender   (default: chatuser-a)
+//   VBWD_PEER_EMAIL          user 2 — receiver            (required)
+//   VBWD_PEER_PASSWORD                                     (required)
+//   VBWD_PEER_NICKNAME       meinchat handle for receiver (default: chatuser-b)
+//   OUT_DIR                  destination for PNGs         (default: ./screenshots/meinchat)
+//
+// Notes:
+//   * 'admin' is a reserved nickname in meinchat — pick any non-reserved
+//     handle for VBWD_ADMIN_NICKNAME.
+//   * Pick a peer nickname that isn't already claimed on the target instance.
+import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const HOST = "vbwd.cc";
-// 'admin' is a reserved nickname in meinchat — pick a regular handle.
-const ADMIN = { email: "admin@vbwd.cc", password: "AdminPassword@314", nickname: "daniel" };
-const ALICE = { email: "alice@vbwd.cc", password: "AlicePass123!",    nickname: "alice" };
-const OUT_DIR = "/Users/dantweb/dantweb/vbwd-sdk-2/docs/dev_log/20260511/reports/screenshots";
+function envOrDie(name) {
+  const v = process.env[name];
+  if (!v) { console.error(`✗ env var ${name} is required`); process.exit(2); }
+  return v;
+}
+
+const HOST = process.env.VBWD_HOST || "vbwd.cc";
+const ADMIN = {
+  email:    envOrDie("VBWD_ADMIN_EMAIL"),
+  password: envOrDie("VBWD_ADMIN_PASSWORD"),
+  nickname: process.env.VBWD_ADMIN_NICKNAME || "chatuser-a",
+};
+const ALICE = {
+  email:    envOrDie("VBWD_PEER_EMAIL"),
+  password: envOrDie("VBWD_PEER_PASSWORD"),
+  nickname: process.env.VBWD_PEER_NICKNAME || "chatuser-b",
+};
+const OUT_DIR = process.env.OUT_DIR || resolve(process.cwd(), "screenshots", "meinchat");
 mkdirSync(OUT_DIR, { recursive: true });
 
 async function api(method, path, { token, body } = {}) {
@@ -53,10 +80,8 @@ async function login(user) {
 async function ensureNickname(token, nickname) {
   const cur = await api("GET", "/nickname/me", { token });
   if (cur.json?.nickname === nickname) return;
-  // Either no nickname OR different one — set it
   const set = await api("PUT", "/nickname/me", { token, body: { nickname } });
-  if (set.status >= 400 && set.status !== 409) {
-    // 409 = already taken (e.g. by self with another casing) — acceptable
+  if (set.status >= 400) {
     throw new Error(`set nickname ${nickname}: ${set.status} ${set.text.slice(0, 200)}`);
   }
 }

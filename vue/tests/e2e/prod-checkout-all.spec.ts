@@ -26,10 +26,16 @@
  */
 import { test, expect, type APIRequestContext } from '@playwright/test';
 
-const ADMIN_EMAIL    = 'admin@vbwd.cc';
-const ADMIN_PASSWORD = 'AdminPassword@314';
+// Credentials come from the environment — this spec is in a public repo.
+// Run with:  VBWD_ADMIN_EMAIL=… VBWD_ADMIN_PASSWORD=… npx playwright test prod-checkout-all
+const ADMIN_EMAIL    = process.env.VBWD_ADMIN_EMAIL ?? '';
+const ADMIN_PASSWORD = process.env.VBWD_ADMIN_PASSWORD ?? '';
 
 async function login(req: APIRequestContext, base: string): Promise<string> {
+  expect(
+    ADMIN_EMAIL && ADMIN_PASSWORD,
+    'VBWD_ADMIN_EMAIL and VBWD_ADMIN_PASSWORD env vars must be set',
+  ).toBeTruthy();
   const r = await req.post(`${base}/api/v1/auth/login`, {
     data: { email: ADMIN_EMAIL, password: ADMIN_PASSWORD },
   });
