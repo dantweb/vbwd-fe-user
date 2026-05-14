@@ -26,5 +26,16 @@ module.exports = {
     es2022: true,
     node: true
   },
+  overrides: [
+    {
+      // bin/ holds operator CLI scripts and Playwright/screenshot drivers — console output
+      // and try{}catch{}-as-best-effort cleanup are the intended idioms.
+      files: ['bin/**/*.mjs', 'bin/**/*.js'],
+      rules: {
+        'no-console': 'off',
+        'no-empty': 'off'
+      }
+    }
+  ],
   ignorePatterns: ['node_modules/', 'dist/', 'vbwd-fe-core/', 'vue/tests/e2e/']
 };
